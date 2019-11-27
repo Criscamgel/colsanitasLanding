@@ -1,0 +1,33 @@
+
+@mixin sSmall(){
+    @media only screen and (min-width: #{$sSmall}){
+        @content;
+    }
+}
+@mixin mSmall(){
+    @media only screen and (min-width: #{$mSmall}){
+        @content;
+    }
+}
+@mixin lSmall(){
+    @media only screen and (min-width: #{$lSmall}){
+        @content;
+    }
+}
+@mixin tablet(){
+    @media only screen and (min-width: #{$tablet}){
+        @content;
+    }
+}
+
+@mixin deskopt(){
+    @media only screen and (min-width: #{$desktop}){
+        @content;
+    }
+}
+
+@mixin bigScreen(){
+    @media only screen and (min-width: #{$bigScreen}){
+        @content;
+    }
+}

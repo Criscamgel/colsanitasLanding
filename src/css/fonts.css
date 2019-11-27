@@ -1,0 +1,8 @@
+@font-face {
+    font-family: monserrat;
+    src: url(../assets/fonts/Montserrat-Regular.ttf) format("opentype");
+  }
+@font-face {
+    font-family: monserratBold;
+    src: url(../assets/fonts/Montserrat-Bold.ttf) format("opentype");
+  }
