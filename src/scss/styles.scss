@@ -8,6 +8,10 @@
     font-family: 'monserrat', 'monserratBold';
 }
 
+*:focus {
+    outline: none;
+}
+
 /* Slider Input */
 
 .slidecontainer {
@@ -116,14 +120,6 @@ button {
 hr {
     border: 0.5px solid $grayParrf;
     margin: 15px 0px 15px 0px;
-}
-
-.itPeriodo{
-    border-radius: 5px;
-    box-shadow: 0px 1px 7px 0px $cifraGray;
-    padding: 5px;
-    background-color: $white;
-    border: none;
 }
 
 .mes{
@@ -245,6 +241,39 @@ hr {
 
 }
 
+/* Radio Button */
+
+.radio{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto;
+    input{
+        opacity: 0;
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+        justify-self: center;
+        z-index: 1;
+        width: 100%;
+    }
+    div{
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        grid-auto-rows: auto;
+        .number{
+            grid-row: 1;
+            align-self: center;
+            justify-self: center;
+        }
+        .mes{
+            grid-row: 2;
+            align-self: center;
+            justify-self: center;
+        }
+    }
+}
+
 .contSoli {
     display: grid;
     grid-template-columns: 0.3fr 1fr;
@@ -263,7 +292,7 @@ hr {
     .tarjeta {
         border-radius: 15px;
         box-shadow: 0px 1px 9px 0px #cacaca;
-        padding: 30px 8%;
+        padding: 30px 7%;
     }
 
     .tarjeta.cntUno {
@@ -282,10 +311,11 @@ hr {
             }
             .contPeriodo{
                 display: grid;
-                grid-auto-columns: 0.5fr;
-                grid-template-rows: 0.5fr;
+                grid-auto-columns: auto;
+                grid-template-rows: auto;
                 margin: 10px 0px 10px 0px;
-                .itPeriodo{
+                grid-gap: 5px;
+                span{
                     grid-row: 1;
                 }
             }
@@ -322,6 +352,77 @@ hr {
         line-height: 23px;
     }
 }
+
+
+/* Pulse Shrink */
+@-webkit-keyframes pulse-shrink {
+
+    to {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+@keyframes pulse-shrink {
+       
+    0% {
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+    50% {
+        -webkit-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+.pulse-shrink {
+    display: inline-block;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.pulse-shrink:focus {
+    -webkit-animation-name: pulse-shrink;
+    animation-name: pulse-shrink;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+/* fin Shrink */
+
+/* Radio Buttons */
+
+/* style your lables/button */
+input[type=radio] + div{
+    /* keep pointer so that you get the little hand showing when you are on a button */
+    cursor: pointer;
+    /* the following are the styles */
+    border-radius: 5px;
+    padding: 5px;
+    background-color: $grayTenue;
+    border: none;
+}
+
+input[type=radio]:checked + div{
+    /* style for the checked/selected state */
+    border-radius: 5px;
+    box-shadow: 0px 1px 7px 0px $cifraGray;
+    padding: 5px;
+    background-color: $white;
+    border: none;
+}
+
+/* End Radio Buttons */
+
 
 /* tooltip */
 

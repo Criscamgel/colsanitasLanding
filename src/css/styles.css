@@ -6,6 +6,10 @@
   font-family: 'monserrat', 'monserratBold';
 }
 
+*:focus {
+  outline: none;
+}
+
 /* Slider Input */
 .slidecontainer {
   width: 100%;
@@ -110,14 +114,6 @@ button {
 hr {
   border: 0.5px solid #BABABA;
   margin: 15px 0px 15px 0px;
-}
-
-.itPeriodo {
-  border-radius: 5px;
-  box-shadow: 0px 1px 7px 0px #939393;
-  padding: 5px;
-  background-color: #ffffff;
-  border: none;
 }
 
 .mes {
@@ -238,6 +234,42 @@ hr {
   color: #939393;
 }
 
+/* Radio Button */
+.radio {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-columns: auto;
+}
+
+.radio input {
+  opacity: 0;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  z-index: 1;
+  width: 100%;
+}
+
+.radio div {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  grid-auto-rows: auto;
+}
+
+.radio div .number {
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+}
+
+.radio div .mes {
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+}
+
 .contSoli {
   display: grid;
   grid-template-columns: 0.3fr 1fr;
@@ -257,7 +289,7 @@ hr {
 .partDos .tarjeta {
   border-radius: 15px;
   box-shadow: 0px 1px 9px 0px #cacaca;
-  padding: 30px 8%;
+  padding: 30px 7%;
 }
 
 .partDos .tarjeta.cntUno {
@@ -277,12 +309,13 @@ hr {
 
 .partDos .tarjeta.cntUno .calcPdos .contPeriodo {
   display: grid;
-  grid-auto-columns: 0.5fr;
-  grid-template-rows: 0.5fr;
+  grid-auto-columns: auto;
+  grid-template-rows: auto;
   margin: 10px 0px 10px 0px;
+  grid-gap: 5px;
 }
 
-.partDos .tarjeta.cntUno .calcPdos .contPeriodo .itPeriodo {
+.partDos .tarjeta.cntUno .calcPdos .contPeriodo span {
   grid-row: 1;
 }
 
@@ -317,6 +350,64 @@ hr {
   line-height: 23px;
 }
 
+/* Pulse Shrink */
+@-webkit-keyframes pulse-shrink {
+  to {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes pulse-shrink {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-shrink {
+  display: inline-block;
+  transform: translateZ(0);
+}
+
+.pulse-shrink:focus {
+  -webkit-animation-name: pulse-shrink;
+  animation-name: pulse-shrink;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+/* fin Shrink */
+/* Radio Buttons */
+/* style your lables/button */
+input[type=radio] + div {
+  /* keep pointer so that you get the little hand showing when you are on a button */
+  cursor: pointer;
+  /* the following are the styles */
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #F0F0F0;
+  border: none;
+}
+
+input[type=radio]:checked + div {
+  /* style for the checked/selected state */
+  border-radius: 5px;
+  box-shadow: 0px 1px 7px 0px #939393;
+  padding: 5px;
+  background-color: #ffffff;
+  border: none;
+}
+
+/* End Radio Buttons */
 /* tooltip */
 .tooltip {
   display: inline;
