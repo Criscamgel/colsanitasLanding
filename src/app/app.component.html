@@ -5,14 +5,10 @@
         <img src="../assets/logoSantander.png" alt="" class="logoSantander">
     </div>
 
-    <div class="partUno">
-        <img src="../assets/grafica.png" alt="" class="grafica">
+    <div class="partUno">        
         <p class="bigTitle">Financia el tratamiento de tu paciente</p>
         <p class="textParrafo">Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu paciente y
-            disfruta de los beneficios que Santander te ofrece.</p>
-        <button class="buttonBlack">
-            <p class="bigTitle">INICIAR SOLICITUD</p>
-        </button>
+            disfruta de los beneficios que Santander te ofrece.</p>        
     </div>
 
     <div class="partDos">
@@ -44,35 +40,40 @@
                 <p class="title">2.- ¿En cuantas cuotas desea pagar?</p>
 
                 <div class="contPeriodo">
-                    <div class="itPeriodo">
+                    <button class="itPeriodo">
                         <div class="numBer">06</div>
                         <div class="mes">meses</div>
-                    </div>
-                    <div class="itPeriodo">
+                    </button>
+                    <button class="itPeriodo">
                         <div class="numBer">12</div>
                         <div class="mes">meses</div>
-                    </div>
-                    <div class="itPeriodo">
+                    </button>
+                    <button class="itPeriodo">
                         <div class="numBer">18</div>
                         <div class="mes">meses</div>
-                    </div>
-                    <div class="itPeriodo">
+                    </button>
+                    <button class="itPeriodo">
                         <div class="numBer">24</div>
                         <div class="mes">meses</div>
-                    </div>
-                    <div class="itPeriodo">
+                    </button>
+                    <button class="itPeriodo">
                         <div class="numBer">36</div>
                         <div class="mes">meses</div>
-                    </div>
-                    <div class="itPeriodo">
+                    </button>
+                    <button class="itPeriodo">
                         <div class="numBer">48</div>
                         <div class="mes">meses</div>
-                    </div>
+                    </button>
                 </div>
 
                 <div class="cntAprox">
                     <p class="grayParrf">Cuota aproximada mensual:</p>
                     <p class="cifraBlack">$ 180.000</p>
+
+                    <div data-tooltip="This is some information for our tooltip." class="tooltip">
+                            <i class="fa fa-question-circle"></i>
+                    </div>
+
                 </div>
                 <hr>
             </div>
@@ -85,32 +86,42 @@
                 <div class="contMinMax">
                     <div class="contMin">
                         <p class="grayParrf">Min:</p>
-                        <p class="cifra">1%</p>
+                        <p class="cifraGray">1%</p>
                     </div>
                     <div class="contMax">
                         <p class="grayParrf">Max:</p>
-                        <p class="cifra">3%</p>
+                        <p class="cifraGray">3%</p>
                     </div>
                 </div>
                 <div class="cntAprox">
                         <p class="grayParrf">Cuota con descuento:</p>
                         <p class="cifraBlack">$ 167.000</p>
+
+                        <div data-tooltip="This is some information for our tooltip." class="tooltip">
+                                <i class="fa fa-question-circle"></i>
+                        </div>
                     </div>
                     <hr>
             </div>
 
             <div class="calcPcuatro">
-                <button class="verUno">SIMULACIÓN DE CUOTAS</button>
-                <button class="verDos">INICIAR SOLICITUD</button>
+                    <button class="button tipoUno">
+                            <p class="bigTitle">INICIAR SOLICITUD</p>
+                    </button>
+                    <button class="button tipoDos">
+                            <p class="bigTitle">SIMULACIÓN DE CUOTAS</p>
+                    </button>
             </div>
 
         </div>
+
+        <img src="../assets/grafica.png" alt="" class="grafica">
 
         <div class="tarjeta cntDos">
             <p class="title">Condiciones para el cliente:</p>
             <p class="listaItem">
                 • Debe tener entre 18 y 75 años<br>
-                • Ganar más de un salario minimo<br>
+                • Ganar más de un salario mínimo<br>
                 • El monto mínimo es $800.000<br>
                 • El monto máximo es $20.000.000<br>
                 • Colombiano o residente con visa e historia laboral
@@ -118,8 +129,8 @@
         </div>
 
         <div class="tarjeta cntTres">
-            <p class="title">Clientes asalariados a termino indefinido:</p>
-            <p class="listaItem">Continuida laboral mínima de 12 meses.</p>
+            <p class="title">Clientes asalariados a término indefinido:</p>
+            <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
             <p class="title">Clientes independientes:</p>
             <p class="listaItem">antiguedad en la actividad mínima de 12 meses</p>
             <p class="title">Clientes pensionados:</p>

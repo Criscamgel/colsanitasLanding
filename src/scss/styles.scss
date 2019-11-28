@@ -71,9 +71,24 @@
 }
 
 button {
-    border-radius: 13px;
-    font-size: 10px;
-    padding: 6px 16px 6px 16px;
+    border-radius: 8px;
+    font-size: 5px;
+    padding: 12px 0px 12px 0px;
+    width: 100%;
+}
+
+/* Tipos de botones */
+
+.tipoUno{
+    background-color: $deg-uno;
+    color: $white;
+    border: none;
+}
+
+.tipoDos{
+    background-color: $white;
+    color: $deg-uno;
+    border: 1px solid $deg-uno;
 }
 
 .grayParrf{
@@ -99,14 +114,39 @@ button {
 }
 
 hr {
-    border: 1px solid $grayParrf;
+    border: 0.5px solid $grayParrf;
     margin: 15px 0px 15px 0px;
 }
 
 .itPeriodo{
     border-radius: 5px;
-    box-shadow: 0px 1px 7px 0px #747473;
+    box-shadow: 0px 1px 7px 0px $cifraGray;
     padding: 5px;
+    background-color: $white;
+    border: none;
+}
+
+.mes{
+    font-size: 7px;
+    color: $deg-dos;
+}
+
+.bigTitle {
+    align-self: center;
+    justify-self: center;
+    font-family: monserratBold;
+    font-size: 15px;
+}
+
+.cifraBlack{
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.grafica {
+    align-self: center;
+    justify-self: center;
+    width: 80%;
 }
 
 /* Fin Generales */
@@ -141,25 +181,18 @@ hr {
         grid-column: 2;
         align-self: center;
         justify-self: center;
-        width: 85%;
+        width: 70%;
     }
 }
 
 
 .partUno {
     display: grid;
-    grid-template-rows: 1fr 0.5fr 0.5fr 0.2fr;
+    grid-auto-rows: auto;
     margin: 30px 40px 0px 40px;
-
-    .grafica {
-        grid-row: 1;
-        align-self: center;
-        justify-self: center;
-        width: 80%;
-    }
+    grid-gap: 15px; 
 
     .bigTitle {
-        grid-row: 2;
         align-self: center;
         justify-self: center;
         font-family: monserratBold;
@@ -169,18 +202,7 @@ hr {
     .textParrafo {
         font-size: 14px;
     }
-
-    .buttonBlack {
-        height: 65px;
-        border-radius: 10px;
-        color: $white;
-        background-color: $black;
-        border: none;
-
-        .bigTitle {
-            font-size: 18px;
-        }
-    }
+    
 }
 
 .contMinMax {
@@ -199,13 +221,26 @@ hr {
 
 .cntAprox{
     display: grid;
-    grid-auto-columns: repeat(2, 1fr);
+    grid-auto-columns: repeat(3, auto);
     grid-template-rows: 0.5fr;
+    background-color: $grayTenue;
+    padding: 1%;
+    border-radius: 3px;
     .grayParrf{
         grid-row: 1;
     }
     .cifraBlack{
         grid-row: 1;
+        justify-self: end;
+    }
+    .tooltip{
+        grid-row: 1;
+        align-self: center;
+        justify-self: end;
+        i{
+            font-size: 12px;
+            color: $cifraGray;
+        }
     }
 
 }
@@ -223,13 +258,12 @@ hr {
 .partDos {
     display: grid;
     grid-template-rows: repeat(3, auto);
-    margin: 30px 40px 0px 40px;
+    margin: 30px 4%;
     grid-gap: 10px;
-
     .tarjeta {
         border-radius: 15px;
         box-shadow: 0px 1px 9px 0px #cacaca;
-        padding: 50px 30px 30px 30px;
+        padding: 30px 8%;
     }
 
     .tarjeta.cntUno {
@@ -240,13 +274,7 @@ hr {
         .calcPuno{
             .title {
                 color: $vBlue;
-            }/* 
-            .slidecontainer{
-                margin: 18px 0px 15px;
             }
-            .contMinMax{
-                margin: 18px 0px 15px;
-            } */
         }
         .calcPdos{
             .title{
@@ -256,15 +284,20 @@ hr {
                 display: grid;
                 grid-auto-columns: 0.5fr;
                 grid-template-rows: 0.5fr;
+                margin: 10px 0px 10px 0px;
                 .itPeriodo{
                     grid-row: 1;
                 }
             }
         }
+        .calcPcuatro{
+            display: grid;
+            grid-auto-rows: auto;
+            grid-gap: 10px;
+        }
     }
 
     .tarjeta.cntDos {
-        grid-row: 2;
         grid-template-columns: 1fr;
         grid-template-rows: 0.2fr 0.2fr;
         display: grid;
@@ -286,16 +319,50 @@ hr {
     }
 
     .tarjeta.cntTres {
-        grid-row: 3;
         line-height: 23px;
     }
 }
+
+/* tooltip */
+
+.tooltip{
+    display: inline;
+ position: relative;
+ font-size: 8px;
+}
+
+.tooltip:hover:after{
+ background: #333;
+ background: rgba(0,0,0,.8);
+ border-radius: 5px;
+ bottom: 26px;
+ color: #fff;
+ content: attr(data-tooltip);
+ right: -100%;
+ padding: 5px 15px;
+ position: absolute;
+ z-index: 98;
+ width: 100px;
+}
+
+.tooltip:hover:before{
+ border: solid;
+ border-color: #333 transparent;
+ border-width: 6px 6px 0 6px;
+ bottom: 20px;
+ content: "";
+ left: 50%;
+ position: absolute;
+ z-index: 99;
+}
+
+
+/* Fin tooltip */
 
 .pie {
     display: grid;
     grid-template-rows: 60px;
     background-color: #0E486F;
-    margin-top: 30px;
 
     .smallParrafo {
         color: white;
