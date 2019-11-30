@@ -76,6 +76,11 @@ button {
   width: 100%;
 }
 
+button:disabled,
+button[disabled] {
+  opacity: 0.5;
+}
+
 /* Tipos de botones */
 .tipoUno {
   background-color: #154C75;
@@ -109,6 +114,23 @@ button {
   border-radius: 5px;
   padding: 8px 5px 8px 5px;
   border: 1px solid #BABABA;
+  display: inline-block;
+  padding-left: 22px;
+}
+
+.symbol {
+  position: relative;
+  display: inline;
+  font-weight: 800;
+  color: #939393;
+}
+
+.symbol:before {
+  content: '$';
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  z-index: 1;
 }
 
 hr {
@@ -134,9 +156,8 @@ hr {
 }
 
 .grafica {
-  align-self: center;
-  justify-self: center;
-  width: 80%;
+  width: 100%;
+  padding: 8%;
 }
 
 /* Fin Generales */
@@ -323,6 +344,11 @@ hr {
   display: grid;
   grid-auto-rows: auto;
   grid-gap: 10px;
+}
+
+.partDos .contGrafica {
+  align-self: center;
+  justify-self: center;
 }
 
 .partDos .tarjeta.cntDos {
