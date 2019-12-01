@@ -112,12 +112,14 @@
                         <p class="grayParrf">Cuota aproximada mensual:</p>
                         <p class="cifraBlack">$ {{vlrCuota | number:'1.0'}}</p>
 
-                        <div data-tooltip="vlrCuotaSs seguroTotal seguroCta" class="tooltip">
-                                <i class="fa fa-question-circle"></i>
-                        </div>
-                        valor Cuota sin seguro: {{vlrCuotaSs}}<br> 
-                        Seguro total: {{seguroTotal}}<br>
-                        Seguro de la cuota: {{seguroCta}}
+                        <div class="tooltip">
+                            <i class="fa fa-question-circle"></i>
+                            <span class="tooltiptext">
+                                valor Cuota sin seguro: <br>{{vlrCuotaSs}}<br> 
+                                Seguro total: <br> {{seguroTotal}}<br>
+                                Seguro de la cuota: <br> {{seguroCta}}
+                            </span>
+                        </div>                       
 
                     </div>
                     <hr>
@@ -142,9 +144,12 @@
                             <p class="grayParrf">Cuota con descuento:</p>
                             <p class="cifraBlack">0%</p>
 
-                            <div data-tooltip="This is some information for our tooltip." class="tooltip">
+                            <div class="tooltip">
                                     <i class="fa fa-question-circle"></i>
-                            </div>
+                                    <span class="tooltiptext">
+                                        Contenido
+                                    </span>
+                                </div>
                         </div>
                         <hr>
                 </div>
