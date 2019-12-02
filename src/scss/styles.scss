@@ -313,15 +313,15 @@ hr {
 .partDos {
     display: grid;
     grid-template-rows: repeat(3, auto);
-    margin: 30px 0%;
-    grid-gap: 10px;
+    margin: 30px 0px 0px 0px;
 
     form{
         margin: 3%;
         .tarjeta {
             border-radius: 15px;
             box-shadow: 0px 1px 9px 0px #cacaca;
-            padding: 30px 7%;
+            padding: 30px 5%;
+            margin-bottom: 10px;
         }   
     }
 
