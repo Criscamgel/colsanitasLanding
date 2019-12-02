@@ -9,12 +9,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   cuotas;
-  valorSolicitado = 0;
+  valorSolicitado;
   minVlr = 800000;
   maxVlr = 20000000;
   vlrCuota = 0;
   descuento = 0.21;
   tasa = 0.24;
+  /* patternNumber = "^[0-9]+$"; */
   
   vlrCuotaSs;
   seguroCta;
@@ -24,7 +25,15 @@ export class AppComponent {
   currencyInputChanged(value) {
     var num = value.replace(/[$,]/g, "");  
     return Number(num);
-  }  
+  }
+  
+  oldNumbers(event: any) {   
+    const pattern =  new RegExp('^[0-9]+$');    
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();      
+    }
+  }
 
   changeButton(val){
     let cuota = Number(val.value);

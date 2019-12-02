@@ -20,12 +20,22 @@
     }
 }
 
+@mixin laptop(){
+    @media only screen and (min-width: #{$laptop}){
+        @content;
+    }
+}
 @mixin deskopt(){
     @media only screen and (min-width: #{$desktop}){
         @content;
     }
 }
 
+@mixin laptopL(){
+    @media only screen and (min-width: #{$laptopL}){
+        @content;
+    }
+}
 @mixin bigScreen(){
     @media only screen and (min-width: #{$bigScreen}){
         @content;

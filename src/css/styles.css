@@ -86,6 +86,7 @@ button[disabled] {
   background-color: #154C75;
   color: #ffffff;
   border: none;
+  height: 45px;
 }
 
 .tipoDos {
@@ -162,6 +163,14 @@ hr {
   padding: 8%;
 }
 
+.tarjeta {
+  border-radius: 15px;
+  box-shadow: 0px 1px 9px 0px #cacaca;
+  padding: 30px 5%;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+}
+
 /* Fin Generales */
 .pPal {
   display: grid;
@@ -182,6 +191,13 @@ hr {
   height: 80px;
 }
 
+@media only screen and (min-width: 768px) {
+  .encabezado {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .encabezado .logoSanitas {
   grid-column: 1;
   align-self: center;
@@ -196,11 +212,23 @@ hr {
   width: 70%;
 }
 
+@media only screen and (min-width: 768px) {
+  .encabezado .logoSantander {
+    justify-self: initial;
+  }
+}
+
 .partUno {
   display: grid;
   grid-auto-rows: auto;
   margin: 30px 40px 0px 40px;
   grid-gap: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  .partUno {
+    display: none;
+  }
 }
 
 .partUno .bigTitle {
@@ -310,6 +338,12 @@ hr {
   margin: 30px 0px 0px 0px;
 }
 
+@media only screen and (min-width: 768px) {
+  .partDos {
+    display: none;
+  }
+}
+
 .partDos form {
   margin: 3%;
 }
@@ -324,8 +358,7 @@ hr {
 .partDos .tarjeta.cntUno {
   grid-row: 1;
   display: grid;
-  /* grid-template-rows: repeat(3, 1fr); */
-  grid-auto-rows: 0.5fr;
+  grid-auto-rows: auto;
 }
 
 .partDos .tarjeta.cntUno .calcPuno .title {
@@ -665,4 +698,208 @@ input[type=radio]:checked + div {
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
+}
+
+/* Big resolutions */
+.partUnoBig {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .partUnoBig {
+    display: block;
+    background: url(../assets/fondo.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 0px 7% 0px 7%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .partUnoBig {
+    padding: 0px 10% 0px 10%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .partUnoBig {
+    padding: 0px 15% 0px 15%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .partUnoBig {
+    padding: 0px 20% 0px 20%;
+  }
+}
+
+.partUnoBig .encabezadoBig {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  margin-top: 30px;
+}
+
+.partUnoBig .encabezadoBig .logoSanitasBig {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: initial;
+  align-self: initial;
+  width: 90%;
+}
+
+.partUnoBig .encabezadoBig .logoSantanderBig {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: initial;
+  align-self: initial;
+  width: 90%;
+}
+
+.partUnoBig .encabezadoBig button {
+  grid-column: 4;
+  border-radius: 18px;
+  width: 55%;
+  align-self: center;
+  justify-self: end;
+  display: grid;
+  border: none;
+}
+
+.partUnoBig .encabezadoBig button .bigTitle {
+  font-size: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .partUnoBig .encabezadoBig button {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .partUnoBig .encabezadoBig button {
+    width: 60%;
+  }
+  .partUnoBig .encabezadoBig button .bigTitle {
+    font-size: 10px !important;
+  }
+}
+
+.partUnoBig .encabezadoBig button i {
+  color: #2B91B5;
+  margin: 0px 20px 0px 0px;
+}
+
+.cntUnoBig {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  margin-top: 50px;
+}
+
+.cntUnoBig .textCntBig {
+  grid-column: 1;
+  padding: 3%;
+  display: grid;
+  grid-gap: 30px;
+  color: #ffffff;
+  margin-top: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .cntUnoBig .textCntBig {
+    grid-template-rows: 1fr 1.5fr;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cntUnoBig .textCntBig {
+    grid-template-rows: 1fr 2.2fr;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .cntUnoBig .textCntBig {
+    grid-template-rows: 1fr 2.5fr;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .cntUnoBig .textCntBig {
+    grid-template-rows: 1fr 2.8fr;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .cntUnoBig .textCntBig {
+    grid-template-rows: 1fr 4fr;
+  }
+}
+
+.cntUnoBig .textCntDosBig {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+}
+
+.cntUnoBig .calcBig {
+  grid-column: 2;
+  grid-row: 1/4;
+}
+
+.contPeriodo {
+  display: grid;
+  grid-auto-columns: auto;
+  grid-template-rows: auto;
+  margin: 10px 0px 10px 0px;
+  grid-gap: 5px;
+}
+
+.contPeriodo span {
+  grid-row: 1;
+}
+
+.texInicial {
+  /* margin-bottom: 100px; */
+}
+
+.texInicial .bigTitle {
+  font-size: 25px;
+}
+
+.simulaCuota .bigTitle {
+  font-size: 25px;
+}
+
+.contDosBig {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .contDosBig {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    padding: 5%;
+  }
+  .contDosBig .item {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
+  .contDosBig .item embed.reloj {
+    width: 25%;
+  }
+  .contDosBig .item embed.personal {
+    width: 30%;
+  }
+  .contDosBig .item embed.martillo {
+    width: 30%;
+  }
+  .contDosBig .item .title {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .contDosBig .item .textContent {
+    font-size: 12px;
+  }
 }
