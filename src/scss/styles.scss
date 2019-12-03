@@ -787,11 +787,17 @@ input[type=radio]:checked+div {
             border: none;
             .itemButton{
                 display: grid;
-                grid-template-columns: 1fr;                    
+                @include tablet(){
+                  grid-template-columns: 40px 1fr;                    
+                }
                 .bigTitle{
                     font-size: 15px;
                     align-self: center;
                     justify-self: initial;  
+                }
+                .fa-question-circle{
+                align-self: center;
+                justify-self: center;   
                 }
             }            
             @include tablet(){

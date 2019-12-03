@@ -810,13 +810,23 @@ input[type=radio]:checked + div {
 
 .partUnoBig .encabezadoBig button .itemButton {
   display: grid;
-  grid-template-columns: 1fr;
+}
+
+@media only screen and (min-width: 768px) {
+  .partUnoBig .encabezadoBig button .itemButton {
+    grid-template-columns: 40px 1fr;
+  }
 }
 
 .partUnoBig .encabezadoBig button .itemButton .bigTitle {
   font-size: 15px;
   align-self: center;
   justify-self: initial;
+}
+
+.partUnoBig .encabezadoBig button .itemButton .fa-question-circle {
+  align-self: center;
+  justify-self: center;
 }
 
 @media only screen and (min-width: 768px) {

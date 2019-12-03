@@ -36,10 +36,16 @@ export class HomeComponent{
     }
   }
 
+  linka(){
+     console.log("link");
+      
+  }
+
   changeButton(val){
     let cuota = Number(val.value);
     let nmv = Math.pow((1 + this.tasa),(1/12))-1;
     let seguro =  (1200 / 1000000) * this.valorSolicitado;    
+    
     
     switch (cuota) {
       case 6:
