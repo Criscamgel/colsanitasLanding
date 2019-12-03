@@ -5,8 +5,8 @@
         </div>
     
         <div class="partUno">
-            <p class="bigTitle">Financia el tratamiento de tu paciente</p>
-            <p class="textParrafo">Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu paciente y
+            <p class="bigTitle">Ayuda ventas para asesores comerciales</p>
+            <p class="textParrafo">El crédito de Santander en alianza con Colsanitas es un producto de consumo dirigido, destinado a ayudarles a los pacientes a cubrir una necesidad de salud mientras salvaguardan su flujo de caja.
                 disfruta de los beneficios que Santander te ofrece.</p>
             <div class="contGrafica">
                 <img src="../assets/grafica.png" alt="" class="grafica">
@@ -52,55 +52,79 @@
             <div class="encabezadoBig">
                 <img src="../assets/logoSanitas.png" alt="" class="logoSanitasBig">
                 <img src="../assets/logoSantander.png" alt="" class="logoSantanderBig">
-                <button class="button">
-                    <div class="itemButton">
-                        <p class="bigTitle">VOLVER</p>
-                    </div>
-                </button>
+                
+                <a [routerLink]="['/home']">
+                    <button class="button">
+                        <div class="itemButton">
+                            <p class="bigTitleHelp">VOLVER</p>
+                        </div>
+                    </button>
+                </a>
+
             </div>
             <div class="cntUnoBig">
                 <div class="textCntBig">
                     <div class="texInicial">
-                        <p class="bigTitle">Financia el tratamiento<br> de tu paciente</p><br>
+                        <p class="bigTitle">Ayuda ventas para asesores comerciales</p><br>
                         <p class="textParrafo">Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu
-                            paciente y
-                            disfruta de los beneficios que Santander te ofrece.</p>
+                            paciente y disfruta de los beneficios que Santander te ofrece.</p>
                     </div>                
                 </div>
-    
-                <div class="textCntDosBig">
-                        <div class="simulaCuota">
-                                <p class="bigTitle">Simula la cuota</p>
-                                <p class="title">¡Evita que tu paciente realice papeleos complejos!</p>
-                                <p class="title">Gestiona productos de manera agil</p>
-                        </div>
-                        <div class="cntClienteUno">
-                                <p class="title">Condiciones para el cliente:</p>
-                                <p class="listaItem">
-                                    • Debe tener entre 18 y 75 años<br>
-                                    • Ganar más de un salario mínimo<br>
-                                    • El monto mínimo es $800.000<br>
-                                    • El monto máximo es $20.000.000<br>
-                                    • Colombiano o residente con visa e historia laboral
-                                </p>
-                        </div>
-                        <div class="cntClienteDos">
-                                <p class="title">Clientes asalariados a término indefinido:</p>
-                                <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
-                                <p class="title">Clientes independientes:</p>
-                                <p class="listaItem">Antigüedad en la actividad mínima de 12 meses</p>
-                                <p class="title">Clientes pensionados:</p>
-                                <p class="listaItem">No requiere antiguedad laboral</p>
-                        </div>
-                </div>
+                <div class="imageAventas">
+                    <img src="../../assets/grafica.png" alt="">
+                </div>    
+                
             </div>
         </div>
+        
+        <div class="partDosBigAyuda">
+        <div class="procesos">
+            <p class="bigTitle">Procesos:</p><br>
+            <p class="title">
+                Cuando tengas a tu paciente en frente, hazle saber que es una mejor opción financiarlo con Santander porque:                        
+            </p><br>
+            <p class="textParrafo">
+                    • No afectara la liquidez del cliente.<br>
+                    • La tasa cero del préstamo generara mayor valor presente de su dinero, ya que el valor total cancelado al final del crédito será el mismo monto que si paga de contado.<br>
+                    • Los plazos se acomodan al flujo de caja del cliente.<br>
+                    • En caso de pago anticipado, las condiciones iniciales se mantienen.<br>
+                    • Puedes hacer beneficiario del tratamiento a un tercero.<br>
+            </p>
+        </div>
+
+        <p class="bigTitle">Condiciones:</p><br>
+        <div class="textCntDosBigAyuda">            
+            
+            <div class="cntClienteDos">
+                    <p class="title">Clientes asalariados a término indefinido:</p>
+                    <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
+                    <p class="title">Clientes independientes:</p>
+                    <p class="listaItem">Antigüedad en la actividad mínima de 12 meses</p>
+                    <p class="title">Clientes pensionados:</p>
+                    <p class="listaItem">No requiere antiguedad laboral</p>
+            </div>
+
+            <div class="cntClienteUno">
+                    <p class="listaItem">
+                        • Debe tener entre 18 y 75 años<br>
+                        • Ganar más de un salario mínimo<br>
+                        • El monto mínimo es $800.000<br>
+                        • El monto máximo es $20.000.000<br>
+                        • Colombiano o residente con visa e historia laboral<br>
+                        • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
+                    </p>
+            </div>
+    </div>
+    </div>
+
 
         <div class="manSolicitud">
-            <h1>Manual de solicitud</h1>
-            <p class="title">
-                Si tu paciente decide financiar el tratamiento con Santander, sigue los siguientes pasos:
-            </p>
+            <div class="titleManSol">
+                <h1 class="bigTitle3">Manual de solicitud</h1>
+                <p class="title">
+                    Si tu paciente decide financiar el tratamiento con Santander, sigue los siguientes pasos:
+                </p>
+            </div>
             <div class="pasos">
                 
                 <div class="paso">
@@ -202,40 +226,108 @@
                         </div>
                 </div>
 
-                <div class="paso">
-                        <p class="title green">
-                            Si la solicitud fue Aprobada:
+                <div class="pasoFinal">
+
+                        <p class="textParrafo">
+                                <strong>10.</strong> De acuerdo con la respuesta que el sistema le dé a tu cliente,<br> debes hacer lo siguiente :
+                        </p><br>
+
+                        <p class="green">
+                            <strong>Si la solicitud fue Aprobada:</strong>
                         </p>
                         <p class="parrafo">
                             Después de enviar los documentos al correo electrónico definido, 15 minutos a que Santander Consumer Finance confirme la aprobación, una vez recibas la confirmación, infórmale a tu paciente que puede iniciar el tratamiento.
-                        </p>
-                        <p class="title red">
-                            Si la solicitud fue negada:
+                        </p><br>
+                        <p class="red">
+                            <strong>Si la solicitud fue negada:</strong>
                         </p>
                         <p class="parrafo">
                                 Solo debes enviar los documentos y explicarle a tu paciente que la solicitud por el momento no es viable, pero que puede intentarlo pasados tres meses desde la fecha actual.
                         </p><br>
                         <p class="parrafo">
-                                Si la solicitud fue pre Aprobado sin documentos:<br>
+                                <strong>la solicitud fue pre Aprobado sin documentos:</strong><br>
                                 Después de enviar el correo electrónico con los documentos firmados por el cliente, deberás esperar una hora para que Santander Consumer Finance te remita una decisión final.
-                        </p>
+                        </p><br>
                         <p class="parrafo">
-                                Si la solicitud es pre aprobada con documentos:<br>
+                                <strong>la solicitud es pre aprobada con documentos:</strong><br>
                                 Deberás solicitar a tu paciente los siguientes documentos adicionales al correo definido.
-                        </p>
+                        </p><br>
                         <p class="parrafo">
-                                Si tu paciente es empleado:<br>
+                                <strong>Si tu paciente es empleado:</strong><br>
 	                            Certificación laboral vigente no mayor a 30 días.<br>
                                 Si aplica, certificaciones de sus empleos anteriores para demostrar continuidad laboral de al menos 12 meses,<br>
                                 con continuidad de 6 meses en su empleo actual.<br><br>
                         </p>
+                        <p class="parrafo">
+                                <strong>Pensionados:</strong><br>
+                                Resolución de pensión o extractos (últimos tres meses) o desprendibles de pago (últimos tres meses).<br><br>
+                        </p>
+                        <p class="parrafo">
+                                <strong>Independientes:</strong><br>
+	                            Tu paciente debe anexar su RUT y/o Càmara de Comercio con vigencia no mayor a 30 dias, Declaraciòn de renta y/o extractos bancarios de los últimos tres meses y/o Tarjetas de propiedad con contratos.<br><br>
+                        </p>
+                        <p class="parrafo">
+                                <strong>Si es rentista de capital:</strong><br>
+                                Certificados de tradición y libertad (no mayor a 30 días) con contratos.<br><br>
+                                Una vez recibas los documentos de tu pacientey los remitas al correo asignado, tendras un respuesta en las próximas horas sobre la solicitud:<br><br>
 
-                        <p class="title"></p>
+                                <strong>Si fue aprobada, infórmale a tu paciente que puede iniciar el tratamiento.</strong><br><br>
+                                <strong>Si fue negada, explícale que puede intentarlo pasados tres meses desde la fecha actual</strong>
+                        </p>
 
 
                 </div>
 
             </div>
+        </div>
+
+        <!-- Part Icons -->
+        <div class="partDosIcons">
+        <h1>Tips de ventas:</h1> 
+        <div class="partDosBig">
+                <div class="contDosBig">
+                    <div class="item">
+                        <embed class="reloj" src="../assets/reloj.svg">
+                        <div class="text">
+                            <p class="title">
+                                Sencillo
+                            </p>
+                            <p class="textContent">
+                                Aprobación inmediata.<br>Obtén una decisión crediticia en instantes,<br>sin papeleo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <embed class="personal" src="../assets/personas.svg">
+                        <div class="text">
+                            <p class="title">
+                                Personal
+                            </p>
+                            <p class="textContent">
+                                Plazos convenientes y amplia<br>financiación de acuerdo a<br>las necesidades de tu cliente.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <embed class="martillo" src="../assets/martillo.svg">
+                        <div class="text">
+                            <p class="title">
+                               Justo    
+                            </p>
+                            <p class="textContent">
+                                Baja tasa de interés a término fijo,<br>contamos con una amplia red de<br>puntos de pago.  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Finish Part Icons -->
+
+        <div class="contacto">
+            <h1>Contacto:</h1><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab sapiente nesciunt magni voluptas quam quos, molestiae rem numquam delectus consequuntur a deleniti sunt voluptatum repellat eius magnam harum dolorem cumque.</p>            
         </div>
         
         <div class="pie">

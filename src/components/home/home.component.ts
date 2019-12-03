@@ -37,7 +37,7 @@ export class HomeComponent{
   }
 
   linka(){
-     console.log("link");
+    window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
       
   }
 

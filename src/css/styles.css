@@ -25,6 +25,7 @@
   opacity: 0.7;
   transition: opacity .2s;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .slidecontainer .slider:hover {
@@ -355,6 +356,8 @@ hr {
 
 .radio div .mes {
   grid-row: 2;
+  margin-top: -8px;
+  margin-bottom: 5px;
   align-self: center;
   justify-self: center;
 }
@@ -796,8 +799,11 @@ input[type=radio]:checked + div {
   width: 100%;
 }
 
-.partUnoBig .encabezadoBig button {
+.partUnoBig .encabezadoBig a {
   grid-column: 4;
+}
+
+.partUnoBig .encabezadoBig a button {
   border-radius: 15px;
   width: 55%;
   align-self: center;
@@ -808,45 +814,44 @@ input[type=radio]:checked + div {
   border: none;
 }
 
-.partUnoBig .encabezadoBig button .itemButton {
+.partUnoBig .encabezadoBig a button .itemButton {
   display: grid;
 }
 
 @media only screen and (min-width: 768px) {
-  .partUnoBig .encabezadoBig button .itemButton {
+  .partUnoBig .encabezadoBig a button .itemButton {
     grid-template-columns: 40px 1fr;
   }
 }
 
-.partUnoBig .encabezadoBig button .itemButton .bigTitle {
+.partUnoBig .encabezadoBig a button .itemButton .bigTitle {
   font-size: 15px;
   align-self: center;
   justify-self: initial;
 }
 
-.partUnoBig .encabezadoBig button .itemButton .fa-question-circle {
+.partUnoBig .encabezadoBig a button .itemButton .fa-question-circle {
   align-self: center;
   justify-self: center;
 }
 
 @media only screen and (min-width: 768px) {
-  .partUnoBig .encabezadoBig button {
+  .partUnoBig .encabezadoBig a button {
     width: 90%;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .partUnoBig .encabezadoBig button {
+  .partUnoBig .encabezadoBig a button {
     width: 80%;
   }
-  .partUnoBig .encabezadoBig button .bigTitle {
+  .partUnoBig .encabezadoBig a button .bigTitle {
     font-size: 15px;
   }
 }
 
-.partUnoBig .encabezadoBig button i {
+.partUnoBig .encabezadoBig a button i {
   color: #2B91B5;
-  margin: 0px 20px 0px 0px;
   font-size: 20px;
 }
 
@@ -874,13 +879,13 @@ input[type=radio]:checked + div {
 
 @media only screen and (min-width: 1024px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 0.6fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
 
 @media only screen and (min-width: 1366px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 1.5fr;
+    grid-template-rows: 1fr 1.6fr;
   }
 }
 
@@ -1000,17 +1005,18 @@ input[type=radio]:checked + div {
   font-size: 20px;
 }
 
-.texInicial {
-  /* margin-bottom: 100px; */
+@media only screen and (min-width: 768px) {
+  .texInicial .bigTitle {
+    font-size: 27px;
+    line-height: 35px;
+  }
 }
 
-.texInicial .bigTitle {
-  font-size: 35px;
-  line-height: 45px;
-}
-
-.texInicial .textParrafo {
-  line-height: 25px;
+@media only screen and (min-width: 768px) {
+  .texInicial .textParrafo {
+    line-height: 20px;
+    margin-bottom: 32px;
+  }
 }
 
 .simulaCuota .bigTitle {
@@ -1067,13 +1073,196 @@ input[type=radio]:checked + div {
 .manSolicitud .pasos {
   display: grid;
   grid-auto-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 50px;
 }
 
 .manSolicitud .pasos .paso .parrafo {
-  margin-bottom: 15px;
+  margin: 0px 0px 15px 0px;
+  font-size: 13px;
 }
 
 .manSolicitud .pasos .paso .imagePaso img {
   width: 100%;
+}
+
+.imageAventas img {
+  width: 100%;
+}
+
+.partDosBigAyuda {
+  padding: 0px 10% 0px 10%;
+}
+
+.partDosBigAyuda .procesos {
+  margin-bottom: 50px;
+}
+
+.partDosBigAyuda .procesos .bigTitle {
+  font-size: 25px;
+}
+
+.partDosBigAyuda .procesos .title {
+  font-size: 12px;
+}
+
+.partDosBigAyuda .procesos .textParrafo {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.partDosBigAyuda .bigTitle {
+  font-size: 25px;
+}
+
+.partDosBigAyuda .textCntDosBigAyuda {
+  display: grid;
+  grid-gap: 0px 50px;
+}
+
+@media only screen and (min-width: 320px) {
+  .partDosBigAyuda .textCntDosBigAyuda {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 12px;
+  }
+  .partDosBigAyuda .textCntDosBigAyuda .cntClienteDos {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .partDosBigAyuda .textCntDosBigAyuda .cntClienteUno {
+    grid-column: 1;
+    grid-row: 2 !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .partDosBigAyuda .textCntDosBigAyuda {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 1fr;
+  }
+  .partDosBigAyuda .textCntDosBigAyuda .cntClienteUno {
+    grid-column: 2;
+    grid-row: 1 !important;
+  }
+}
+
+.partDosBigAyuda .textCntDosBigAyuda .cntClienteUno {
+  grid-row: 1;
+}
+
+.partDosBigAyuda .textCntDosBigAyuda .cntClienteUno .listaItem {
+  font-size: 10px;
+}
+
+.partDosBigAyuda .textCntDosBigAyuda .cntClienteDos {
+  grid-row: 1;
+}
+
+.partDosBigAyuda .textCntDosBigAyuda .cntClienteDos .title {
+  font-size: 11px;
+}
+
+.partDosBigAyuda .textCntDosBigAyuda .cntClienteDos .listaItem {
+  font-size: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .manSolicitud {
+    padding: 0px 10% 0px 10%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .titleManSol {
+    margin: 50px 0px 50px 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .pasos {
+    display: grid;
+    grid-template-rows: repeat(8, auto);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .pasos .paso {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 50px;
+  }
+  .pasos .paso img {
+    max-width: 70%;
+  }
+}
+
+.pasos .paso .textParrafo:first-letter {
+  font-weight: 600;
+}
+
+.pasos .paso .textParrafo {
+  text-align: right;
+  padding-top: 30px;
+}
+
+@media only screen and (min-width: 320px) {
+  .pasos .paso .textParrafo {
+    text-align: left;
+  }
+}
+
+.partDosIcons {
+  background-color: #F0F0F0;
+  margin-top: 60px;
+}
+
+@media only screen and (min-width: 320px) {
+  .partDosIcons {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .partDosIcons {
+    display: block;
+  }
+}
+
+.partDosIcons h1 {
+  padding: 50px 0px 0px 15%;
+}
+
+.contacto {
+  padding: 50px 15% 50px 15%;
+}
+
+.contacto p {
+  font-size: 15px;
+}
+
+.pasoFinal {
+  font-size: 12px;
+}
+
+h1 {
+  font-family: monserratBold;
+}
+
+@media only screen and (min-width: 320px) {
+  h1 {
+    font-size: 25px;
+    margin: 20px 0px 10px 0px;
+  }
+}
+
+.itemButton .bigTitleHelp {
+  font-size: 13px;
+  grid-column: 1/3;
+  justify-self: center;
+  align-self: center;
+  font-family: monserratBold;
+}
+
+.calcPtres .title {
+  margin-bottom: 20px;
 }

@@ -16,12 +16,16 @@
             <div class="encabezadoBig">
                 <img src="../assets/logoSanitas.png" alt="" class="logoSanitasBig">
                 <img src="../assets/logoSantander.png" alt="" class="logoSantanderBig">
-                <button class="button">
-                    <div class="itemButton">
-                    <i class="fa fa-question-circle"></i>
-                        <p class="bigTitle">AYUDA</p>
-                    </div>
-                </button>
+                
+                <a [routerLink]="['/ayuda']">
+                    <button class="button">
+                        <div class="itemButton">
+                            <i class="fa fa-question-circle"></i>
+                            <p class="bigTitle">AYUDA</p>
+                        </div>
+                    </button>
+                </a>
+
             </div>
             <div class="cntUnoBig">
                 <div class="textCntBig">
@@ -46,7 +50,8 @@
                                     • Ganar más de un salario mínimo<br>
                                     • El monto mínimo es $800.000<br>
                                     • El monto máximo es $20.000.000<br>
-                                    • Colombiano o residente con visa e historia laboral
+                                    • Colombiano o residente con visa e historia laboral<br>
+                                    • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
                                 </p>
                         </div>
                         <div class="cntClienteDos">
@@ -451,7 +456,8 @@
                         • Ganar más de un salario mínimo<br>
                         • El monto mínimo es $800.000<br>
                         • El monto máximo es $20.000.000<br>
-                        • Colombiano o residente con visa e historia laboral
+                        • Colombiano o residente con visa e historia laboral<br>
+                        • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
                     </p>
                 </div>
     
