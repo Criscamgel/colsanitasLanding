@@ -67,11 +67,18 @@
 
 .title {
     font-family: monserratBold;
-    font-size: 12px;
+    font-size: 13px;
+    margin-bottom: 15px;
+    @include tablet(){
+        margin-bottom: 0px;
+        font-size: 15px;  
+    }
+    color: $vBlue;
 }
 
 .listaItem {
     font-size: 12px;
+    margin-bottom: 15px;
 }
 
 button {
@@ -107,6 +114,9 @@ button[disabled] {
     color: $grayParrf;
     justify-self: initial;
     align-self: center;
+    @include tablet(){
+        font-size: 12px;
+    }
 }
 
 .cifraGray {
@@ -151,6 +161,10 @@ hr {
 .mes {
     font-size: 7px;
     color: $deg-dos;
+    @include tablet(){
+        font-weight: 600;
+        font-size: 12px;
+    }
 }
 
 .bigTitle {
@@ -191,6 +205,12 @@ hr {
     font-size: 20px;
     font-family: monserratBold;
     color: #747473;
+    @include tablet(){
+        font-size: 25px;
+    }
+    @include laptop(){
+        font-size: 30px;
+    }
 }
 
 .encabezado {
@@ -227,7 +247,7 @@ hr {
 .partUno {
     display: grid;
     grid-auto-rows: auto;
-    margin: 30px 40px 0px 40px;
+    margin: 30px 20px 0px 20px;
     grid-gap: 15px;
 
     @include tablet() {
@@ -427,6 +447,9 @@ hr {
 
     .tarjeta.cntTres {
         line-height: 23px;
+        .title{
+            margin-bottom: 0px;
+        }
     }
 }
 
@@ -714,7 +737,7 @@ input[type=radio]:checked+div {
         display: block;
         background: url(../assets/fondo.png);
         background-repeat: no-repeat;
-        background-position: center center;
+        background-position: center bottom;
         background-size: cover;
         padding: 0px 7% 0px 7%;
     
@@ -740,7 +763,7 @@ input[type=radio]:checked+div {
             grid-row: 1;
             justify-self: initial;
             align-self: initial;
-            width: 90%;
+            width: 100%;
         }
 
         .logoSantanderBig {
@@ -748,34 +771,51 @@ input[type=radio]:checked+div {
             grid-row: 1;
             justify-self: initial;
             align-self: initial;
-            width: 90%;
+            width: 100%;
         }
 
         button {
             grid-column: 4;
-            border-radius: 18px;
+            border-radius: 15px;
             width: 55%;
             align-self: center;
-            justify-self: end;
-            display: grid;
+            justify-self: end;            
+            background-color: $white;
+            height: 35px;
+            padding: 0px;
             border: none;
-            .bigTitle{
-                font-size: 10px;
-            }
+            .itemButton{
+                display: grid;
+                grid-template-columns: 40px 1fr;                    
+                .bigTitle{
+                    font-size: 15px;
+                    grid-column: 2;
+                    align-self: center;
+                    justify-self: initial;  
+                }
+                i{
+                    font-size: 20px;
+                    grid-column: 1;
+                    align-self: center;
+                    justify-self: center;
+                    margin: 0 auto;
+                }
+            }            
             @include tablet(){
-                width: 80%;
+                width: 90%;
             }
 
-            @include laptopL(){
-                width: 60%;
+            @include laptop(){
+                width: 80%;
                 .bigTitle{
-                font-size: 10px !important;  
+                font-size: 15px;  
                 }
             }
 
             i {
                 color: $deg-dos;
                 margin: 0px 20px 0px 0px;
+                font-size: 20px;
             }
         }
     }
@@ -783,28 +823,28 @@ input[type=radio]:checked+div {
 
 .cntUnoBig {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 0.9fr;
     grid-template-rows: repeat(4, auto);
     margin-top: 50px;
 
     .textCntBig {
         grid-column: 1;
-        padding: 3%;
+        padding: 3% 10% 0px 0px;
         display: grid;
         @include tablet{
-        grid-template-rows: 1fr 1.5fr;
+        grid-template-rows: 1fr 0.4fr;
         }
         @include laptop{
-            grid-template-rows: 1fr 2.2fr;
+            grid-template-rows: 1fr 0.6fr;
         }
         @include deskopt{
-            grid-template-rows: 1fr 2.5fr;
+            grid-template-rows: 1fr 1.5fr;
         }
         @include laptopL{
-            grid-template-rows: 1fr 2.8fr;
+            grid-template-rows: 1fr 1.2fr;
         }
         @include bigScreen{
-            grid-template-rows: 1fr 4fr;
+            grid-template-rows: 1fr 1fr;
         }
         grid-gap: 30px;
         color: $white;
@@ -814,7 +854,22 @@ input[type=radio]:checked+div {
     .textCntDosBig{
         display: grid;
         grid-auto-rows: auto;
-        grid-gap: 20px;
+        grid-gap: 35px;
+        line-height: 23px;
+        padding: 80px 30px 0px 0px;
+        @include tablet(){
+            grid-gap: 7px;
+            line-height: 20px;
+        }
+        @include laptop(){
+            grid-gap: 15px;
+        }
+        @include laptopL(){
+            line-height: 20px;
+        }
+        @include bigScreen(){
+            line-height: 30px;
+        }
     }
 
     .calcBig {
@@ -835,17 +890,68 @@ input[type=radio]:checked+div {
     }
 }
 
+.buttonAyuda {
+    grid-column: 4;
+    border-radius: 15px;
+    width: 100%;
+    align-self: center;
+    justify-self: end;            
+    background-color: $white;
+    height: 50px;
+    padding: 0px;
+    border: none;
+    background-color: $grayTenue;
+    .itemButton{
+        display: grid;
+        grid-template-columns: 40px 1fr;                    
+        .bigTitle{
+            font-size: 15px;
+            grid-column: 2;
+            align-self: center;
+            justify-self: initial;  
+        }
+        i{
+            font-size: 20px;
+            grid-column: 1;
+            align-self: center;
+            justify-self: center;
+            margin: 0 auto;
+        }
+    }            
+    @include tablet(){
+        width: 90%;
+    }
+
+    @include laptop(){
+        width: 80%;
+        .bigTitle{
+        font-size: 15px;  
+        }
+    }
+
+    i {
+        color: $deg-dos;
+        margin: 0px 20px 0px 0px;
+        font-size: 20px;
+    }
+}
+
 .texInicial {
 
     /* margin-bottom: 100px; */
     .bigTitle {
-        font-size: 25px;
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .textParrafo{
+        line-height: 25px; 
     }
 }
 
 .simulaCuota {
     .bigTitle {
         font-size: 25px;
+        margin-bottom: 10px;
     }
 }
 
@@ -864,14 +970,17 @@ input[type=radio]:checked+div {
 
             embed.reloj {
                 width: 25%;
+                margin-bottom: 20px;
             }
 
             embed.personal {
                 width: 30%;
+                margin-bottom: 20px;
             }
 
             embed.martillo {
                 width: 30%;
+                margin-bottom: 20px;
             }
 
             .title {
@@ -881,8 +990,15 @@ input[type=radio]:checked+div {
 
             .textContent {
                 font-size: 12px;
+                line-height: 18px;
             }
         }
     }
 
+}
+
+.cntClienteDos{
+    .title{
+        margin-bottom: 0px;  
+    } 
 }

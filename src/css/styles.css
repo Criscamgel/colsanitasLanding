@@ -62,11 +62,21 @@
 /* Generales */
 .title {
   font-family: monserratBold;
-  font-size: 12px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  color: #154C5B;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 0px;
+    font-size: 15px;
+  }
 }
 
 .listaItem {
   font-size: 12px;
+  margin-bottom: 15px;
 }
 
 button {
@@ -101,6 +111,12 @@ button[disabled] {
   color: #BABABA;
   justify-self: initial;
   align-self: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .grayParrf {
+    font-size: 12px;
+  }
 }
 
 .cifraGray {
@@ -146,6 +162,13 @@ hr {
   color: #2B91B5;
 }
 
+@media only screen and (min-width: 768px) {
+  .mes {
+    font-weight: 600;
+    font-size: 12px;
+  }
+}
+
 .bigTitle {
   align-self: center;
   justify-self: center;
@@ -182,6 +205,18 @@ hr {
   font-size: 20px;
   font-family: monserratBold;
   color: #747473;
+}
+
+@media only screen and (min-width: 768px) {
+  .numBer {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .numBer {
+    font-size: 30px;
+  }
 }
 
 .encabezado {
@@ -221,7 +256,7 @@ hr {
 .partUno {
   display: grid;
   grid-auto-rows: auto;
-  margin: 30px 40px 0px 40px;
+  margin: 30px 20px 0px 20px;
   grid-gap: 15px;
 }
 
@@ -415,6 +450,10 @@ hr {
 
 .partDos .tarjeta.cntTres {
   line-height: 23px;
+}
+
+.partDos .tarjeta.cntTres .title {
+  margin-bottom: 0px;
 }
 
 /* Pulse Shrink */
@@ -710,7 +749,7 @@ input[type=radio]:checked + div {
     display: block;
     background: url(../assets/fondo.png);
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center bottom;
     background-size: cover;
     padding: 0px 7% 0px 7%;
   }
@@ -745,7 +784,7 @@ input[type=radio]:checked + div {
   grid-row: 1;
   justify-self: initial;
   align-self: initial;
-  width: 90%;
+  width: 100%;
 }
 
 .partUnoBig .encabezadoBig .logoSantanderBig {
@@ -753,53 +792,72 @@ input[type=radio]:checked + div {
   grid-row: 1;
   justify-self: initial;
   align-self: initial;
-  width: 90%;
+  width: 100%;
 }
 
 .partUnoBig .encabezadoBig button {
   grid-column: 4;
-  border-radius: 18px;
+  border-radius: 15px;
   width: 55%;
   align-self: center;
   justify-self: end;
-  display: grid;
+  background-color: #ffffff;
+  height: 35px;
+  padding: 0px;
   border: none;
 }
 
-.partUnoBig .encabezadoBig button .bigTitle {
-  font-size: 10px;
+.partUnoBig .encabezadoBig button .itemButton {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+}
+
+.partUnoBig .encabezadoBig button .itemButton .bigTitle {
+  font-size: 15px;
+  grid-column: 2;
+  align-self: center;
+  justify-self: initial;
+}
+
+.partUnoBig .encabezadoBig button .itemButton i {
+  font-size: 20px;
+  grid-column: 1;
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
   .partUnoBig .encabezadoBig button {
-    width: 80%;
+    width: 90%;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1024px) {
   .partUnoBig .encabezadoBig button {
-    width: 60%;
+    width: 80%;
   }
   .partUnoBig .encabezadoBig button .bigTitle {
-    font-size: 10px !important;
+    font-size: 15px;
   }
 }
 
 .partUnoBig .encabezadoBig button i {
   color: #2B91B5;
   margin: 0px 20px 0px 0px;
+  font-size: 20px;
 }
 
 .cntUnoBig {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 0.9fr;
   grid-template-rows: repeat(4, auto);
   margin-top: 50px;
 }
 
 .cntUnoBig .textCntBig {
   grid-column: 1;
-  padding: 3%;
+  padding: 3% 10% 0px 0px;
   display: grid;
   grid-gap: 30px;
   color: #ffffff;
@@ -808,38 +866,65 @@ input[type=radio]:checked + div {
 
 @media only screen and (min-width: 768px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 1.5fr;
+    grid-template-rows: 1fr 0.4fr;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 2.2fr;
+    grid-template-rows: 1fr 0.6fr;
   }
 }
 
 @media only screen and (min-width: 1366px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 2.5fr;
+    grid-template-rows: 1fr 1.5fr;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 2.8fr;
+    grid-template-rows: 1fr 1.2fr;
   }
 }
 
 @media only screen and (min-width: 1920px) {
   .cntUnoBig .textCntBig {
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
 
 .cntUnoBig .textCntDosBig {
   display: grid;
   grid-auto-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 35px;
+  line-height: 23px;
+  padding: 80px 30px 0px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .cntUnoBig .textCntDosBig {
+    grid-gap: 7px;
+    line-height: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cntUnoBig .textCntDosBig {
+    grid-gap: 15px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .cntUnoBig .textCntDosBig {
+    line-height: 20px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .cntUnoBig .textCntDosBig {
+    line-height: 30px;
+  }
 }
 
 .cntUnoBig .calcBig {
@@ -859,16 +944,76 @@ input[type=radio]:checked + div {
   grid-row: 1;
 }
 
+.buttonAyuda {
+  grid-column: 4;
+  border-radius: 15px;
+  width: 100%;
+  align-self: center;
+  justify-self: end;
+  background-color: #ffffff;
+  height: 50px;
+  padding: 0px;
+  border: none;
+  background-color: #F0F0F0;
+}
+
+.buttonAyuda .itemButton {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+}
+
+.buttonAyuda .itemButton .bigTitle {
+  font-size: 15px;
+  grid-column: 2;
+  align-self: center;
+  justify-self: initial;
+}
+
+.buttonAyuda .itemButton i {
+  font-size: 20px;
+  grid-column: 1;
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .buttonAyuda {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .buttonAyuda {
+    width: 80%;
+  }
+  .buttonAyuda .bigTitle {
+    font-size: 15px;
+  }
+}
+
+.buttonAyuda i {
+  color: #2B91B5;
+  margin: 0px 20px 0px 0px;
+  font-size: 20px;
+}
+
 .texInicial {
   /* margin-bottom: 100px; */
 }
 
 .texInicial .bigTitle {
-  font-size: 25px;
+  font-size: 35px;
+  line-height: 45px;
+}
+
+.texInicial .textParrafo {
+  line-height: 25px;
 }
 
 .simulaCuota .bigTitle {
   font-size: 25px;
+  margin-bottom: 10px;
 }
 
 .contDosBig {
@@ -888,12 +1033,15 @@ input[type=radio]:checked + div {
   }
   .contDosBig .item embed.reloj {
     width: 25%;
+    margin-bottom: 20px;
   }
   .contDosBig .item embed.personal {
     width: 30%;
+    margin-bottom: 20px;
   }
   .contDosBig .item embed.martillo {
     width: 30%;
+    margin-bottom: 20px;
   }
   .contDosBig .item .title {
     font-size: 15px;
@@ -901,5 +1049,10 @@ input[type=radio]:checked + div {
   }
   .contDosBig .item .textContent {
     font-size: 12px;
+    line-height: 18px;
   }
+}
+
+.cntClienteDos .title {
+  margin-bottom: 0px;
 }
