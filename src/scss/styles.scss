@@ -197,7 +197,14 @@ hr {
 
 .pPal {
     display: grid;
-    grid-auto-rows: auto;
+    max-width: 1440px;
+    @include tablet(){
+        grid-auto-rows: auto;
+        background: url(../assets/fondoAzul.png);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: auto;
+    }
 
 }
 
@@ -347,8 +354,11 @@ hr {
 
         .mes {
             grid-row: 2;
-            margin-top: -8px;
-            margin-bottom: 5px;
+            font-size: 10px;
+            @include tablet(){
+                margin-top: -8px;
+                margin-bottom: 5px;                
+            }
             align-self: center;
             justify-self: center;
         }
@@ -739,10 +749,10 @@ input[type=radio]:checked+div {
 
     @include tablet() {
         display: block;
-        background: url(../assets/fondo.png);
+        /* background: url(../assets/fondoAzul.png);
         background-repeat: no-repeat;
         background-position: center bottom;
-        background-size: cover;
+        background-size: auto; */
         padding: 0px 7% 0px 7%;
     
     }
@@ -836,16 +846,16 @@ input[type=radio]:checked+div {
         padding: 3% 10% 0px 0px;
         display: grid;
         @include tablet{
-        grid-template-rows: 1fr 0.4fr;
+            grid-template-rows: 1fr 0.9fr;
         }
         @include laptop{
-            grid-template-rows: 1fr 1fr;
+            grid-template-rows: 1fr 1.5fr;
         }
         @include deskopt{
-            grid-template-rows: 1fr 1.6fr;
+            grid-template-rows: 1fr 1.8fr;
         }
         @include laptopL{
-            grid-template-rows: 1fr 1.2fr;
+            grid-template-rows: 1fr 1.5fr;
         }
         @include bigScreen{
             grid-template-rows: 1fr 1fr;
@@ -1042,6 +1052,13 @@ input[type=radio]:checked+div {
 }
 
 .partDosBigAyuda{
+    @include sSmall(){
+        display: none;
+    }
+    @include tablet(){
+        display: block;
+        margin-top: 130px;
+    }
     padding: 0px 10% 0px 10%;
     .procesos{
         margin-bottom: 50px;
@@ -1191,5 +1208,16 @@ h1{
     .title{
         margin-bottom: 20px;
     }
+}
+
+.cntButtonVolv{
+    padding: 10px;     
+    @include tablet(){
+        display: none;
+    }
+}
+
+.titleTooltip{
+    font-size: 11px;
 }
 

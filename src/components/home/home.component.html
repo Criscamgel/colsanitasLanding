@@ -60,7 +60,7 @@
                                 <p class="title">Clientes independientes:</p>
                                 <p class="listaItem">Antigüedad en la actividad mínima de 12 meses</p>
                                 <p class="title">Clientes pensionados:</p>
-                                <p class="listaItem">No requiere antiguedad laboral</p>
+                                <p class="listaItem">No requiere antigüedad laboral</p>
                         </div>
                 </div>
     
@@ -172,9 +172,9 @@
                                     <div class="tooltip">
                                         <i class="fa fa-question-circle"></i>
                                         <span class="tooltiptext">
-                                            Valor cuota sin seguro: <br>$ {{vlrCuotaSs | number:'1.0'}}<br>
-                                            Costo total del seguro: <br>$ {{seguroTotal | number:'1.0'}}<br>
-                                            Cuota mensual del seguro: <br>$ {{seguroCta | number:'1.0'}}
+                                                <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{vlrCuotaSs | number:'1.0'}}<br>
+                                                <div class="titleTooltip">Costo total del seguro:</div>$ {{seguroTotal | number:'1.0'}}<br>
+                                                <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}
                                         </span>
                                     </div>
     
@@ -388,9 +388,9 @@
                             <div class="tooltip">
                                 <i class="fa fa-question-circle"></i>
                                 <span class="tooltiptext">
-                                    valor Cuota sin seguro: <br>{{vlrCuotaSs}}<br>
-                                    Seguro total: <br> {{seguroTotal}}<br>
-                                    Seguro de la cuota: <br> {{seguroCta}}
+                                        <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{vlrCuotaSs | number:'1.0'}}<br>
+                                        <div class="titleTooltip">Costo total del seguro:</div>$ {{seguroTotal | number:'1.0'}}<br>
+                                        <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}
                                 </span>
                             </div>
     
@@ -436,12 +436,9 @@
                     </div>
     
                     <div class="calcPcuatro">
-                        <button [disabled]="formSanitas.invalid" class="button tipoUno pulse-shrink">
+                        <button [disabled]="formSanitas.invalid" (click)="linka()" class="button tipoUno pulse-shrink">
                             <p class="bigTitle">INICIAR SOLICITUD</p>
                         </button>
-                        <!-- <button [disabled]="formSanitas.invalid" class="button tipoDos pulse-shrink">
-                                    <p class="bigTitle">SIMULACIÓN DE CUOTAS</p>
-                            </button> -->
                     </div>
     
                 </div>
@@ -467,15 +464,17 @@
                     <p class="title">Clientes independientes:</p>
                     <p class="listaItem">Antigüedad en la actividad mínima de 12 meses</p>
                     <p class="title">Clientes pensionados:</p>
-                    <p class="listaItem">No requiere antiguedad laboral</p>
+                    <p class="listaItem">No requiere antigüedad laboral</p>
                 </div>
-    
+                
+                <a [routerLink]="['/ayuda']">
                 <button class="buttonAyuda">
                         <div class="itemButton">
                         <i class="fa fa-question-circle"></i>
                             <p class="bigTitle">AYUDA</p>
                         </div>
                 </button>
+                </a>
     
             </form>
     
