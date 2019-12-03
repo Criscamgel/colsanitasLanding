@@ -198,12 +198,13 @@ hr {
 .pPal {
     display: grid;
     max-width: 1440px;
+    margin: 0 auto;
     @include tablet(){
         grid-auto-rows: auto;
         background: url(../assets/fondoAzul.png);
         background-repeat: no-repeat;
         background-position: center top;
-        background-size: auto;
+        background-size: auto;       
     }
 
 }
@@ -297,6 +298,7 @@ hr {
     background-color: $grayTenue;
     padding: 1%;
     border-radius: 3px;
+    margin-top: 10px;
 
     .grayParrf {
         grid-row: 1;
@@ -749,10 +751,6 @@ input[type=radio]:checked+div {
 
     @include tablet() {
         display: block;
-        /* background: url(../assets/fondoAzul.png);
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        background-size: auto; */
         padding: 0px 7% 0px 7%;
     
     }
@@ -1058,8 +1056,12 @@ input[type=radio]:checked+div {
     @include tablet(){
         display: block;
         margin-top: 130px;
+        padding: 0px 10% 0px 10%;
     }
-    padding: 0px 10% 0px 10%;
+    @include deskopt(){
+        padding: 0px 15% 0px 15%;
+    }
+    padding: 0px 7% 0px 7%;
     .procesos{
         margin-bottom: 50px;
         .bigTitle{
@@ -1125,6 +1127,9 @@ input[type=radio]:checked+div {
 .manSolicitud{
     @include tablet(){
     padding: 0px 10% 0px 10%;
+    }
+    @include deskopt(){
+        padding: 0px 15% 0px 15%;
     }
 }
 

@@ -11,11 +11,15 @@ export class HomeComponent{
   valorSolicitado = 800000;
   minVlr = 800000;
   maxVlr = 20000000;
-  minDes = 1;
+  minDes = 0;
   maxDes = 3;
   descuentoSlide = 1;
   vlrCuota = 0;
-  descuento = 0.21;
+  descuentoSeis = 0.061;
+  descuentoDoce = 0.11;
+  descuentoDieciocho = 0.156;
+  descuentoVeinticuatro = 0.20;
+  descuentoTreintaseis = 0.21;
   tasa = 0.24;
   
   vlrCuotaSs;
@@ -51,7 +55,7 @@ export class HomeComponent{
       case 6:
         
           var vlrCuota;
-          var vlrDescuento = Math.round(this.valorSolicitado * this.descuento);
+          var vlrDescuento = Math.round(this.valorSolicitado * this.descuentoSeis);
           var seguroTotal = Math.round(seguro * cuota);
           /* Seguro Total */        
           this.seguroTotal = seguroTotal;
@@ -79,7 +83,7 @@ export class HomeComponent{
       case 12:
         
         var vlrCuota;
-        var vlrDescuento = Math.round(this.valorSolicitado * this.descuento);
+        var vlrDescuento = Math.round(this.valorSolicitado * this.descuentoDoce);
         var seguroTotal = Math.round(seguro * cuota);
         /* Seguro Total */        
         this.seguroTotal = seguroTotal;
@@ -108,7 +112,7 @@ export class HomeComponent{
       case 18:
         
         var vlrCuota;
-        var vlrDescuento = Math.round(this.valorSolicitado * this.descuento);
+        var vlrDescuento = Math.round(this.valorSolicitado * this.descuentoDieciocho);
         var seguroTotal = Math.round(seguro * cuota);
         /* Seguro Total */        
         this.seguroTotal = seguroTotal;
@@ -137,7 +141,7 @@ export class HomeComponent{
       case 24:
         
         var vlrCuota;
-        var vlrDescuento = Math.round(this.valorSolicitado * this.descuento);
+        var vlrDescuento = Math.round(this.valorSolicitado * this.descuentoVeinticuatro);
         var seguroTotal = Math.round(seguro * cuota);
         /* Seguro Total */        
         this.seguroTotal = seguroTotal;
@@ -166,7 +170,7 @@ export class HomeComponent{
       case 36:
 
         var vlrCuota;
-        var vlrDescuento = Math.round(this.valorSolicitado * this.descuento);
+        var vlrDescuento = Math.round(this.valorSolicitado * this.descuentoTreintaseis);
         var seguroTotal = Math.round(seguro * cuota);
         /* Seguro Total */        
         this.seguroTotal = seguroTotal;

@@ -199,6 +199,7 @@ hr {
 .pPal {
   display: grid;
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -310,6 +311,7 @@ hr {
   background-color: #F0F0F0;
   padding: 1%;
   border-radius: 3px;
+  margin-top: 10px;
 }
 
 .cntAprox .grayParrf {
@@ -767,10 +769,6 @@ input[type=radio]:checked + div {
 @media only screen and (min-width: 768px) {
   .partUnoBig {
     display: block;
-    /* background: url(../assets/fondoAzul.png);
-        background-repeat: no-repeat;
-        background-position: center bottom;
-        background-size: auto; */
     padding: 0px 7% 0px 7%;
   }
 }
@@ -1106,7 +1104,7 @@ input[type=radio]:checked + div {
 }
 
 .partDosBigAyuda {
-  padding: 0px 10% 0px 10%;
+  padding: 0px 7% 0px 7%;
 }
 
 @media only screen and (min-width: 320px) {
@@ -1119,6 +1117,13 @@ input[type=radio]:checked + div {
   .partDosBigAyuda {
     display: block;
     margin-top: 130px;
+    padding: 0px 10% 0px 10%;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .partDosBigAyuda {
+    padding: 0px 15% 0px 15%;
   }
 }
 
@@ -1198,6 +1203,12 @@ input[type=radio]:checked + div {
 @media only screen and (min-width: 768px) {
   .manSolicitud {
     padding: 0px 10% 0px 10%;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .manSolicitud {
+    padding: 0px 15% 0px 15%;
   }
 }
 
