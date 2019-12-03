@@ -275,6 +275,7 @@ hr {
 
 .partUno .textParrafo {
   font-size: 14px;
+  line-height: 22px;
 }
 
 .contMinMax {
@@ -809,22 +810,13 @@ input[type=radio]:checked + div {
 
 .partUnoBig .encabezadoBig button .itemButton {
   display: grid;
-  grid-template-columns: 40px 1fr;
+  grid-template-columns: 1fr;
 }
 
 .partUnoBig .encabezadoBig button .itemButton .bigTitle {
   font-size: 15px;
-  grid-column: 2;
   align-self: center;
   justify-self: initial;
-}
-
-.partUnoBig .encabezadoBig button .itemButton i {
-  font-size: 20px;
-  grid-column: 1;
-  align-self: center;
-  justify-self: center;
-  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1055,4 +1047,23 @@ input[type=radio]:checked + div {
 
 .cntClienteDos .title {
   margin-bottom: 0px;
+}
+
+/* Ayuda Ventas */
+.manSolicitud {
+  padding: 0px 20px 0px 20px;
+}
+
+.manSolicitud .pasos {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+}
+
+.manSolicitud .pasos .paso .parrafo {
+  margin-bottom: 15px;
+}
+
+.manSolicitud .pasos .paso .imagePaso img {
+  width: 100%;
 }

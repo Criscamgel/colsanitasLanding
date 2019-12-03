@@ -1,0 +1,10 @@
+.partUnoBig{
+ background: url('../../assets/fondoAzul.png');
+ background-repeat: no-repeat;
+ background-position: center bottom;
+ background-size: cover;   
+}
+
+.listaItem{
+    line-height: 22px;
+}

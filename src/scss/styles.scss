@@ -263,6 +263,7 @@ hr {
 
     .textParrafo {
         font-size: 14px;
+        line-height: 22px;
     }
 
 }
@@ -786,19 +787,11 @@ input[type=radio]:checked+div {
             border: none;
             .itemButton{
                 display: grid;
-                grid-template-columns: 40px 1fr;                    
+                grid-template-columns: 1fr;                    
                 .bigTitle{
                     font-size: 15px;
-                    grid-column: 2;
                     align-self: center;
                     justify-self: initial;  
-                }
-                i{
-                    font-size: 20px;
-                    grid-column: 1;
-                    align-self: center;
-                    justify-self: center;
-                    margin: 0 auto;
                 }
             }            
             @include tablet(){
@@ -1002,3 +995,26 @@ input[type=radio]:checked+div {
         margin-bottom: 0px;  
     } 
 }
+
+/* Ayuda Ventas */
+
+.manSolicitud{
+    padding: 0px 20px 0px 20px;
+    .pasos{
+        display: grid;
+        grid-auto-rows: auto;
+        grid-gap: 20px;
+    .paso{
+        .parrafo{
+            margin-bottom: 15px;
+        }
+        .imagePaso{ 
+            img {
+            width: 100%;
+            }
+        }
+    }
+}
+    
+}
+
