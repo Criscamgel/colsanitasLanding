@@ -7,13 +7,13 @@ import { Component} from '@angular/core';
 })
 export class HomeComponent{
 
-  cuotas;
+  cuotas = 0;
   valorSolicitado = 800000;
   minVlr = 800000;
   maxVlr = 20000000;
   minDes = 0;
-  maxDes = 3;
-  descuentoSlide = 1;
+  maxDes = 5;
+  descuentoSlide = 0;
   vlrCuota = 0;
   descuentoSeis = 0.061;
   descuentoDoce = 0.11;
@@ -21,10 +21,20 @@ export class HomeComponent{
   descuentoVeinticuatro = 0.20;
   descuentoTreintaseis = 0.21;
   tasa = 0.24;
+  epsSanitas = false;
+  clickDto = false;
   
   vlrCuotaSs;
   seguroCta;
   seguroTotal;
+
+  descuento(val){
+    var dto = Math.round(this.valorSolicitado * (Number(val.srcElement.value) / 100));
+    this.valorSolicitado = this.valorSolicitado - dto;
+    this.changeButton(Number(this.cuotas));
+    console.log("this.cuotas", this.cuotas);
+      
+  }
 
 
   currencyInputChanged(value) {
@@ -46,7 +56,15 @@ export class HomeComponent{
   }
 
   changeButton(val){
-    let cuota = Number(val.value);
+
+    let cuota;
+
+    if(val.value === undefined){
+      cuota = val;
+    }else{
+      cuota = Number(val.value);
+    }    
+    
     let nmv = Math.pow((1 + this.tasa),(1/12))-1;
     let seguro =  (1200 / 1000000) * this.valorSolicitado;    
     
@@ -199,6 +217,14 @@ export class HomeComponent{
       default:
         break;
     }
+  }
+
+  dtoChange(){
+      this.clickDto = !this.clickDto
+  }
+
+  onPrint(){
+    window.print();
   }
 
 }

@@ -1,10 +1,10 @@
 <div class="pPal animated fadeIn fast">
-        <div class="encabezado">
+        <div class="encabezado doNotPrint">
             <img src="../assets/logoSanitas.png" alt="" class="logoSanitas">
             <img src="../assets/logoSantander.png" alt="" class="logoSantander">
         </div>
     
-        <div class="partUno">
+        <div class="partUno doNotPrint">
             <p class="bigTitle">Financia el tratamiento de tu paciente</p>
             <p class="textParrafo">Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu paciente y
                 disfruta de los beneficios que Santander te ofrece.</p>
@@ -12,13 +12,13 @@
     
         <!-- Big Screens encabezado -->
     
-        <div class="partUnoBig">
+        <div class="partUnoBig printOk">
             <div class="encabezadoBig">
-                <img src="../assets/logoSanitas.png" alt="" class="logoSanitasBig">
-                <img src="../assets/logoSantander.png" alt="" class="logoSantanderBig">
+                <img src="../assets/logoSanitas.png" alt="" id="logoSanitasBig" class="logoSanitasBig">
+                <img src="../assets/logoSantander.png" alt="" id="logoSantanderBig" class="logoSantanderBig">
                 
                 <a [routerLink]="['/ayuda']">
-                    <button class="button">
+                    <button class="button doNotPrint">
                         <div class="itemButton">
                             <i class="fa fa-question-circle"></i>
                             <p class="bigTitle">AYUDA</p>
@@ -27,7 +27,7 @@
                 </a>
 
             </div>
-            <div class="cntUnoBig">
+            <div class="cntUnoBig doNotPrint">
                 <div class="textCntBig">
                     <div class="texInicial">
                         <p class="bigTitle">Financia el tratamiento<br> de tu paciente</p><br>
@@ -37,13 +37,13 @@
                     </div>                
                 </div>
     
-                <div class="textCntDosBig">
+                <div class="textCntDosBig doNotPrint">
                         <div class="simulaCuota">
                                 <p class="bigTitle">Simula la cuota</p>
                                 <p class="title">¡Evita que tu paciente realice papeleos complejos!</p>
                                 <p class="title">Gestiona productos de manera agil</p>
                         </div>
-                        <div class="cntClienteUno">
+                        <div class="cntClienteUno doNotPrint">
                                 <p class="title">Condiciones para el cliente:</p>
                                 <p class="listaItem">
                                     • Debe tener entre 18 y 75 años<br>
@@ -54,7 +54,7 @@
                                     • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
                                 </p>
                         </div>
-                        <div class="cntClienteDos">
+                        <div class="cntClienteDos doNotPrint">
                                 <p class="title">Clientes asalariados a término indefinido:</p>
                                 <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
                                 <p class="title">Clientes independientes:</p>
@@ -109,6 +109,19 @@
                                             required>
                                     </div>
                                 </div>
+
+                                <div class="contCheckSanitas">
+                                    <span>
+                                        <input
+                                            class="checkDto" 
+                                            type="checkbox"
+                                            name="epsSanitas" 
+                                            [(ngModel)]="epsSanitas"
+                                            #epSSanitas="ngModel"
+                                        > Afiliado a la EPS Sanitas
+                                    </span>
+                                </div>
+
                                 <hr>
                             </div>
     
@@ -169,7 +182,7 @@
                                         (incluye seguro de vida)</p>
                                     <p class="cifraBlack">$ {{vlrCuota | number:'1.0'}}</p>
     
-                                    <div class="tooltip">
+                                    <div class="tooltip doNotPrint">
                                         <i class="fa fa-question-circle"></i>
                                         <span class="tooltiptext">
                                                 <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{vlrCuotaSs | number:'1.0'}}<br>
@@ -182,7 +195,7 @@
                                 <hr>
                             </div>
     
-                            <div class="calcPtres">
+                            <div *ngIf="epsSanitas && clickDto" class="calcPtres">
                                 <p class="title">Descuento</p>
                                 <div class="slidecontainer">
                                     <input 
@@ -193,7 +206,12 @@
                                         value="0" 
                                         class="slider"
                                         [(ngModel)]="descuentoSlide"
-                                        id="myRange">
+                                        name="dtoSlide"
+                                        #DtoSlide="ngModel"
+                                        id="myRange"
+                                        [disabled]="valorSolicitado < 3000000 || cuotas > 18 ? 'disabled' : null"
+                                        (change)="descuento($event)"
+                                        >
                                 </div>
                                 <div class="contMinMax">
                                     <div class="contMin">
@@ -209,7 +227,7 @@
                                     <p class="grayParrf">Cuota con descuento:</p>
                                     <p class="cifraBlack">{{descuentoSlide}}%</p>
     
-                                    <div class="tooltip">
+                                    <div class="tooltip doNotPrint">
                                         <i class="fa fa-question-circle"></i>
                                         <span class="tooltiptext">
                                             Contenido
@@ -218,10 +236,19 @@
                                 </div>
                                 <hr>
                             </div>
+
+                            <div class="tooltiptext printOk">
+                                    <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{vlrCuotaSs | number:'1.0'}}<br>
+                                    <div class="titleTooltip">Costo total del seguro:</div>$ {{seguroTotal | number:'1.0'}}<br>
+                                    <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}
+                            </div>
     
-                            <div class="calcPcuatro">
+                            <div class="calcPcuatro doNotPrint">
                                 <button [disabled]="formSanitasBig.invalid" (click)="linka()" class="button tipoUno pulse-shrink">
                                     <p class="bigTitle">INICIAR SOLICITUD</p>
+                                </button>
+                                <button [disabled]="formSanitasBig.invalid" (click)="onPrint()" class="button tipoUno pulse-shrink print">
+                                        <p class="bigTitle">IMPRIMIR</p>
                                 </button>
                                 <!-- <button [disabled]="formSanitas.invalid" class="button tipoDos pulse-shrink">
                                                     <p class="bigTitle">SIMULACIÓN DE CUOTAS</p>
@@ -229,7 +256,8 @@
                             </div>
     
                         </div>
-                        <div class="contGrafica">
+                        <div class="contGrafica doNotPrint">
+                            <div class="dto" (click)="dtoChange()" *ngIf="epsSanitas"></div>
                             <img src="../assets/grafica.png" alt="" class="grafica">
                         </div>
                     </form>
@@ -238,7 +266,7 @@
             </div>
         </div>
     
-        <div class="partDosBig">
+        <div class="partDosBig doNotPrint">
             <div class="contDosBig">
                 <div class="item">
                     <embed class="reloj" src="../assets/reloj.svg">
@@ -324,6 +352,17 @@
                                     required>
                             </div>
                         </div>
+
+                        <div class="contCheckSanitas">
+                                <span>
+                                    <input 
+                                        type="checkbox"
+                                        name="epsSanitas" 
+                                        [(ngModel)]="epsSanitas"
+                                        #epSSanitas="ngModel"
+                                    > Afiliado a la EPS Sanitas
+                                </span>
+                            </div>
                         <hr>
                     </div>
     
@@ -385,7 +424,7 @@
                             </p>
                             <p class="cifraBlack">$ {{vlrCuota | number:'1.0'}}</p>
     
-                            <div class="tooltip">
+                            <div class="tooltip doNotPrint">
                                 <i class="fa fa-question-circle"></i>
                                 <span class="tooltiptext">
                                         <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{vlrCuotaSs | number:'1.0'}}<br>
@@ -398,55 +437,70 @@
                         <hr>
                     </div>
     
-                    <div class="calcPtres">
-                        <p class="title">Descuento</p>
-                        <div class="slidecontainer">
-                            <input 
-                            type="range"
-                            min="{{minDes}}" 
-                            max="{{maxDes}}" 
-                            step="1"
-                            value="0" 
-                            class="slider"
-                            [(ngModel)]="descuentoSlide" 
-                            id="myRange">
-                        </div>
-                        <div class="contMinMax">
-                            <div class="contMin">
-                                <p class="grayParrf">Mín:</p>
-                                <p class="cifraGray">1%</p>
+                    <div *ngIf="epsSanitas && clickDto" class="calcPtres">
+                            <p class="title">Descuento</p>
+                            <div class="slidecontainer">
+                                <input 
+                                    type="range" 
+                                    min="{{minDes}}" 
+                                    max="{{maxDes}}" 
+                                    step="1"
+                                    value="0" 
+                                    class="slider"
+                                    [(ngModel)]="descuentoSlide"
+                                    name="dtoSlide"
+                                    #DtoSlide="ngModel"
+                                    id="myRange"
+                                    [disabled]="valorSolicitado < 3000000 || cuotas > 18 ? 'disabled' : null"
+                                    (change)="descuento($event)"
+                                    >
                             </div>
-                            <div class="contMax">
-                                <p class="grayParrf">Máx:</p>
-                                <p class="cifraGray">3%</p>
+                            <div class="contMinMax">
+                                <div class="contMin">
+                                    <p class="grayParrf">Mín:</p>
+                                    <p class="cifraGray">{{minDes}}%</p>
+                                </div>
+                                <div class="contMax">
+                                    <p class="grayParrf">Máx:</p>
+                                    <p class="cifraGray">{{maxDes}}%</p>
+                                </div>
                             </div>
+                            <div class="cntAprox">
+                                <p class="grayParrf">Cuota con descuento:</p>
+                                <p class="cifraBlack">{{descuentoSlide}}%</p>
+
+                                <div class="tooltip doNotPrint">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="tooltiptext">
+                                        Contenido
+                                    </span>
+                                </div>
+                            </div>
+                            <hr>
                         </div>
-                        <div class="cntAprox">
-                            <p class="grayParrf">Cuota con descuento:</p>
-                            <p class="cifraBlack">{{descuentoSlide}}%</p>
+
+                        <div class="tooltiptext printOk">
+                                <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{vlrCuotaSs | number:'1.0'}}<br>
+                                <div class="titleTooltip">Costo total del seguro:</div>$ {{seguroTotal | number:'1.0'}}<br>
+                                <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}
+                        </div>
     
-                            <div class="tooltip">
-                                <i class="fa fa-question-circle"></i>
-                                <span class="tooltiptext">
-                                    Contenido
-                                </span>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-    
-                    <div class="calcPcuatro">
+                    <div class="calcPcuatro doNotPrint">
                         <button [disabled]="formSanitas.invalid" (click)="linka()" class="button tipoUno pulse-shrink">
                             <p class="bigTitle">INICIAR SOLICITUD</p>
+                        </button>
+                        <button [disabled]="formSanitas.invalid" (click)="onPrint()" class="button tipoUno pulse-shrink print">
+                            <p class="bigTitle">IMPRIMIR</p>
                         </button>
                     </div>
     
                 </div>
-                <div class="contGrafica">
+                <div class="contGrafica doNotPrint">
+                    <div class="dtoM" (click)="dtoChange()" *ngIf="epsSanitas"></div>
                     <img src="../assets/grafica.png" alt="" class="grafica">
                 </div>
     
-                <div class="tarjeta cntDos">
+                <div class="tarjeta cntDos doNotPrint">
                     <p class="title">Condiciones para el cliente:</p>
                     <p class="listaItem">
                         • Debe tener entre 18 y 75 años<br>
@@ -458,7 +512,7 @@
                     </p>
                 </div>
     
-                <div class="tarjeta cntTres">
+                <div class="tarjeta cntTres doNotPrint">
                     <p class="title">Clientes asalariados a término indefinido:</p>
                     <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
                     <p class="title">Clientes independientes:</p>
@@ -469,7 +523,7 @@
                 
                 <a [routerLink]="['/ayuda']">
                 <button class="buttonAyuda">
-                        <div class="itemButton">
+                        <div class="itemButton doNotPrint">
                         <i class="fa fa-question-circle"></i>
                             <p class="bigTitle">AYUDA</p>
                         </div>
