@@ -417,8 +417,26 @@ hr {
   color: #BABABA;
 }
 
+@media only screen and (min-width: 768px) {
+  .contSoli .vlrDtoCifra .grayParrfDto {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .contSoli .vlrDtoCifra .grayParrfDto {
+    font-size: 11px;
+  }
+}
+
 .contSoli .vlrDtoCifra .vlrDto {
   font-size: 10px;
+}
+
+@media only screen and (min-width: 1366px) {
+  .contSoli .vlrDtoCifra .vlrDto {
+    font-size: 12px;
+  }
 }
 
 .partDos {

@@ -398,9 +398,18 @@ hr {
             grid-column: 3;
             font-family: monserratBold;
             color: #BABABA;
+            @include tablet(){
+                font-size: 10px;
+            }
+            @include deskopt(){
+                font-size: 11px;
+            }
         }
         .vlrDto{
             font-size: 10px;
+            @include deskopt(){
+                font-size: 12px;
+            }
         }
     }
 }
@@ -1329,7 +1338,7 @@ div.tooltiptext{
         border: 5px solid red;
     }
 
-    .vlrDtoCifra{
+    .vlrDtoCifra{        
         .vlrDto{
             font-size: 15px;
         }
