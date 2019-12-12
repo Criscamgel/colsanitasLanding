@@ -278,6 +278,7 @@ export class HomeComponent{
   dtoChange(){
       this.clickDto = !this.clickDto
   }
+  
 
   onPrint(){
     window.print();
