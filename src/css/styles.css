@@ -1408,6 +1408,33 @@ div.tooltiptext {
   display: none;
 }
 
+.ceroTasaTitle {
+  font-size: 20px;
+}
+
+.ceroTasa {
+  font-size: 26px;
+  font-family: monserratBold;
+}
+
+.ceroTasaParrafo {
+  font-size: 11px;
+}
+
+.vlrDtoCifra {
+  text-align: center;
+  margin: 8%;
+}
+
+.vlrDtoCifra .grayParrfDto {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.vlrDtoCifra .vlrDto {
+  font-size: 15px;
+}
+
 /* Print */
 @media print {
   .doNotPrint {

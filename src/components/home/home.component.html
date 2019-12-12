@@ -34,7 +34,13 @@
                         <p class="textParrafo">Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu
                             paciente y
                             disfruta de los beneficios que Santander te ofrece.</p>
-                    </div>                
+                    </div>
+                    
+                    <div>
+                       <p class="ceroTasa">Tasa 0%</p>
+                       <p class="bigTitle ceroTasaTitle">hasta un plazo de 24 meses.</p>
+                       <p class="textParrafo ceroTasaParrafo">A un plazo de 36 meses la tasa será 0,49% NMV</p> 
+                    </div>
                 </div>
     
                 <div class="textCntDosBig doNotPrint">
@@ -134,8 +140,15 @@
                                 <div class="contPeriodo">
     
                                     <span class="radio">
-                                        <input id="seis" #cuotaSeis="ngModel" [(ngModel)]="cuotas" name="Radios"
-                                            (change)="changeButton($event.target)" type="radio" value="6">
+                                        <input 
+                                        id="seis"
+                                        #cuotaSeis="ngModel"
+                                        [(ngModel)]="cuotas"
+                                        name="Radios"
+                                        (change)="changeButton($event.target)"
+                                        type="radio"
+                                        value="6"
+                                        >
                                         <div>
                                             <div class="numBer">06</div>
                                             <div class="mes">meses</div>
@@ -143,8 +156,13 @@
                                     </span>
     
                                     <span class="radio">
-                                        <input id="doce" [(ngModel)]="cuotas" name="Radios"
-                                            (change)="changeButton($event.target)" type="radio" value="12">
+                                        <input 
+                                        id="doce"
+                                        [(ngModel)]="cuotas"
+                                        name="Radios"
+                                        (change)="changeButton($event.target)"
+                                        type="radio"
+                                        value="12">
                                         <div>
                                             <div class="numBer">12</div>
                                             <div class="mes">meses</div>
@@ -152,8 +170,15 @@
                                     </span>
     
                                     <span class="radio">
-                                        <input id="diesiocho" [(ngModel)]="cuotas" name="Radios"
-                                            (change)="changeButton($event.target)" type="radio" value="18">
+                                        <input 
+                                        id="diesiocho"
+                                        [(ngModel)]="cuotas"
+                                        name="Radios"
+                                        (change)="changeButton($event.target)"
+                                        type="radio"
+                                        value="18"
+                                        
+                                        >
                                         <div>
                                             <div class="numBer">18</div>
                                             <div class="mes">meses</div>
@@ -161,8 +186,15 @@
                                     </span>
     
                                     <span class="radio">
-                                        <input id="veinticuatro" [(ngModel)]="cuotas" name="Radios"
-                                            (change)="changeButton($event.target)" type="radio" value="24">
+                                        <input 
+                                        id="veinticuatro" 
+                                        [(ngModel)]="cuotas"
+                                        name="Radios"
+                                        (change)="changeButton($event.target)"
+                                        type="radio"
+                                        value="24"
+                                        [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null"
+                                        >
                                         <div>
                                             <div class="numBer">24</div>
                                             <div class="mes">meses</div>
@@ -170,8 +202,15 @@
                                     </span>
     
                                     <span class="radio">
-                                        <input id="cuarentayocho" [(ngModel)]="cuotas" name="Radios"
-                                            (change)="changeButton($event.target)" type="radio" value="36">
+                                        <input 
+                                        id="cuarentayocho"
+                                        [(ngModel)]="cuotas"
+                                        name="Radios"
+                                        (change)="changeButton($event.target)"
+                                        type="radio"
+                                        value="36"
+                                        [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null" 
+                                         >
                                         <div>
                                             <div class="numBer">36</div>
                                             <div class="mes">meses</div>
@@ -193,8 +232,9 @@
                                                 <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                                 <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
                                                 <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                                <div class="titleTooltip">Tasa aplicada:</div>24% E.A<br>
-                                                <div class="titleTooltip">1.81 NMV</div><br> 
+                                                <div *ngIf="cuotas !== '36'" class="titleTooltip">Tasa aplicada:<br>0% E.A</div>
+                                                <div *ngIf="cuotas === '36'" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div>
+                                                <div *ngIf="cuotas === '36'" class="titleTooltip">0.49 NMV</div>                                               
                                         </span>
                                     </div>
     
@@ -250,8 +290,9 @@
                                     <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                     <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
                                     <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                    <div class="titleTooltip">Tasa aplicada:</div>24% E.A<br>
-                                    <div class="titleTooltip">1.81 NMV</div><br> 
+                                    <div *ngIf="cuotas !== '36'" class="titleTooltip">Tasa aplicada:<br>0% E.A</div>
+                                    <div *ngIf="cuotas === '36'" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div>
+                                    <div *ngIf="cuotas === '36'" class="titleTooltip">0.49 NMV</div>
                             </div>
     
                             <div class="calcPcuatro doNotPrint">
@@ -406,8 +447,13 @@
                             </span>
     
                             <span class="radio">
-                                <input id="diesiocho" [(ngModel)]="cuotas" name="Radios"
-                                    (change)="changeButton($event.target)" type="radio" value="18">
+                                <input 
+                                    id="diesiocho" 
+                                    [(ngModel)]="cuotas" 
+                                    name="Radios"
+                                    (change)="changeButton($event.target)" 
+                                    type="radio" value="18"
+                                    >
                                 <div>
                                     <div class="numBer">18</div>
                                     <div class="mes">meses</div>
@@ -415,8 +461,14 @@
                             </span>
     
                             <span class="radio">
-                                <input id="veinticuatro" [(ngModel)]="cuotas" name="Radios"
-                                    (change)="changeButton($event.target)" type="radio" value="24">
+                                <input id="veinticuatro" 
+                                [(ngModel)]="cuotas"
+                                name="Radios"
+                                (change)="changeButton($event.target)" 
+                                type="radio" 
+                                value="24"
+                                [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null"
+                                >
                                 <div>
                                     <div class="numBer">24</div>
                                     <div class="mes">meses</div>
@@ -424,15 +476,22 @@
                             </span>
     
                             <span class="radio">
-                                <input id="cuarentayocho" [(ngModel)]="cuotas" name="Radios"
-                                    (change)="changeButton($event.target)" type="radio" value="36">
+                                <input 
+                                id="cuarentayocho"
+                                 [(ngModel)]="cuotas" 
+                                 name="Radios"
+                                 (change)="changeButton($event.target)"
+                                  type="radio" 
+                                  value="36"
+                                  [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null"
+                                  >
                                 <div>
                                     <div class="numBer">36</div>
                                     <div class="mes">meses</div>
                                 </div>
                             </span>
     
-                        </div>
+                        </div>                        
     
                         <div class="cntAprox">
                             <p class="grayParrf">Cuota aproximada mensual:<br>
@@ -448,8 +507,10 @@
                                     <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                     <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
                                     <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                    <div class="titleTooltip">Tasa aplicada:</div>24% E.A<br>
-                                    <div class="titleTooltip">1.81 NMV</div><br>  
+                                    <div *ngIf="cuotas !== '36'" class="titleTooltip">Tasa aplicada:<br>0% E.A</div>
+                                    <div *ngIf="cuotas === '36'" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div>
+                                    <div *ngIf="cuotas === '36'" class="titleTooltip">0.49 NMV</div><br>                                    
+                                    
                                 </span>
                             </div>
     
@@ -504,9 +565,10 @@
                                 <div class="titleTooltip">Costo total del seguro:</div>$ {{seguroTotal | number:'1.0'}}<br>
                                 <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                 <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
-                                <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                <div class="titleTooltip">Tasa aplicada:</div>24% E.A<br>
-                                <div class="titleTooltip">1.81 NMV</div><br>                             
+                                <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>                                
+                                <div *ngIf="cuotas !== '36'" class="titleTooltip">Tasa aplicada:<br>0% E.A</div>
+                                <div *ngIf="cuotas === '36'" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div>
+                                <div *ngIf="cuotas === '36'" class="titleTooltip">0.49 NMV</div><br>                             
                         </div>
     
                     <div class="calcPcuatro doNotPrint">

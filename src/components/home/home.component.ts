@@ -58,6 +58,7 @@ export class HomeComponent{
   changeButton(val){
 
     let cuota;
+    let seguro
 
     if(val.value === undefined){
       cuota = val;
@@ -66,7 +67,12 @@ export class HomeComponent{
     }    
     
     let nmv = Math.pow((1 + this.tasa),(1/12))-1;
-    let seguro =  (1200 / 1000000) * this.valorSolicitado;
+
+    if(this.vlrDto === 0){
+    seguro =  (1200 / 1000000) * this.valorSolicitado;
+    }else{
+    seguro =  (1200 / 1000000) * this.vlrDto;  
+    }
     
     switch (cuota) {
       case 6:
@@ -88,7 +94,8 @@ export class HomeComponent{
             vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
           }else{
             vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }
+          }           
+
           var vlrPartuno = vlrActual * nmv;
           var vlrPartdos = Math.pow((1 + nmv), - cuota)
           vlrPartdos = 1 - vlrPartdos;

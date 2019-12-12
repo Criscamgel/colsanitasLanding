@@ -1279,6 +1279,8 @@ h1{
     width: 90%;
 }
 
+
+
 .contCheckSanitas{
     margin: 7% 0;
     span{
@@ -1296,6 +1298,31 @@ h1{
 
 div.tooltiptext{
     display: none;
+}
+
+.ceroTasaTitle{    
+    font-size: 20px;
+}
+
+.ceroTasa{
+    font-size: 26px;
+    font-family: monserratBold;       
+}
+
+.ceroTasaParrafo{
+    font-size: 11px;
+}
+
+.vlrDtoCifra{
+    text-align: center;
+    margin: 8%;
+    .grayParrfDto{
+        font-size: 10px;
+        font-weight: 700;
+    }        
+    .vlrDto{
+        font-size: 15px;
+    }
 }
 
 /* Print */
