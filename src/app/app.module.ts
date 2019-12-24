@@ -10,12 +10,15 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { AyudaComponent } from '../components/ayuda/ayuda.component';
 import { HomeComponent } from '../components/home/home.component';
+import { CalculadoraComponent } from '../components/calculadora/calculadora.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AyudaComponent,
-    HomeComponent
+    HomeComponent,
+    CalculadoraComponent
   ],
   imports: [
     BrowserModule,
