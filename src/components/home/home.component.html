@@ -113,7 +113,7 @@
                                             required>
                                     </div>
 
-                                    <div class="vlrDtoCifra" *ngIf="epsSanitas && clickDto">
+                                    <div class="vlrDtoCifra" *ngIf="epsSanitas && clickDto || epsPrepagada && clickDto">
                                         <p class="grayParrfDto">Valor con descuento:</p>
                                         <p class="vlrDto cifraGray">${{vlrDto | number:'1.0'}}</p>
                                     </div>
@@ -126,7 +126,7 @@
                                             type="checkbox"
                                             name="epsSanitas" 
                                             [(ngModel)]="epsSanitas"                                            
-                                            [attr.disabled] = "epsPrepagada ? 'disabled' : null"
+                                            [attr.disabled] = "epsPrepagada == false ? 'disabled' : null"
                                             (change)= "epsPrepagada = !epsPrepagada"
 
                                         > Afiliado a la EPS Sanitas
@@ -140,9 +140,9 @@
                                             type="checkbox"
                                             name="epsPrepagada" 
                                             [(ngModel)]="epsPrepagada"                                            
-                                            [attr.disabled] = "epsSanitas ? 'disabled' : null"
+                                            [attr.disabled] = "epsSanitas == false ? 'disabled' : null"
                                             (change)= "epsSanitas = !epsSanitas"
-                                        > Afiliado Prepagada
+                                        > Afiliado prepagada
                                     </span>
                                 </div>
 
@@ -252,11 +252,15 @@
                                                 <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                                 <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
                                                 <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                                <div class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                                <div class="titleTooltip">1.81% NMV</div><br>                                 
-                                                <!-- <div *ngIf="cuotas != 36" class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                                <div *ngIf="cuotas == 36" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div> 
-                                                <div *ngIf="cuotas == 36" class="titleTooltip">0.49 NMV</div><br> -->                                              
+                                                
+                                                <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">Tasa aplicada:<br>0% Efectivo anual</div>
+                                                <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">0% Nominal mes vencido</div>
+
+                                                <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">Tasa aplicada:<br>6.04% Efectivo anual</div>
+                                                <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">0.49% Nominal mes vencido</div>
+
+                                                <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>24% Efectivo anual</div>
+                                                <div *ngIf="epsPrepagada" class="titleTooltip">1.81% Nominal mes vencido</div>                                            
                                         </span>
                                     </div>
     
@@ -264,7 +268,7 @@
                                 <hr>
                             </div>
     
-                            <div *ngIf="epsSanitas && clickDto" class="calcPtres">
+                            <div *ngIf="epsSanitas && clickDto || epsPrepagada && clickDto" class="calcPtres">
                                 <p class="title">Descuento</p>
                                 <div class="slidecontainer doNotPrint">
                                     <input 
@@ -312,11 +316,15 @@
                                     <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                     <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
                                     <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                    <div class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                    <div class="titleTooltip">1.81% NMV</div><br>                                 
-                                    <!-- <div *ngIf="cuotas != 36" class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                    <div *ngIf="cuotas == 36" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div> 
-                                    <div *ngIf="cuotas == 36" class="titleTooltip">0.49 NMV</div><br> -->  
+
+                                    <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">Tasa aplicada:<br>0% Efectivo anual</div>
+                                    <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">0% Nominal mes vencido</div>
+
+                                    <div *ngIf="epsSanitas && cuotas == 36" class="titleTooltip">Tasa aplicada:<br>6.04% Efectivo anual</div>
+                                    <div *ngIf="epsSanitas && cuotas == 36" class="titleTooltip">0.49% Nominal mes vencido</div>
+
+                                    <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>24% Efectivo anual</div>
+                                    <div *ngIf="epsPrepagada" class="titleTooltip">1.81% Nominal mes vencido</div>   
                             </div>
     
                             <div class="calcPcuatro doNotPrint">
@@ -333,7 +341,7 @@
     
                         </div>
                         <div class="contGrafica doNotPrint">
-                            <div class="dto" (click)="dtoChange()" *ngIf="epsSanitas"></div>
+                            <div class="dto" (click)="dtoChange()" *ngIf="epsSanitas || epsPrepagada"></div>
                             <img src="../assets/grafica.png" alt="" class="grafica">
                         </div>
                     </form>
@@ -429,7 +437,7 @@
                             </div>
                         </div>
 
-                        <div class="vlrDtoCifra" *ngIf="epsSanitas && clickDto">
+                        <div class="vlrDtoCifra" *ngIf="epsSanitas && clickDto || epsPrepagada && clickDto">
                                 <p class="grayParrfDto">Valor con descuento:</p>
                                 <p class="vlrDto cifraGray">${{vlrDto | number:'1.0'}}</p>
                         </div>
@@ -440,7 +448,7 @@
                                         type="checkbox"
                                         name="epsSanitas" 
                                         [(ngModel)]="epsSanitas"
-                                        [attr.disabled] = "epsPrepagada ? 'disabled' : null"
+                                        [attr.disabled] = "epsPrepagada == false ? 'disabled' : null"
                                         (change)= "epsPrepagada = !epsPrepagada"                                        
                                     > Afiliado a la EPS Sanitas
                                 </span>
@@ -453,9 +461,9 @@
                                         type="checkbox"
                                         name="epsPrepagada" 
                                         [(ngModel)]="epsPrepagada"
-                                        [attr.disabled] = "epsSanitas ? 'disabled' : null"
+                                        [attr.disabled] = "epsSanitas == false ? 'disabled' : null"
                                         (change)= "epsSanitas = !epsSanitas"  
-                                    > Afiliado Prepagada
+                                    > Afiliado prepagada
                                 </span>
                             </div>
                         <hr>
@@ -554,11 +562,15 @@
                                     <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                     <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
                                     <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
-                                    <div class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                    <div class="titleTooltip">1.81% NMV</div><br>                                 
-                                    <!-- <div *ngIf="cuotas != 36" class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                    <div *ngIf="cuotas == 36" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div> 
-                                    <div *ngIf="cuotas == 36" class="titleTooltip">0.49 NMV</div><br> -->                                  
+                                    
+                                    <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">Tasa aplicada:<br>0% Efectivo anual</div>
+                                    <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">0% Nominal mes vencido</div>
+
+                                    <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">Tasa aplicada:<br>6.04% Efectivo anual</div>
+                                    <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">0.49% Nominal mes vencido</div>
+
+                                    <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>24% Efectivo anual</div>
+                                    <div *ngIf="epsPrepagada" class="titleTooltip">1.81% Nominal mes vencido</div>
                                     
                                 </span>
                             </div>
@@ -567,7 +579,7 @@
                         <hr>
                     </div>
     
-                    <div *ngIf="epsSanitas && clickDto" class="calcPtres">
+                    <div *ngIf="epsSanitas && clickDto || epsPrepagada && clickDto" class="calcPtres">
                             <p class="title">Descuento</p>
                             <div class="slidecontainer doNotPrint">
                                 <input 
@@ -614,12 +626,17 @@
                                 <div class="titleTooltip">Costo total del seguro:</div>$ {{seguroTotal | number:'1.0'}}<br>
                                 <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{seguroCta | number:'1.0'}}<br>
                                 <div *ngIf="vlrDto !== 0" class="titleTooltip">Monto total a financiar<br>$ {{vlrDto + seguroTotal | number:'1.0'}}</div>
-                                <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>                                
-                                <div class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                <div class="titleTooltip">1.81% NMV</div><br>                                 
-                                <!-- <div *ngIf="cuotas != 36" class="titleTooltip">Tasa aplicada:<br>24% E.A</div>
-                                <div *ngIf="cuotas == 36" class="titleTooltip">Tasa aplicada:<br>6.04% E.A</div> 
-                                <div *ngIf="cuotas == 36" class="titleTooltip">0.49 NMV</div><br> -->                              
+                                <div *ngIf="vlrDto === 0" class="titleTooltip">Monto total a financiar<br>$ {{valorSolicitado + seguroTotal | number:'1.0'}}</div>
+
+                                    
+                                <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">Tasa aplicada:<br>0% Efectivo anual</div>
+                                <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">0% Nominal mes vencido</div>
+
+                                <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">Tasa aplicada:<br>6.04% Efectivo anual</div>
+                                <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">0.49% Nominal mes vencido</div>
+
+                                <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>24% Efectivo anual</div>
+                                <div *ngIf="epsPrepagada" class="titleTooltip">1.81% Nominal mes vencido</div>                                                           
                         </div>
                         
     
@@ -634,7 +651,7 @@
     
                 </div>
                 <div class="contGrafica doNotPrint">
-                    <div class="dtoM" (click)="dtoChange()" *ngIf="epsSanitas"></div>
+                    <div class="dtoM" (click)="dtoChange()" *ngIf="epsSanitas || epsPrepagada"></div>
                     <img src="../assets/grafica.png" alt="" class="grafica">
                 </div>
     

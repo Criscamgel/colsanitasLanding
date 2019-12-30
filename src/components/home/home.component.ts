@@ -78,14 +78,14 @@ export class HomeComponent{
     
 
 
-    if(this.epsSanitas){
+    if(this.epsSanitas && cuota !== 36){
     this.tasa = 0.0000000001
     nmv = Math.pow((1 + this.tasa),(1/12))-1;
     console.log("this.tasa", this.tasa);    
     }
 
     if(this.epsSanitas && cuota == 36){
-      this.tasa = 0.604;
+      this.tasa = 0.0604;
       nmv = Math.pow((1 + this.tasa),(1/12))-1;
       console.log("this.tasa", this.tasa);    
     }    
