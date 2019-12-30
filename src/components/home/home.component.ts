@@ -15,11 +15,18 @@ export class HomeComponent{
   maxDes = 5;
   descuentoSlide = 0;
   vlrCuota = 0;
-  descuentoSeis = 0.061;
-  descuentoDoce = 0.11;
-  descuentoDieciocho = 0.156;
-  descuentoVeinticuatro = 0.20;
-  descuentoTreintaseis = 0.21;
+
+  /* descuentoSeis = 0.061; */
+  /* descuentoDoce = 0.11; */
+  /* descuentoDieciocho = 0.156; */
+  /* descuentoVeinticuatro = 0.20; */
+  /* descuentoTreintaseis = 0.21; */
+  
+  descuentoSeis = 0;
+  descuentoDoce = 0;
+  descuentoDieciocho = 0;
+  descuentoVeinticuatro = 0;
+  descuentoTreintaseis = 0;
   tasa = 0.24;
   epsSanitas = false;
   clickDto = false;
@@ -94,7 +101,7 @@ export class HomeComponent{
             vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
           }else{
             vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }           
+          }
 
           var vlrPartuno = vlrActual * nmv;
           var vlrPartdos = Math.pow((1 + nmv), - cuota)
@@ -107,11 +114,12 @@ export class HomeComponent{
           var vlrPartunoSeg = seguroTotal * nmv;      
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
           vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
           seguroCta = Math.round(seguroCta);
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);    
+          this.vlrCuota = Math.round(vlrCuota + seguroCta);
+          
                               
         break;
       case 12:
@@ -145,7 +153,7 @@ export class HomeComponent{
           var vlrPartunoSeg = seguroTotal * nmv;      
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
           vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
           seguroCta = Math.round(seguroCta);
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
@@ -184,7 +192,7 @@ export class HomeComponent{
           var vlrPartunoSeg = seguroTotal * nmv;      
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
           vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
           seguroCta = Math.round(seguroCta);
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
@@ -223,7 +231,7 @@ export class HomeComponent{
           var vlrPartunoSeg = seguroTotal * nmv;      
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
           vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
           seguroCta = Math.round(seguroCta);
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
@@ -262,7 +270,7 @@ export class HomeComponent{
           var vlrPartunoSeg = seguroTotal * nmv;      
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
           vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
           seguroCta = Math.round(seguroCta);
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
