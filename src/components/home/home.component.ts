@@ -21,14 +21,16 @@ export class HomeComponent{
   /* descuentoDieciocho = 0.156; */
   /* descuentoVeinticuatro = 0.20; */
   /* descuentoTreintaseis = 0.21; */
-  
+
   descuentoSeis = 0;
   descuentoDoce = 0;
   descuentoDieciocho = 0;
   descuentoVeinticuatro = 0;
   descuentoTreintaseis = 0;
   tasa = 0.24;
-  epsSanitas = false;
+  epsSanitas = true;
+  epsPrepagada = false;
+
   clickDto = false;
   vlrDto = 0;
   
@@ -65,7 +67,8 @@ export class HomeComponent{
   changeButton(val){
 
     let cuota;
-    let seguro
+    let seguro;
+    let nmv;
 
     if(val.value === undefined){
       cuota = val;
@@ -73,7 +76,25 @@ export class HomeComponent{
       cuota = Number(val.value);
     }    
     
-    let nmv = Math.pow((1 + this.tasa),(1/12))-1;
+
+
+    if(this.epsSanitas){
+    this.tasa = 0.0000000001
+    nmv = Math.pow((1 + this.tasa),(1/12))-1;
+    console.log("this.tasa", this.tasa);    
+    }
+
+    if(this.epsSanitas && cuota == 36){
+      this.tasa = 0.604;
+      nmv = Math.pow((1 + this.tasa),(1/12))-1;
+      console.log("this.tasa", this.tasa);    
+    }    
+
+    if(this.epsPrepagada){
+    this.tasa = 0.24
+    nmv = Math.pow((1 + this.tasa),(1/12))-1;
+    console.log("this.tasa", this.tasa);
+    }    
 
     if(this.vlrDto === 0){
     seguro =  (1200 / 1000000) * this.valorSolicitado;
@@ -241,7 +262,7 @@ export class HomeComponent{
 
       case 36:
 
-        var vlrCuota;
+          var vlrCuota;
           var vlrDescuento;
           var vlrActual;
 

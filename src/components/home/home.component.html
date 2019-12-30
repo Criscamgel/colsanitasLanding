@@ -125,9 +125,24 @@
                                             class="checkDto" 
                                             type="checkbox"
                                             name="epsSanitas" 
-                                            [(ngModel)]="epsSanitas"
-                                            #epSSanitas="ngModel"
+                                            [(ngModel)]="epsSanitas"                                            
+                                            [attr.disabled] = "epsPrepagada ? 'disabled' : null"
+                                            (change)= "epsPrepagada = !epsPrepagada"
+
                                         > Afiliado a la EPS Sanitas
+                                    </span>
+                                </div>
+
+                                <div class="contCheckSanitas">
+                                    <span>
+                                        <input
+                                            class="checkDto" 
+                                            type="checkbox"
+                                            name="epsPrepagada" 
+                                            [(ngModel)]="epsPrepagada"                                            
+                                            [attr.disabled] = "epsSanitas ? 'disabled' : null"
+                                            (change)= "epsSanitas = !epsSanitas"
+                                        > Afiliado Prepagada
                                     </span>
                                 </div>
 
@@ -146,6 +161,7 @@
                                         [(ngModel)]="cuotas"
                                         name="Radios"
                                         (change)="changeButton($event.target)"
+                                        (click) = "changeButton($event.target)"
                                         type="radio"
                                         value="6"
                                         >
@@ -161,6 +177,7 @@
                                         [(ngModel)]="cuotas"
                                         name="Radios"
                                         (change)="changeButton($event.target)"
+                                        (click) = "changeButton($event.target)"
                                         type="radio"
                                         value="12">
                                         <div>
@@ -175,6 +192,7 @@
                                         [(ngModel)]="cuotas"
                                         name="Radios"
                                         (change)="changeButton($event.target)"
+                                        (click) = "changeButton($event.target)"
                                         type="radio"
                                         value="18"
                                         
@@ -191,6 +209,7 @@
                                         [(ngModel)]="cuotas"
                                         name="Radios"
                                         (change)="changeButton($event.target)"
+                                        (click) = "changeButton($event.target)"
                                         type="radio"
                                         value="24"
                                         [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null"
@@ -207,6 +226,7 @@
                                         [(ngModel)]="cuotas"
                                         name="Radios"
                                         (change)="changeButton($event.target)"
+                                        (click) = "changeButton($event.target)"
                                         type="radio"
                                         value="36"
                                         [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null" 
@@ -420,8 +440,22 @@
                                         type="checkbox"
                                         name="epsSanitas" 
                                         [(ngModel)]="epsSanitas"
-                                        #epSSanitas="ngModel"
+                                        [attr.disabled] = "epsPrepagada ? 'disabled' : null"
+                                        (change)= "epsPrepagada = !epsPrepagada"                                        
                                     > Afiliado a la EPS Sanitas
+                                </span>
+                            </div>
+
+                            <div class="contCheckSanitas">
+                                <span>
+                                    <input
+                                        class="checkDto" 
+                                        type="checkbox"
+                                        name="epsPrepagada" 
+                                        [(ngModel)]="epsPrepagada"
+                                        [attr.disabled] = "epsSanitas ? 'disabled' : null"
+                                        (change)= "epsSanitas = !epsSanitas"  
+                                    > Afiliado Prepagada
                                 </span>
                             </div>
                         <hr>
@@ -433,8 +467,14 @@
                         <div class="contPeriodo">
     
                             <span class="radio">
-                                <input id="seis" #cuotaSeis="ngModel" [(ngModel)]="cuotas" name="Radios"
-                                    (change)="changeButton($event.target)" type="radio" value="6">
+                                <input id="seis" 
+                                #cuotaSeis="ngModel" 
+                                [(ngModel)]="cuotas" 
+                                name="Radios"
+                                (change)="changeButton($event.target)"
+                                (click) = "changeButton($event.target)" 
+                                type="radio" 
+                                value="6">
                                 <div>
                                     <div class="numBer">06</div>
                                     <div class="mes">meses</div>
@@ -455,7 +495,8 @@
                                     id="diesiocho" 
                                     [(ngModel)]="cuotas" 
                                     name="Radios"
-                                    (change)="changeButton($event.target)" 
+                                    (change)="changeButton($event.target)"
+                                    (click) = "changeButton($event.target)" 
                                     type="radio" value="18"
                                     >
                                 <div>
@@ -468,7 +509,8 @@
                                 <input id="veinticuatro" 
                                 [(ngModel)]="cuotas"
                                 name="Radios"
-                                (change)="changeButton($event.target)" 
+                                (change)="changeButton($event.target)"
+                                (click) = "changeButton($event.target)" 
                                 type="radio" 
                                 value="24"
                                 [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null"
@@ -485,6 +527,7 @@
                                  [(ngModel)]="cuotas" 
                                  name="Radios"
                                  (change)="changeButton($event.target)"
+                                 (click) = "changeButton($event.target)"
                                   type="radio" 
                                   value="36"
                                   [attr.disabled] = "epsSanitas && clickDto && descuentoSlide !== 0 ? 'disabled' : null"
