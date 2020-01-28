@@ -28,6 +28,7 @@ export class HomeComponent{
   descuentoVeinticuatro = 0;
   descuentoTreintaseis = 0;
   tasa = 0.24;
+  nmv = 0;
   epsSanitas = true;
   epsPrepagada = false;
 
@@ -37,6 +38,15 @@ export class HomeComponent{
   vlrCuotaSs;
   seguroCta;
   seguroTotal;
+
+  cambioTasaPre(){
+    if(this.epsPrepagada && !this.epsSanitas){
+      this.tasa = 0.22;
+    }
+    if(!this.epsPrepagada && this.epsSanitas){
+      this.tasa = 0.24;
+    }
+  }
 
   descuento(val){
     var dto = Math.round(this.valorSolicitado * (Number(val.srcElement.value) / 100));
@@ -81,19 +91,19 @@ export class HomeComponent{
     if(this.epsSanitas && cuota !== 36){
     this.tasa = 0.0000000001
     nmv = Math.pow((1 + this.tasa),(1/12))-1;
-    console.log("this.tasa", this.tasa);    
+    this.nmv = nmv;    
     }
 
     if(this.epsSanitas && cuota == 36){
       this.tasa = 0.0604;
       nmv = Math.pow((1 + this.tasa),(1/12))-1;
-      console.log("this.tasa", this.tasa);    
+      this.nmv = nmv;   
     }    
 
     if(this.epsPrepagada){
-    this.tasa = 0.24
+    this.tasa = 0.22
     nmv = Math.pow((1 + this.tasa),(1/12))-1;
-    console.log("this.tasa", this.tasa);
+    this.nmv = nmv;
     }    
 
     if(this.vlrDto === 0){
