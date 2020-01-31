@@ -323,4 +323,10 @@ export class HomeComponent{
     window.print();
   }
 
+  valorChange(){
+    if(Number(this.valorSolicitado) < 3000000){
+      this.descuentoSlide = 0;
+    }
+  }
+
 }

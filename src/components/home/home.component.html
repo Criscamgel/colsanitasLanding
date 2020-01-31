@@ -85,6 +85,7 @@
                                         class="slider"
                                         id="myRange"
                                         [(ngModel)]="valorSolicitado"
+                                        (change)="valorChange()"
                                         #slideSolicita="ngModel"                                    
                                         required>
                                 </div>
