@@ -101,7 +101,7 @@ export class HomeComponent{
     }    
 
     if(this.epsPrepagada){
-    this.tasa = 0.24
+    this.tasa = 0.21
     nmv = Math.pow((1 + this.tasa),(1/12))-1;
     this.nmv = nmv;
     }    
