@@ -40,12 +40,12 @@ export class HomeComponent{
   seguroTotal;
 
   cambioTasaPre(){
-    if(this.epsPrepagada && !this.epsSanitas){
+    /* if(this.epsPrepagada && !this.epsSanitas){
       this.tasa = 0.22;
     }
     if(!this.epsPrepagada && this.epsSanitas){
       this.tasa = 0.24;
-    }
+    } */
   }
 
   descuento(val){
@@ -101,7 +101,7 @@ export class HomeComponent{
     }    
 
     if(this.epsPrepagada){
-    this.tasa = 0.22
+    this.tasa = 0.24
     nmv = Math.pow((1 + this.tasa),(1/12))-1;
     this.nmv = nmv;
     }    

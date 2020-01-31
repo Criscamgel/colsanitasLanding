@@ -128,7 +128,7 @@
                                             name="epsSanitas" 
                                             [(ngModel)]="epsSanitas"                                            
                                             [attr.disabled] = "epsPrepagada == false ? 'disabled' : null"                                                                                     
-                                            (change)= "epsPrepagada = !epsPrepagada; cambioTasaPre()"
+                                            (change)= "epsPrepagada = !epsPrepagada;"
 
                                         > Afiliado a la EPS Sanitas
                                     </span>
@@ -142,7 +142,7 @@
                                             name="epsPrepagada" 
                                             [(ngModel)]="epsPrepagada"                                            
                                             [attr.disabled] = "epsSanitas == false ? 'disabled' : null"
-                                            (change)= "epsSanitas = !epsSanitas; cambioTasaPre()"
+                                            (change)= "epsSanitas = !epsSanitas;"
                                         > Afiliado prepagada
                                     </span>
                                 </div>
