@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backBdUrl: 'http://localhost:9091', // spring boot para base de datos.
+  keycloakUrl: 'http://localhost:8080/auth',  //keyclock sso
+  keycloakRealm: 'rei_colsanitas',
+  keycloakClientId: 'cli_colsanitas',
+  //datos de prueba con openshift
+  // backBdUrl: 'http://calculadora-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co',
+  // keycloakUrl: 'https://sso-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co/auth',
+  // keycloakRealm: 'rei_colsanitas',
+  // keycloakClientId: 'cli_colsanitas',
+  redirectUriLogout: 'https://www.youtube.com/'
 };
 
 /*

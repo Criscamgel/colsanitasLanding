@@ -1,0 +1,149 @@
+<form #formSanitasBig="ngForm">
+    <div class="tarjeta cntUno">
+        <div class="calcPuno">
+            <p class="title">1.- ¿Cuánto dinero necesita tu paciente?</p>
+            <div class="slidecontainer marginOne">
+                <input name="slidesolicita" type="range" value="0" [min]="minVlr" [max]="maxVlr" [step]="step" class="slider" id="myRange" [(ngModel)]="valorSolicitado" #slideSolicita="ngModel" (change)="changeMontoSlider($event.value)" required>
+            </div>
+
+            <div class="contMinMax marginOne">
+                <div class="contMin">
+                    <p class="grayParrf">Mín:</p>
+                    <p class="cifraGray">{{minVlr | currency}}</p>
+                </div>
+                <div class="contMax">
+                    <p class="grayParrf">Máx:</p>
+                    <p class="cifraGray">{{maxVlr | currency}}</p>
+                </div>
+            </div>
+            <div class="contSoli">
+                <p class="grayParrf doNotPrint">Solicitas:</p>
+                <div class="symbol">
+                    <input type="tel" name="numbersolicita" class="inputText" [ngModel]="valorSolicitado | number:'1.0'" (ngModelChange)="valorSolicitado = currencyInputChanged($event)" (keypress)="oldNumbers($event)" #numberSolicita="ngModel" required>
+                </div>
+
+                <div class="vlrDtoCifra" *ngIf="epsSanitas && clickDto || epsPrepagada && clickDto">
+                    <p class="grayParrfDto">Valor con descuento:</p>
+                    <p class="vlrDto cifraGray">${{calculoCuota.valorConDescuento | number:'1.0'}}</p>
+                </div>
+            </div>
+
+            <div class="contCheckSanitas">
+                <span>
+                    <input
+                        class="checkDto" 
+                        type="checkbox"
+                        name="epsSanitas" 
+                        [(ngModel)]="epsSanitas"                                            
+                        [attr.disabled] = "epsPrepagada == false ? 'disabled' : null"
+                        (change)= "epsPrepagada = !epsPrepagada"
+
+                    > Afiliado a la EPS Sanitas
+                </span>
+            </div>
+
+            <div class="contCheckSanitas">
+                <span>
+                    <input
+                        class="checkDto" 
+                        type="checkbox"
+                        name="epsPrepagada" 
+                        [(ngModel)]="epsPrepagada"                                            
+                        [attr.disabled] = "epsSanitas == false ? 'disabled' : null"
+                        (change)= "epsSanitas = !epsSanitas"
+                    > Afiliado prepagada
+                </span>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="calcPdos marginOne">
+            <p class="title">2.- ¿En cuantas cuotas desea pagar?</p>
+
+            <div class="contPeriodo">
+                <span class="radio" *ngFor="let cuota of cuotasRadio">
+                    <input *ngIf="!cuota.isDisable"
+                        id="cuota {{cuota.idCuota}}"
+                        [(ngModel)]="cuotas"
+                        name="Radios"
+                        (change)="changeButton($event.target)"
+                        type="radio"
+                        [value]="cuota.idCuota"
+                    >
+                    <input *ngIf="cuota.isDisable"
+                        id="cuota {{cuota.idCuota}}"
+                        [(ngModel)]="cuotas"
+                        name="Radios"
+                        (change)="changeButton($event.target)"
+                        type="radio"
+                        [value]="cuota.idCuota"
+                        [attr.disabled]="maxMonth ? 'disabled': null"
+                    >
+                    <div>
+                        <div class="numBer">{{cuota.meses}}</div>
+                        <div class="mes">meses</div>
+                    </div>
+                </span>
+            </div>
+            <div class="cntAprox">
+                <p class="grayParrf">Cuota aproximada mensual:<br> (incluye seguro de vida)</p>
+                <p class="cifraBlack">$ {{calculoCuota.valorCuotaConSeguro | number:'1.0'}}</p>
+
+                <div class="tooltip printOk">
+                    <i class="fa fa-question-circle"></i>
+                    <span class="tooltiptext">
+                            <div class="titleTooltip">Valor cuota sin seguro:</div>$ {{calculoCuota.valorCuotaSinSeguro | number:'1.0'}}<br>
+                            <div class="titleTooltip">Costo total del seguro:</div>$ {{calculoCuota.valorTotalSeguro | number:'1.0'}}<br>
+                            <div class="titleTooltip">Cuota mensual del seguro:</div>$ {{calculoCuota.costoMensualSeguro | number:'1.0'}}<br>
+                            <div class="titleTooltip">Monto total a financiar<br>$ {{calculoCuota.montoTotalFinanciamiento | number:'1.0'}}</div>
+                            
+                            <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">Tasa aplicada:<br>0% Efectivo anual</div>
+                            <div *ngIf="epsSanitas && cuotas != 36" class="titleTooltip">0% Nominal mes vencido</div>
+
+                            <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">Tasa aplicada:<br>6.04% Efectivo anual</div>
+                            <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">0.49% Nominal mes vencido</div>
+
+                            <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>24% Efectivo anual</div>
+                            <div *ngIf="epsPrepagada" class="titleTooltip">1.81% Nominal mes vencido</div>                                            
+                    </span>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+
+        <div [hidden]="!clickDto" class="calcPtres">
+            <p class="title">Descuento</p>
+            <div class="slidecontainer doNotPrint">
+                <input type="range" min="{{minDes}}" max="{{maxDes}}" step="1" value="0" class="slider" [(ngModel)]="descuentoSlide" name="dtoSlide" #DtoSlide="ngModel" id="myRange" [disabled]="valorSolicitado < 3000000 || cuotas > 18 ? 'disabled' : null" (change)="descuentoChange($event)">
+            </div>
+            <div class="contMinMax doNotPrint">
+                <div class="contMin">
+                    <p class="grayParrf">Mín:</p>
+                    <p class="cifraGray">{{minDes}}%</p>
+                </div>
+                <div class="contMax doNotPrint">
+                    <p class="grayParrf">Máx:</p>
+                    <p class="cifraGray">{{maxDes}}%</p>
+                </div>
+            </div>
+            <div class="cntAprox">
+                <p class="grayParrf doNotPrint">Descuento:</p>
+                <p class="cifraBlack">{{descuentoSlide}}%</p>
+            </div>
+            <hr>
+        </div>
+
+        <div class="calcPcuatro doNotPrint">
+            <button [disabled]="formSanitasBig.invalid" (click)="linka()" class="button tipoUno pulse-shrink">
+                <p class="bigTitle">INICIAR SOLICITUD</p>
+            </button>
+            <button [disabled]="formSanitasBig.invalid" (click)="onPrint()" class="button tipoUno pulse-shrink print">
+                    <p class="bigTitle">IMPRIMIR</p>
+            </button>
+        </div>
+
+    </div>
+    <ng-content></ng-content>
+</form>

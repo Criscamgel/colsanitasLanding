@@ -122,10 +122,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "colsanitasLanding",
-  "cli": {
-    "analytics": false
-  }
+    }},
+  "defaultProject": "colsanitasLanding"
 }
