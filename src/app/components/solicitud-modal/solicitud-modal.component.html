@@ -1,0 +1,112 @@
+<form [formGroup]="form">
+    <div class="dialog-label">
+        <h2>Datos de identificación</h2>
+        <mat-form-field class="dialog-input" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" type="text">
+            <mat-hint *ngIf="form.get('nombre').errors?.required && form.get('nombre').touched" class="has-error">
+                El nombre es necesario
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+            <mat-label>Tipo de identificación</mat-label>
+            <mat-select formControlName="tipoIdetificacion">
+                <mat-option *ngFor="let tipo of tipos" value="tipo.id">{{tipo.tipo}}</mat-option>
+            </mat-select>
+            <mat-hint *ngIf="form.get('tipoIdetificacion').errors?.required && form.get('tipoIdetificacion').touched" class="has-error">
+                El tipo de identificación es necesario
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+            <mat-label>Numero de identificación</mat-label>
+            <input matInput formControlName="numeroIdentificacion" type="tel">
+            <mat-hint *ngIf="form.get('numeroIdentificacion').errors?.required && form.get('numeroIdentificacion').touched" class="has-error">
+                El numero de identificación es necesario
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email">
+            <mat-hint *ngIf="form.get('email').errors?.required && form.get('email').touched" class="has-error">
+                El correo electronico es necesario
+            </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-input" appearance="outline">
+            <mat-label>Teléfono celular</mat-label>
+            <input matInput formControlName="celular" type="tel">
+            <mat-hint *ngIf="form.get('celular').errors?.required && form.get('celular').touched" class="has-error">
+                El numero de celular es necesario
+            </mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="dialog-label" formGroupName="fechaNacimiento">
+        <h2>Fecha de nacimiento</h2>
+        <mat-hint *ngIf="(form.get('fechaNacimiento.dia').errors?.required && form.get('fechaNacimiento.dia').touched)
+                         ||(form.get('fechaNacimiento.mes').errors?.required && form.get('fechaNacimiento.mes').touched)
+                         ||(form.get('fechaNacimiento.year').errors?.required && form.get('fechaNacimiento.year').touched)" class="has-error">
+            Seleccioné su fecha de nacimiento
+        </mat-hint>
+        <mat-form-field class="dialog-select dia" appearance="outline">
+            <mat-label>Dia</mat-label>
+            <mat-select formControlName="dia">
+                <mat-option value="1">01</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-select mes" appearance="outline">
+            <mat-label>Mes</mat-label>
+            <mat-select formControlName="mes">
+                <mat-option value="1">Enero</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="dialog-select year" appearance="outline">
+            <mat-label>Año</mat-label>
+            <mat-select formControlName="year">
+                <mat-option value="2020">2020</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <mat-form-field class="dialog-input" appearance="outline">
+        <mat-label>Actividad econónmica</mat-label>
+        <mat-select formControlName="actividadEco">
+            <mat-option value="01">Empleado</mat-option>
+        </mat-select>
+        <mat-hint *ngIf="form.get('actividadEco').errors?.required && form.get('actividadEco').touched" class="has-error">
+            La actividad economica es necesaria
+        </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="dialog-input" appearance="outline">
+        <mat-label>Ingresos</mat-label>
+        <input matInput formControlName="ingresos" type="tel">
+        <mat-hint *ngIf="form.get('ingresos').errors?.required && form.get('ingresos').touched" class="has-error">
+            Los ingresos son necesarios
+        </mat-hint>
+    </mat-form-field>
+    <div class="dialog-label">
+        <h2>Resumen</h2>
+        <app-panel-expansion>
+            <div info1 class="box box1">
+                <div class="box-desc">Monto a solicitar</div>
+                <div class="box-info">{{calculoCuota.valorCuotaConSeguro | currency}}</div>
+                <div class="box-desc">plazo en meses</div>
+                <div class="box-info">{{calculoCuota.numeroCuotas}}</div>
+                <div class="box-desc">cuota mensual</div>
+                <div class="box-info">{{calculoCuota.montoSolicitado | currency}}</div>
+            </div>
+
+            <div infoExpand class="box box2 animated fadeInDown fast">
+                <div>info 1</div>
+                <div>info 2</div>
+                <div>info 3</div>
+                <div>info 4</div>
+            </div>
+        </app-panel-expansion>
+    </div>
+</form>

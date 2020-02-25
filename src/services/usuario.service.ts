@@ -14,7 +14,6 @@ export class UsuarioService {
 
     public consultarAliado(): Observable<Aliado> {
       const params = new HttpParams().set('nombreUsuario', this.authService.getUserName());
-      console.log(params);
       return this.http.get<Aliado>(`${environment.backBdUrl}/consultarAliado`, {params});
     }
 }

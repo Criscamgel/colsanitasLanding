@@ -1,6 +1,6 @@
 @import 'variables';
 @import 'mixins';
-
+@import 'material-icons';
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,11 +12,15 @@
     outline: none;
 }
 
+body {
+    overflow-x: hidden;
+}
+
+
 /* Slider Input */
 
 .slidecontainer {
     width: 100%;
-
     .slider {
         -webkit-appearance: none;
         width: 100%;
@@ -29,15 +33,12 @@
         transition: opacity .2s;
         border-radius: 5px;
         margin-bottom: 20px;
-
         &:hover {
             opacity: 1;
         }
-
         &:focus {
             opacity: 1;
         }
-
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -47,14 +48,12 @@
             cursor: pointer;
             border-radius: 50px;
         }
-
         &::-webkit-range-thumb {
             width: 25px;
             height: 25px;
             background: $white;
             cursor: pointer;
         }
-
         &::-moz-range-thumb {
             width: 25px;
             height: 25px;
@@ -64,15 +63,16 @@
     }
 }
 
+
 /* Generales */
 
 .title {
     font-family: monserratBold;
     font-size: 13px;
     margin-bottom: 15px;
-    @include tablet(){
+    @include tablet() {
         margin-bottom: 0px;
-        font-size: 15px;  
+        font-size: 15px;
     }
     color: $vBlue;
 }
@@ -93,6 +93,7 @@ button:disabled,
 button[disabled] {
     opacity: 0.5;
 }
+
 
 /* Tipos de botones */
 
@@ -115,7 +116,7 @@ button[disabled] {
     color: $grayParrf;
     justify-self: initial;
     align-self: center;
-    @include tablet(){
+    @include tablet() {
         font-size: 12px;
     }
 }
@@ -130,32 +131,28 @@ button[disabled] {
     margin: 18px 0px 15px;
 }
 
-.symbol{
+.symbol {
     justify-self: center;
     align-self: center;
-    margin: 0 5%; 
+    margin: 0 5%;
     .inputText {
-        border-radius: 5px;       
+        border-radius: 5px;
         padding: 8px 5px 8px 5px;
         border: 1px solid #BABABA;
         display: inline-block;
         padding-left: 22px;
-        width: 90%;   
-    
-        @include deskopt(){
+        width: 90%;
+        @include deskopt() {
             width: 85%;
         }
     }
 }
-
-
 
 .symbol {
     position: relative;
     display: inline;
     font-weight: 800;
     color: $cifraGray;
-
     &:before {
         content: '$';
         position: absolute;
@@ -173,7 +170,7 @@ hr {
 .mes {
     font-size: 7px;
     color: $deg-dos;
-    @include tablet(){
+    @include tablet() {
         font-weight: 600;
         font-size: 12px;
     }
@@ -204,20 +201,20 @@ hr {
     background-color: $white;
 }
 
+
 /* Fin Generales */
 
 .pPal {
     display: grid;
     max-width: 1440px;
     margin: 0 auto;
-    @include tablet(){
+    @include tablet() {
         grid-auto-rows: auto;
         background: url(../assets/fondoAzul.png);
         background-repeat: no-repeat;
         background-position: center top;
-        background-size: auto;       
+        background-size: auto;
     }
-
 }
 
 .numBer {
@@ -225,10 +222,10 @@ hr {
     font-size: 20px;
     font-family: monserratBold;
     color: #747473;
-    @include tablet(){
+    @include tablet() {
         font-size: 25px;
     }
-    @include laptop(){
+    @include laptop() {
         font-size: 30px;
     }
 }
@@ -238,64 +235,53 @@ hr {
     display: grid;
     grid-template-columns: repeat(2, auto);
     height: 80px;
-
     @include tablet() {
         display: none;
         grid-template-columns: repeat(4, 1fr);
     }
-
     .logoSanitas {
         grid-column: 1;
         align-self: center;
         justify-self: center;
         width: 85%;
     }
-
     .logoSantander {
         grid-column: 2;
         align-self: center;
         justify-self: center;
         width: 70%;
-
         @include tablet() {
             justify-self: initial;
         }
     }
 }
 
-
 .partUno {
     display: grid;
     grid-auto-rows: auto;
     margin: 30px 20px 0px 20px;
     grid-gap: 15px;
-
     @include tablet() {
         display: none;
     }
-
     .bigTitle {
         align-self: center;
         justify-self: center;
         font-family: monserratBold;
         font-size: 25px;
     }
-
     .textParrafo {
         font-size: 14px;
         line-height: 22px;
     }
-
 }
 
 .contMinMax {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     .contMin {
         grid-column: 1;
     }
-
     .contMax {
         grid-column: 2;
         text-align: right;
@@ -310,30 +296,25 @@ hr {
     padding: 1%;
     border-radius: 3px;
     margin-top: 10px;
-
     .grayParrf {
         grid-row: 1;
     }
-
     .cifraBlack {
         grid-row: 1;
         justify-self: initial;
         align-self: center;
     }
-
     .tooltip {
         grid-row: 1;
         align-self: center;
         justify-self: end;
-
         i {
             font-size: 12px;
             color: $cifraGray;
         }
     }
-
-
 }
+
 
 /* Radio Button */
 
@@ -341,7 +322,6 @@ hr {
     display: grid;
     grid-template-columns: auto;
     grid-template-columns: auto;
-
     input {
         opacity: 0;
         grid-column: 1;
@@ -352,25 +332,22 @@ hr {
         width: 100%;
         height: 100%;
     }
-
     div {
         grid-column: 1;
         grid-row: 1;
         display: grid;
         grid-auto-rows: auto;
-
         .number {
             grid-row: 1;
             align-self: center;
             justify-self: center;
         }
-
         .mes {
             grid-row: 2;
             font-size: 10px;
-            @include tablet(){
+            @include tablet() {
                 margin-top: -8px;
-                margin-bottom: 5px;                
+                margin-bottom: 5px;
             }
             align-self: center;
             justify-self: center;
@@ -381,53 +358,45 @@ hr {
 .contSoli {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-
     .grayParrf {
         align-self: center;
     }
-
-    .vlrDtoCifra{
+    .vlrDtoCifra {
         grid-template-rows: auto;
         text-align: center;
         align-self: center;
-        justify-self: center;       
-
-        .grayParrfDto{
+        justify-self: center;
+        .grayParrfDto {
             line-height: 1;
             font-size: 10px;
             grid-column: 3;
             font-family: monserratBold;
             color: #BABABA;
-            @include tablet(){
+            @include tablet() {
                 font-size: 10px;
             }
-            @include deskopt(){
+            @include deskopt() {
                 font-size: 11px;
             }
         }
-        .vlrDto{
+        .vlrDto {
             font-size: 10px;
-            @include deskopt(){
+            @include deskopt() {
                 font-size: 12px;
             }
         }
     }
 }
 
-
-
 .partDos {
     display: grid;
     grid-template-rows: repeat(3, auto);
     margin: 30px 0px 0px 0px;
-
     @include tablet() {
         display: none;
     }
-
     form {
         margin: 3%;
-
         .tarjeta {
             border-radius: 15px;
             box-shadow: 0px 1px 9px 0px #cacaca;
@@ -435,54 +404,44 @@ hr {
             margin-bottom: 10px;
         }
     }
-
     .tarjeta.cntUno {
         grid-row: 1;
         display: grid;
         grid-auto-rows: auto;
-
         .calcPuno {
             .title {
                 color: $vBlue;
             }
         }
-
-
         .calcPdos {
             .title {
                 color: $vBlue;
             }
-
             .contPeriodo {
                 display: grid;
                 grid-auto-columns: auto;
                 grid-template-rows: auto;
                 margin: 10px 0px 10px 0px;
                 grid-gap: 5px;
-
                 span {
                     grid-row: 1;
                 }
             }
         }
-
         .calcPcuatro {
             display: grid;
             grid-auto-rows: auto;
             grid-gap: 10px;
         }
     }
-
     .contGrafica {
         align-self: center;
         justify-self: center;
     }
-
     .tarjeta.cntDos {
         grid-template-columns: 1fr;
         grid-template-rows: 0.2fr 0.2fr;
         display: grid;
-
         p.title {
             font-family: monserratBold;
             font-size: 12px;
@@ -490,7 +449,6 @@ hr {
             grid-column: 1;
             padding: 5px 0px 15px 5px;
         }
-
         p.listaItem {
             font-size: 12px;
             line-height: 23px;
@@ -498,10 +456,9 @@ hr {
             grid-column: 1;
         }
     }
-
     .tarjeta.cntTres {
         line-height: 23px;
-        .title{
+        .title {
             margin-bottom: 0px;
         }
     }
@@ -509,8 +466,8 @@ hr {
 
 
 /* Pulse Shrink */
-@-webkit-keyframes pulse-shrink {
 
+@-webkit-keyframes pulse-shrink {
     to {
         -webkit-transform: scale(0.9);
         transform: scale(0.9);
@@ -518,19 +475,16 @@ hr {
 }
 
 @keyframes pulse-shrink {
-
     0% {
         -webkit-transform: scale(0.9);
         -ms-transform: scale(0.9);
         transform: scale(0.9);
     }
-
     50% {
         -webkit-transform: scale(0.7);
         -ms-transform: scale(0.7);
         transform: scale(0.7);
     }
-
     100% {
         -webkit-transform: scale(1);
         -ms-transform: scale(1);
@@ -556,11 +510,15 @@ hr {
     animation-direction: alternate;
 }
 
+
 /* fin Shrink */
+
 
 /* Radio Buttons */
 
+
 /* style your lables/button */
+
 input[type=radio]+div {
     /* keep pointer so that you get the little hand showing when you are on a button */
     cursor: pointer;
@@ -579,6 +537,7 @@ input[type=radio]:checked+div {
     background-color: $white;
     border: none;
 }
+
 
 /* End Radio Buttons */
 
@@ -627,17 +586,16 @@ input[type=radio]:checked+div {
     transition: opacity 1s;
 }
 
-
 .tooltip:hover:after {
     visibility: visible;
     opacity: 1;
 }
 
-
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
+
 
 /* Fin tooltip */
 
@@ -645,7 +603,6 @@ input[type=radio]:checked+div {
     display: grid;
     grid-template-rows: 60px;
     background-color: #0E486F;
-
     .smallParrafo {
         color: white;
         font-size: 10px;
@@ -654,6 +611,7 @@ input[type=radio]:checked+div {
         justify-self: center;
     }
 }
+
 
 /* @include sSmall(){
             height: 48rem;
@@ -683,24 +641,20 @@ input[type=radio]:checked+div {
     width: 100%;
     top: 0;
     animation: slide 2s linear 1;
-
     .mercadoLogo {
         align-self: center;
         justify-self: center;
     }
-
     .santander {
         grid-row: 3;
         align-self: initial;
         justify-self: center;
     }
-
     .poBy {
         grid-row: 2;
         align-self: end;
         justify-self: center;
     }
-
 }
 
 
@@ -711,29 +665,22 @@ input[type=radio]:checked+div {
         z-index: 3;
         opacity: 0;
     }
-
     20% {
         z-index: 3;
         opacity: 0;
     }
-
     40% {
         z-index: 3;
         opacity: 1;
-
     }
-
     60% {
         z-index: 3;
         opacity: 1;
-
     }
-
     80% {
         z-index: 3;
         opacity: 1;
     }
-
     100% {
         z-index: 0;
         opacity: 0;
@@ -758,56 +705,46 @@ input[type=radio]:checked+div {
     0% {
         opacity: 0;
     }
-
     25% {
         opacity: 0;
     }
-
     50% {
         opacity: 0;
     }
-
     75% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
-
-
 }
 
 .fadeIn {
     animation-name: fadeIn;
 }
 
+
 /* Big resolutions */
 
 .partUnoBig {
     display: none;
-
     @include tablet() {
         display: block;
         padding: 0px 7% 0px 7%;
-    
     }
-
-    @include laptop(){
+    @include laptop() {
         padding: 0px 10% 0px 10%;
     }
-    @include laptopL(){
+    @include laptopL() {
         padding: 0px 15% 0px 15%;
     }
-    @include bigScreen(){
+    @include bigScreen() {
         padding: 0px 20% 0px 20%;
     }
-
     .encabezadoBig {
         display: grid;
-        grid-template-columns: 1fr 1fr 2fr 1fr;
+        grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
         margin-top: 30px;
-
         .logoSanitasBig {
             grid-column: 1;
             grid-row: 1;
@@ -815,7 +752,6 @@ input[type=radio]:checked+div {
             align-self: initial;
             width: 100%;
         }
-
         .logoSantanderBig {
             grid-column: 2;
             grid-row: 1;
@@ -823,51 +759,57 @@ input[type=radio]:checked+div {
             align-self: initial;
             width: 100%;
         }
-
-        a{
-            grid-column: 4;  
-            button {            
+        .logout {
+            grid-column: 4;
+            grid-row: 1;
+            justify-self: initial;
+            align-self: initial;
+            width: 100%;
+            color: $white;
+            padding-top: 10px;
+            text-decoration: none;
+        }
+        a {
+            grid-column: 5;
+            button {
                 border-radius: 15px;
                 width: 55%;
                 align-self: center;
-                justify-self: end;            
+                justify-self: end;
                 background-color: $white;
                 height: 35px;
                 padding: 0px;
                 border: none;
-                .itemButton{
+                .itemButton {
                     display: grid;
-                    @include tablet(){
-                      grid-template-columns: 40px 1fr;                    
+                    @include tablet() {
+                        grid-template-columns: 40px 1fr;
                     }
-                    .bigTitle{
+                    .bigTitle {
                         font-size: 15px;
                         align-self: center;
-                        justify-self: initial;  
+                        justify-self: initial;
                     }
-                    .fa-question-circle{
-                    align-self: center;
-                    justify-self: center;   
+                    .fa-question-circle {
+                        align-self: center;
+                        justify-self: center;
                     }
-                }            
-                @include tablet(){
+                }
+                @include tablet() {
                     width: 90%;
                 }
-    
-                @include laptop(){
+                @include laptop() {
                     width: 80%;
-                    .bigTitle{
-                    font-size: 15px;  
+                    .bigTitle {
+                        font-size: 15px;
                     }
                 }
-    
                 i {
                     color: $deg-dos;
                     font-size: 20px;
                 }
             }
         }
-
     }
 }
 
@@ -876,52 +818,49 @@ input[type=radio]:checked+div {
     grid-template-columns: 1fr 0.9fr;
     grid-template-rows: repeat(4, auto);
     margin-top: 50px;
-
     .textCntBig {
         grid-column: 1;
         padding: 3% 10% 0px 0px;
         display: grid;
-        @include tablet{
+        @include tablet {
             grid-template-rows: 1fr 0.9fr;
         }
-        @include laptop{
+        @include laptop {
             grid-template-rows: 1fr 1.5fr;
         }
-        @include deskopt{
+        @include deskopt {
             grid-template-rows: 1fr 1.8fr;
         }
-        @include laptopL{
+        @include laptopL {
             grid-template-rows: 1fr 1.5fr;
         }
-        @include bigScreen{
+        @include bigScreen {
             grid-template-rows: 1fr 1fr;
         }
         grid-gap: 30px;
         color: $white;
         margin-top: 40px;
     }
-
-    .textCntDosBig{        
+    .textCntDosBig {
         display: grid;
         grid-auto-rows: auto;
         grid-gap: 35px;
         line-height: 23px;
         padding: 80px 30px 0px 0px;
-        @include tablet(){
+        @include tablet() {
             grid-gap: 7px;
             line-height: 20px;
         }
-        @include laptop(){
+        @include laptop() {
             grid-gap: 15px;
         }
-        @include laptopL(){
+        @include laptopL() {
             line-height: 20px;
         }
-        @include bigScreen(){
+        @include bigScreen() {
             line-height: 30px;
         }
     }
-
     .calcBig {
         grid-column: 2;
         grid-row: 1/4;
@@ -934,7 +873,6 @@ input[type=radio]:checked+div {
     grid-template-rows: auto;
     margin: 10px 0px 10px 0px;
     grid-gap: 5px;
-
     span {
         grid-row: 1;
     }
@@ -945,40 +883,38 @@ input[type=radio]:checked+div {
     border-radius: 15px;
     width: 100%;
     align-self: center;
-    justify-self: end;            
+    justify-self: end;
     background-color: $white;
     height: 50px;
     padding: 0px;
     border: none;
     background-color: $grayTenue;
-    .itemButton{
+    .itemButton {
         display: grid;
-        grid-template-columns: 40px 1fr;                    
-        .bigTitle{
+        grid-template-columns: 40px 1fr;
+        .bigTitle {
             font-size: 15px;
             grid-column: 2;
             align-self: center;
-            justify-self: initial;  
+            justify-self: initial;
         }
-        i{
+        i {
             font-size: 20px;
             grid-column: 1;
             align-self: center;
             justify-self: center;
             margin: 0 auto;
         }
-    }            
-    @include tablet(){
+    }
+    @include tablet() {
         width: 90%;
     }
-
-    @include laptop(){
+    @include laptop() {
         width: 80%;
-        .bigTitle{
-        font-size: 15px;  
+        .bigTitle {
+            font-size: 15px;
         }
     }
-
     i {
         color: $deg-dos;
         margin: 0px 20px 0px 0px;
@@ -988,17 +924,16 @@ input[type=radio]:checked+div {
 
 .texInicial {
     .bigTitle {
-        @include tablet(){
-            
+        @include tablet() {
             font-size: 27px;
             line-height: 35px;
         }
     }
-    .textParrafo{
-        @include tablet(){
+    .textParrafo {
+        @include tablet() {
             line-height: 20px;
             margin-bottom: 32px;
-        } 
+        }
     }
 }
 
@@ -1011,234 +946,221 @@ input[type=radio]:checked+div {
 
 .contDosBig {
     display: none;
-
     @include tablet {
         display: grid;
         grid-template-columns: repeat(3, auto);
         padding: 5%;
-
         .item {
             justify-self: center;
             align-self: center;
             text-align: center;
-
             embed.reloj {
                 width: 25%;
                 margin-bottom: 20px;
             }
-
             embed.personal {
                 width: 30%;
                 margin-bottom: 20px;
             }
-
             embed.martillo {
                 width: 30%;
                 margin-bottom: 20px;
             }
-
             .title {
                 font-size: 15px;
                 margin-bottom: 20px;
             }
-
             .textContent {
                 font-size: 12px;
                 line-height: 18px;
             }
         }
     }
-
 }
 
-.cntClienteDos{
-    .title{
-        margin-bottom: 0px;  
-    } 
+.cntClienteDos {
+    .title {
+        margin-bottom: 0px;
+    }
 }
+
 
 /* Ayuda Ventas */
 
-.manSolicitud{
+.manSolicitud {
     padding: 0px 20px 0px 20px;
-    .pasos{
+    .pasos {
         display: grid;
         grid-auto-rows: auto;
         grid-gap: 50px;
-    .paso{
-        .parrafo{
-            margin: 0px 0px 15px 0px;
-            font-size: 13px;
-        }
-        .imagePaso{ 
-            img {
-            width: 100%;
+        .paso {
+            .parrafo {
+                margin: 0px 0px 15px 0px;
+                font-size: 13px;
+            }
+            .imagePaso {
+                img {
+                    width: 100%;
+                }
             }
         }
     }
 }
-    
-}
 
-.imageAventas{
-    img{
+.imageAventas {
+    img {
         width: 100%;
     }
-    
 }
 
-.partDosBigAyuda{
-    @include sSmall(){
+.partDosBigAyuda {
+    @include sSmall() {
         display: none;
     }
-    @include tablet(){
+    @include tablet() {
         display: block;
         margin-top: 130px;
         padding: 0px 10% 0px 10%;
     }
-    @include deskopt(){
+    @include deskopt() {
         padding: 0px 15% 0px 15%;
     }
     padding: 0px 7% 0px 7%;
-    .procesos{
+    .procesos {
         margin-bottom: 50px;
-        .bigTitle{
+        .bigTitle {
             font-size: 25px;
         }
-        .title{
+        .title {
             font-size: 12px;
         }
-        .textParrafo{
+        .textParrafo {
             font-size: 12px;
             line-height: 20px;
         }
     }
-    .bigTitle{
+    .bigTitle {
         font-size: 25px;
     }
-    .textCntDosBigAyuda{
+    .textCntDosBigAyuda {
         display: grid;
-        
-        @include sSmall(){
+        @include sSmall() {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(2,auto);
+            grid-template-rows: repeat(2, auto);
             grid-gap: 12px;
-            .cntClienteDos{
+            .cntClienteDos {
                 grid-column: 1;
                 grid-row: 1;
             }
-            .cntClienteUno{
+            .cntClienteUno {
                 grid-column: 1;
                 grid-row: 2 !important;
-            } 
-           }
-
-        @include tablet(){
-            grid-template-columns: repeat(2,auto);
+            }
+        }
+        @include tablet() {
+            grid-template-columns: repeat(2, auto);
             grid-template-rows: 1fr;
-            .cntClienteUno{
+            .cntClienteUno {
                 grid-column: 2;
                 grid-row: 1 !important;
             }
         }
         grid-gap: 0px 50px;
-        
-        
-        .cntClienteUno{
+        .cntClienteUno {
             grid-row: 1;
-            
-            .listaItem{
+            .listaItem {
                 font-size: 10px;
             }
         }
-        .cntClienteDos{
+        .cntClienteDos {
             grid-row: 1;
-            .title{
-                font-size: 11px; 
+            .title {
+                font-size: 11px;
             }
-            .listaItem{
+            .listaItem {
                 font-size: 10px;
             }
         }
     }
 }
-.manSolicitud{
-    @include tablet(){
-    padding: 0px 10% 0px 10%;
+
+.manSolicitud {
+    @include tablet() {
+        padding: 0px 10% 0px 10%;
     }
-    @include deskopt(){
+    @include deskopt() {
         padding: 0px 15% 0px 15%;
     }
 }
 
-.titleManSol{
-    @include tablet(){
+.titleManSol {
+    @include tablet() {
         margin: 50px 0px 50px 0px;
     }
 }
 
-.pasos{
-    @include tablet(){
+.pasos {
+    @include tablet() {
         display: grid;
-        grid-template-rows: repeat(8,auto);
+        grid-template-rows: repeat(8, auto);
     }
-    .paso{
-        @include tablet(){
+    .paso {
+        @include tablet() {
             display: grid;
-            grid-template-columns: repeat(2,50%);
+            grid-template-columns: repeat(2, 50%);
             grid-gap: 50px;
-            img{
+            img {
                 max-width: 70%;
             }
         }
         .textParrafo:first-letter {
-            font-weight:600;            
+            font-weight: 600;
         }
-        .textParrafo{
+        .textParrafo {
             text-align: right;
             padding-top: 30px;
-            @include sSmall(){
+            @include sSmall() {
                 text-align: left;
             }
         }
     }
 }
 
-.partDosIcons{
-    @include sSmall(){
-        display:none;
+.partDosIcons {
+    @include sSmall() {
+        display: none;
     }
-    @include tablet(){
-        display:block;
+    @include tablet() {
+        display: block;
     }
     background-color: $grayTenue;
     margin-top: 60px;
-    h1{
+    h1 {
         padding: 50px 0px 0px 15%;
-    }    
+    }
 }
 
-.contacto{
+.contacto {
     padding: 50px 15% 50px 15%;
-    p{
+    p {
         font-size: 15px;
     }
 }
 
-.pasoFinal{
+.pasoFinal {
     font-size: 12px;
 }
 
-h1{
+h1 {
     font-family: monserratBold;
-    @include sSmall(){
+    @include sSmall() {
         font-size: 25px;
         margin: 20px 0px 10px 0px;
     }
 }
 
-.itemButton{
-    .bigTitleHelp{
+.itemButton {
+    .bigTitleHelp {
         font-size: 13px;
         grid-column: 1/3;
         justify-self: center;
@@ -1247,20 +1169,20 @@ h1{
     }
 }
 
-.calcPtres{
-    .title{
+.calcPtres {
+    .title {
         margin-bottom: 20px;
     }
 }
 
-.cntButtonVolv{
-    padding: 10px;     
-    @include tablet(){
+.cntButtonVolv {
+    padding: 10px;
+    @include tablet() {
         display: none;
     }
 }
 
-.titleTooltip{
+.titleTooltip {
     font-size: 11px;
 }
 
@@ -1271,7 +1193,8 @@ h1{
     height: 40%;
     width: 40%;
 }
-.dtoM{
+
+.dtoM {
     display: block;
     position: absolute;
     z-index: 1;
@@ -1279,97 +1202,113 @@ h1{
     width: 90%;
 }
 
-
-
-.contCheckSanitas{
+.contCheckSanitas {
     margin: 7% 0;
-    span{
+    span {
         font-size: 12px;
-        input.checkDto{
+        input.checkDto {
             transform: scale(1.3);
             margin-right: 2%;
-        }        
+        }
     }
 }
 
-.print{
+.print {
     margin-top: 5%;
 }
 
-div.tooltiptext{
+div.tooltiptext {
     display: none;
 }
 
-.ceroTasaTitle{    
+.ceroTasaTitle {
     font-size: 20px;
 }
 
-.ceroTasa{
+.ceroTasa {
     font-size: 26px;
-    font-family: monserratBold;       
+    font-family: monserratBold;
 }
 
-.ceroTasaParrafo{
+.ceroTasaParrafo {
     font-size: 11px;
 }
 
-.vlrDtoCifra{
+.vlrDtoCifra {
     text-align: center;
     margin: 8%;
-    .grayParrfDto{
+    .grayParrfDto {
         font-size: 10px;
         font-weight: 700;
-    }        
-    .vlrDto{
+    }
+    .vlrDto {
         font-size: 15px;
     }
 }
 
+
 /* Print */
 
-@media print{
-    .doNotPrint{
-        display:none !important;
+@media print {
+    .doNotPrint {
+        display: none !important;
     }
-
-    .printOk{
+    .printOk {
         display: block;
-        .tooltipPrint{
+        .tooltipPrint {
             text-align: center;
             font-size: 12px;
         }
     }
-
     .partUnoBig {
         display: inline-block;
         text-align: center;
-    }     
-        .encabezadoBig {
+    }
+    .encabezadoBig {
         display: inline-block;
         background-color: $deg-uno;
         -webkit-print-color-adjust: exact;
-        img#logoSanitasBig, img#logoSantanderBig {
+        img#logoSanitasBig,
+        img#logoSantanderBig {
             page-break-after: avoid;
             page-break-inside: avoid;
             padding: 10px;
             display: inline-block;
         }
     }
-
-    div.tooltiptext{
+    div.tooltiptext {
         color: black;
         display: block !important;
     }
-
-    input[type=radio]:checked + div {
+    input[type=radio]:checked+div {
         border: 5px solid red;
     }
-
-    .vlrDtoCifra{        
-        .vlrDto{
+    .vlrDtoCifra {
+        .vlrDto {
             font-size: 15px;
         }
     }
-
 }
 
+.btn-request {
+    background-color: #EC0000;
+    color: #ffffff;
+    border: none;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 1;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    font-size: 14px;
+}
+
+.btn-back {
+    color: #EC0000;
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 1;
+    border: 1px solid #EC0000;
+    margin-top: 2%;
+    font-size: 14px;
+}

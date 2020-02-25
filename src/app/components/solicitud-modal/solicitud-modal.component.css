@@ -1,0 +1,98 @@
+/* forms iniciar solicitud*/
+
+.dialog-title {
+    text-align: center;
+    font-family: monserratBold;
+    font-size: 26px;
+}
+
+.dialog-form {
+    margin: 0px 10%;
+    max-height: 90%;
+}
+
+.dialog-label {
+    width: 100%;
+    font-family: monserratBold;
+}
+
+.dialog-label h2 {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.dialog-input {
+    width: 100%;
+    font-family: monserratBold;
+    font-size: 14px;
+}
+
+.dialog-select {
+    width: 33%;
+    font-family: monserratBold;
+    font-size: 14px;
+}
+
+.dia {
+    padding-right: 2%;
+}
+
+.mes {
+    padding: 0 2%;
+}
+
+.year {
+    padding-left: 2%;
+}
+
+
+/*Heredables*/
+
+::ng-deep .mat-form-field-flex>.mat-form-field-infix {
+    padding: 0.4em 0px !important;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+    top: -1.5em;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 15px;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.has-error {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: red;
+    font-size: 12px;
+}

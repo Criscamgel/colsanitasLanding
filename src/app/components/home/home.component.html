@@ -14,6 +14,7 @@
         <div class="encabezadoBig" [hidden]="mobile">
             <img src="../assets/logoSanitas.png" alt="" id="logoSanitasBig" class="logoSanitasBig">
             <img src="../assets/logoSantander.png" alt="" id="logoSantanderBig" class="logoSantanderBig">
+            <a href="#" class="logout">Cerrar sesión</a>
             <a [routerLink]="['/ayuda']">
                 <button class="button doNotPrint">
                         <div class="itemButton">
@@ -54,13 +55,21 @@
             </div>
 
             <div class="calcBig">
-                <app-calculadora>
+                <app-calculadora [showErrorRequest]="showErrorRequest" (enableStarRequest)="enableStartRequest($event)">
+
+                    <button (click)="openSolicitud()" class="button tipoUno pulse-shrink">
+                        <p class="bigTitle">INICIAR SOLICITUD</p>
+                    </button>
+                    <button (click)="onPrint()" class="button tipoUno pulse-shrink print">
+                            <p class="bigTitle">IMPRIMIR</p>
+                    </button>
+
                     <div class="contGrafica doNotPrint">
                         <div class="dto" (click)="calculadora.dtoChange()"></div>
                         <img src="../assets/grafica.png" alt="" class="grafica">
                     </div>
                 </app-calculadora>
-                <a [routerLink]="['/ayuda']">
+                <a [routerLink]="['/ayuda']" [hidden]="!mobile">
                     <button class="button doNotPrint">
                             <div class="itemButton">
                                 <i class="fa fa-question-circle"></i>
@@ -111,4 +120,10 @@
     <div class="pie doNotPrint">
         <p class="smallParrafo">Copyright © 2019, Banco Santander</p>
     </div>
+    <app-modal [hidden]="!startRequest">
+        <h1 header>Iniciar Solicitud</h1>
+        <app-solicitud-modal></app-solicitud-modal>
+        <button class="btn-request" start (click)="cancelRequest()">SOLICITAR</button>
+        <button class="btn-back" back (click)="cancelRequest()">VOLVER</button>
+    </app-modal>
 </div>

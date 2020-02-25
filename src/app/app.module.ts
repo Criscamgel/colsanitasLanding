@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,14 +16,22 @@ import { initializer } from 'src/utils/app-init';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
 import { HomeComponent } from './components/home/home.component';
 import { CalculadoraComponent } from './components/calculadora/calculadora.component';
+import { MaterialModule } from './material/material.module';
+import { SolicitudModalComponent } from './components/solicitud-modal/solicitud-modal.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { PanelExpansionComponent } from './components/panel-expansion/panel-expansion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AyudaComponent,
     HomeComponent,
-    CalculadoraComponent
+    CalculadoraComponent,
+    SolicitudModalComponent,
+    ModalComponent,
+    PanelExpansionComponent
   ],
+  entryComponents: [SolicitudModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +39,9 @@ import { CalculadoraComponent } from './components/calculadora/calculadora.compo
     ReactiveFormsModule,
     HttpClientModule,
     KeycloakAngularModule,
-    RouterModule.forRoot( ROUTES, { useHash: true } )
+    RouterModule.forRoot( ROUTES, { useHash: true } ),
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

@@ -5,6 +5,8 @@ export class ResponseCalculoCuotas {
     costoMensualSeguro: number;
     montoTotalFinanciamiento: number;
     valorConDescuento: number;
+    numeroCuotas: number;
+    montoSolicitado: number;
 
     constructor() {
         this.valorCuotaConSeguro = 0;
@@ -13,5 +15,7 @@ export class ResponseCalculoCuotas {
         this.costoMensualSeguro = 0;
         this.montoTotalFinanciamiento = 0;
         this.valorConDescuento = 0;
+        this.numeroCuotas = 0;
+        this.montoSolicitado = 0;
     }
 }

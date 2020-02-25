@@ -1,0 +1,46 @@
+.panel {
+    display: grid;
+    grid-column: 1fr;
+    margin-top: 20px;
+    font-family: monserratBold;
+}
+
+::ng-deep .box {
+    text-align: center !important;
+    opacity: 1 !important;
+    font-size: 13px !important;
+}
+
+::ng-deep .box1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #00000061;
+    border-left: 1px solid #00000061;
+    border-right: 1px solid #00000061;
+    border-radius: 5px 5px 0px 0px;
+}
+
+::ng-deep .box-desc {
+    text-align: left;
+    padding-left: 16px;
+}
+
+::ng-deep .box-info {
+    text-align: right;
+    padding-right: 16px;
+}
+
+::ng-deep .box2 {
+    border-left: 1px solid #00000061 !important;
+    border-right: 1px solid #00000061 !important;
+}
+
+.box3 {
+    border: 1px solid #00000061 !important;
+    border-radius: 0px 0px 5px 5px!important;
+    height: 36px !important;
+}
+
+.key_up {
+    transform: translate(-7px, 7px);
+}

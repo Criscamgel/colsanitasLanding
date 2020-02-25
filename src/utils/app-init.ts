@@ -17,10 +17,9 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
           },
           bearerExcludedUrls: ['/assets', '/clients/public']
         });
-        console.log('logueo con exito!');
         resolve();
       } catch (error) {
-        console.log('fallo el inicio de session!');
+        console.error('fallo el inicio de session!');
         reject(error);
       }
     });

@@ -21,7 +21,6 @@ export class CalculoCuotaService {
          aliadoId
       };
       const url = `${environment.backBdUrl}/calculoCuotas`;
-      console.log(request);
       return this.http.post<ResponseCalculoCuotas>(url, request);
     }
 }
