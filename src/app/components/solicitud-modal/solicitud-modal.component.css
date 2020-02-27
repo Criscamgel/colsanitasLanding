@@ -19,18 +19,21 @@
 .dialog-label h2 {
     font-size: 13px;
     margin-bottom: 10px;
+    margin-top: 16px;
 }
 
 .dialog-input {
     width: 100%;
     font-family: monserratBold;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 0;
 }
 
 .dialog-select {
     width: 33%;
     font-family: monserratBold;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 0;
 }
 
 .dia {
@@ -63,31 +66,6 @@
 ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
     transform: translateY(-1.1em) scale(.75);
     width: 133.33333%;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-
-/* Track */
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-
-/* Handle */
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-
-/* Handle on hover */
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }
 
 .has-error {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Constants } from '../../../utils/constants';
 import { ResponseCalculoCuotas } from 'src/models/ResponseCalculoCuotas';
@@ -12,6 +12,8 @@ export class SolicitudModalComponent implements OnInit {
   public form: FormGroup;
   public tipos;
   public calculoCuota: ResponseCalculoCuotas = new ResponseCalculoCuotas();
+
+  @Input() inputCalculoCuota: ResponseCalculoCuotas;
 
   constructor() {
     this.initializerForm();
@@ -41,10 +43,20 @@ export class SolicitudModalComponent implements OnInit {
 
   ngOnInit() {
     this.tipos = Constants.tiposIdentificacion;
+    this.calculoCuota = this.inputCalculoCuota;
   }
 
   public setCalculoCuota( calculoCuota: ResponseCalculoCuotas) {
     this.calculoCuota = calculoCuota;
+  }
+
+  public markFormGroupTouched(formGroup: FormGroup) {
+    (Object as any).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 
 

@@ -22,25 +22,36 @@
 
 ::ng-deep .box-desc {
     text-align: left;
-    padding-left: 16px;
+    padding: 2px 8px;
 }
 
 ::ng-deep .box-info {
     text-align: right;
-    padding-right: 16px;
+    padding: 2px 8px;
+    font-weight: bold;
 }
 
 ::ng-deep .box2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-left: 1px solid #00000061 !important;
     border-right: 1px solid #00000061 !important;
 }
 
 .box3 {
-    border: 1px solid #00000061 !important;
-    border-radius: 0px 0px 5px 5px!important;
-    height: 36px !important;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    border: 1px solid #00000061;
+    border-radius: 0px 0px 5px 5px;
+    align-items: center;
 }
 
 .key_up {
-    transform: translate(-7px, 7px);
+    grid-column: 2;
+    align-items: flex-start;
+}
+
+.text-show-plus {
+    grid-column: 1;
+    text-align: right;
 }

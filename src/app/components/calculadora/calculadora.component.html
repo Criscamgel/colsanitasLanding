@@ -18,7 +18,7 @@
             <div class="contSoli">
                 <p class="grayParrf doNotPrint">Solicitas:</p>
                 <div class="symbol">
-                    <input type="tel" name="numbersolicita" class="inputText" [ngModel]="montoSolicitado | number:'1.0'" (ngModelChange)="valorSolicitado = currencyInputChanged($event)" (keypress)="oldNumbers($event)" #numberSolicita="ngModel" required>
+                    <input type="tel" name="numbersolicita" class="inputText" [ngModel]="montoSolicitado | number:'1.0'" (ngModelChange)="montoSolicitado = currencyInputChanged($event)" (keypress)="oldNumbers($event)" #numberSolicita="ngModel" required>
                 </div>
                 <div class="vlrDtoCifra" *ngIf="epsSanitas && clickDto || epsPrepagada && clickDto">
                     <p class="grayParrfDto">Valor con descuento:</p>

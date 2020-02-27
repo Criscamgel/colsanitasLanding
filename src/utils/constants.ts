@@ -7,4 +7,7 @@ export class Constants {
                                                   {id: 'CE', tipo: 'Cédula de extrangería'}];
     public static readonly MAS = 'MAS';
     public static readonly MENOS = 'MENOS';
+
+    public static readonly STATUS_VALID = 'VALID';
+    public static readonly STATUS_INVALID = 'INVALID';
 }

@@ -20,6 +20,8 @@ import { MaterialModule } from './material/material.module';
 import { SolicitudModalComponent } from './components/solicitud-modal/solicitud-modal.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PanelExpansionComponent } from './components/panel-expansion/panel-expansion.component';
+import { ProcessRequestComponent } from './components/process-request/process-request.component';
+import { BirthdayPipe } from './pipes/birthday.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { PanelExpansionComponent } from './components/panel-expansion/panel-expa
     CalculadoraComponent,
     SolicitudModalComponent,
     ModalComponent,
-    PanelExpansionComponent
+    PanelExpansionComponent,
+    ProcessRequestComponent,
+    BirthdayPipe,
   ],
   entryComponents: [SolicitudModalComponent],
   imports: [

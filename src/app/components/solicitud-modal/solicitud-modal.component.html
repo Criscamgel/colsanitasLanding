@@ -12,7 +12,7 @@
         <mat-form-field class="dialog-input" appearance="outline">
             <mat-label>Tipo de identificación</mat-label>
             <mat-select formControlName="tipoIdetificacion">
-                <mat-option *ngFor="let tipo of tipos" value="tipo.id">{{tipo.tipo}}</mat-option>
+                <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">{{tipo.tipo}}</mat-option>
             </mat-select>
             <mat-hint *ngIf="form.get('tipoIdetificacion').errors?.required && form.get('tipoIdetificacion').touched" class="has-error">
                 El tipo de identificación es necesario
@@ -23,7 +23,7 @@
             <mat-label>Numero de identificación</mat-label>
             <input matInput formControlName="numeroIdentificacion" type="tel">
             <mat-hint *ngIf="form.get('numeroIdentificacion').errors?.required && form.get('numeroIdentificacion').touched" class="has-error">
-                El numero de identificación es necesario
+                Numero de identificación requerido
             </mat-hint>
         </mat-form-field>
 
@@ -40,6 +40,9 @@
             <input matInput formControlName="celular" type="tel">
             <mat-hint *ngIf="form.get('celular').errors?.required && form.get('celular').touched" class="has-error">
                 El numero de celular es necesario
+            </mat-hint>
+            <mat-hint *ngIf="form.get('celular').errors?.minlength" class="has-error">
+                Debe tener minimo 10 numeros
             </mat-hint>
         </mat-form-field>
     </div>
@@ -94,18 +97,24 @@
         <app-panel-expansion>
             <div info1 class="box box1">
                 <div class="box-desc">Monto a solicitar</div>
-                <div class="box-info">{{calculoCuota.valorCuotaConSeguro | currency}}</div>
+                <div class="box-info">${{calculoCuota.montoSolicitado | number:'1.0'}}</div>
                 <div class="box-desc">plazo en meses</div>
                 <div class="box-info">{{calculoCuota.numeroCuotas}}</div>
                 <div class="box-desc">cuota mensual</div>
-                <div class="box-info">{{calculoCuota.montoSolicitado | currency}}</div>
+                <div class="box-info">${{calculoCuota.valorCuotaConSeguro | number:'1.0'}}</div>
             </div>
 
             <div infoExpand class="box box2 animated fadeInDown fast">
-                <div>info 1</div>
-                <div>info 2</div>
-                <div>info 3</div>
-                <div>info 4</div>
+                <div class="box-desc">Valor cuota sin seguro</div>
+                <div class="box-info">${{calculoCuota.valorCuotaSinSeguro | number:'1.0'}}</div>
+                <div class="box-desc">Valor total seguro</div>
+                <div class="box-info">${{calculoCuota.valorTotalSeguro | number:'1.0'}}</div>
+                <div class="box-desc">Costo mensual seguro</div>
+                <div class="box-info">${{calculoCuota.costoMensualSeguro | number:'1.0'}}</div>
+                <div class="box-desc">Monto total financiamiento</div>
+                <div class="box-info">${{calculoCuota.montoTotalFinanciamiento | number:'1.0'}}</div>
+                <div class="box-desc">Valor con descuento</div>
+                <div class="box-info">${{calculoCuota.valorConDescuento | number:'1.0'}}</div>
             </div>
         </app-panel-expansion>
     </div>

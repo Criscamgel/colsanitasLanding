@@ -1,0 +1,52 @@
+<app-modal *ngIf="flagRequest">
+    <img logo src="./assets/logo-santander.png" class="logo-modal">
+    <h1 header class="title-request">Iniciar Solicitud</h1>
+    <app-solicitud-modal [inputCalculoCuota]="calculoCuota"></app-solicitud-modal>
+    <button class=" btn-request " start (click)="startProcessRequest()">SOLICITAR</button>
+    <button class="btn-back " back (click)="cancelRequest() ">VOLVER</button>
+</app-modal>
+
+<app-modal [hidden]="!showvalidate">
+    <h2 header class="title-message">Estamos Validando <br> tu información</h2>
+    <img src="./assets/loading.png" class="img-loading">
+</app-modal>
+
+<app-modal [hidden]="!showFinalMessage">
+    <h2 header class="title-message">¡Tu solicitud fue aprobada!</h2>
+    <p class="info">Ahora termina el proceso firmando documentos</p>
+    <img src="./assets/businessman.svg" class="img-bussines">
+    <button class="btn-request " start (click)="viewSummary()">VER RESUMEN</button>
+    <button class="btn-back " back (click)="cancelRequest() ">VOLVER AL INICIO</button>
+</app-modal>
+
+<app-modal *ngIf="showSummary">
+    <h2 header class="title-message title-summary">Resumen de la solicitud</h2>
+    <div class="info-cal box-summary">
+        <div class="box-desc">Monto a solicitar</div>
+        <div class="box-info">${{calculoCuota.montoSolicitado | number:'1.0'}}</div>
+        <div class="box-desc">plazo en meses</div>
+        <div class="box-info">{{calculoCuota.numeroCuotas}}</div>
+        <div class="box-desc">cuota mensual</div>
+        <div class="box-info">${{calculoCuota.valorCuotaConSeguro | number:'1.0'}}</div>
+    </div>
+
+    <div class="info-form box-summary">
+        <div class="box-desc">Nombre</div>
+        <div class="box-info">{{data.nombre}}</div>
+        <div class="box-desc">Tipo de identificación</div>
+        <div class="box-info">{{data.tipoIdetificacion}}</div>
+        <div class="box-desc">Numero de identificación</div>
+        <div class="box-info">{{data.numeroIdentificacion}}</div>
+        <div class="box-desc">Email</div>
+        <div class="box-info">{{data.email}}</div>
+        <div class="box-desc">Telefono celular</div>
+        <div class="box-info">{{data.celular}}</div>
+        <div class="box-desc">Fecha de nacimiento</div>
+        <div class="box-info">{{data.fechaNacimiento | birthday}}</div>
+        <div class="box-desc">Actividad económica</div>
+        <div class="box-info">{{data.actividadEco}}</div>
+        <div class="box-desc">Ingresos</div>
+        <div class="box-info">${{data.ingresos | number:'1.0'}}</div>
+    </div>
+    <button class="btn-request btn-summary" start (click)="cancelRequest()">VOLVER AL INICIO</button>
+</app-modal>

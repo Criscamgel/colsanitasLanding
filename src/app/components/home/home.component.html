@@ -1,4 +1,6 @@
 <div class="pPal animated fadeIn fast" (window:resize)="onResize($event)" #ppal>
+    <app-process-request *ngIf="startRequest" [inputCalculoCuota]="calculadora.getCalculoCuota" [startRequest]="startRequest" (outputCancelRequest)="cancelRequest()">
+    </app-process-request>
     <div class="encabezado doNotPrint">
         <img src="../assets/logoSanitas.png" alt="" class="logoSanitas">
         <img src="../assets/logoSantander.png" alt="" class="logoSantander">
@@ -120,10 +122,24 @@
     <div class="pie doNotPrint">
         <p class="smallParrafo">Copyright © 2019, Banco Santander</p>
     </div>
-    <app-modal [hidden]="!startRequest">
-        <h1 header>Iniciar Solicitud</h1>
+
+    <!-- <app-modal [hidden]="!startRequest">
+        <img logo src="./assets/logo-santander.png" class="logo-modal">
+        <h1 header class="title-request">Iniciar Solicitud</h1>
         <app-solicitud-modal></app-solicitud-modal>
-        <button class="btn-request" start (click)="cancelRequest()">SOLICITAR</button>
-        <button class="btn-back" back (click)="cancelRequest()">VOLVER</button>
+        <button class=" btn-request " start (click)="startProcessRequest()">SOLICITAR</button>
+        <button class="btn-back " back (click)="cancelRequest() ">VOLVER</button>
     </app-modal>
+
+    <app-modal [hidden]="!showvalidate">
+        <h2 header class="title-message">Estamos Validando <br> tu información</h2>
+        <img src="./assets/loading.png" class="img-loading">
+    </app-modal>
+
+    <app-modal [hidden]="!showFinalMessage">
+        <h2 header class="title-message">¡Tu solicitud fue aprobada!</h2>
+        <p class="info">Ahora termina el proceso firmando documentos</p>
+        <img src="./assets/businessman.svg" class="img-bussines">
+        <button class="btn-request " back (click)="hideFinalMessage()">IMPRIMIR DOCUMENTOS</button>
+    </app-modal> -->
 </div>

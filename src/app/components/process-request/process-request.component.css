@@ -1,0 +1,36 @@
+.box-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #00000061;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 3%;
+}
+
+.box-desc-summary {
+    text-align: left;
+    padding: 2px 8px;
+}
+
+.box-info-summary {
+    text-align: right;
+    padding: 2px 8px;
+}
+
+.info-cal {
+    margin-top: 10%;
+}
+
+.info-form {
+    margin-top: 3%;
+}
+
+.title-summary {
+    margin-top: 10%;
+}
+
+.btn-summary {
+    width: 80%;
+    margin: auto;
+    margin-top: 8%;
+}
