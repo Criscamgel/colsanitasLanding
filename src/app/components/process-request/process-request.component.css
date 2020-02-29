@@ -34,3 +34,26 @@
     margin: auto;
     margin-top: 8%;
 }
+
+.btn-request {
+    background-color: #EC0000;
+    color: #ffffff;
+    border: none;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 1;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    font-size: 14px;
+}
+
+.btn-back {
+    color: #EC0000;
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 1;
+    border: 1px solid #EC0000;
+    margin-top: 2%;
+    font-size: 14px;
+}
