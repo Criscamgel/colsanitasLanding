@@ -56,21 +56,21 @@
         <mat-form-field class="dialog-select dia" appearance="outline">
             <mat-label>Dia</mat-label>
             <mat-select formControlName="dia">
-                <mat-option value="1">01</mat-option>
+                <mat-option *ngFor="let dia of dias" [value]="dia">{{dia}}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="dialog-select mes" appearance="outline">
             <mat-label>Mes</mat-label>
             <mat-select formControlName="mes">
-                <mat-option value="1">Enero</mat-option>
+                <mat-option *ngFor="let mes of meses" [value]="mes">{{mes}}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="dialog-select year" appearance="outline">
             <mat-label>Año</mat-label>
             <mat-select formControlName="year">
-                <mat-option value="2020">2020</mat-option>
+                <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -78,7 +78,7 @@
     <mat-form-field class="dialog-input" appearance="outline">
         <mat-label>Actividad econónmica</mat-label>
         <mat-select formControlName="actividadEco">
-            <mat-option value="01">Empleado</mat-option>
+            <mat-option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.id">{{ocupacion.tipo}}</mat-option>
         </mat-select>
         <mat-hint *ngIf="form.get('actividadEco').errors?.required && form.get('actividadEco').touched" class="has-error">
             La actividad economica es necesaria

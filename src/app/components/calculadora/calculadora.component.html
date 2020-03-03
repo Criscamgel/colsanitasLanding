@@ -32,8 +32,8 @@
                         type="checkbox"
                         name="epsSanitas" 
                         [(ngModel)]="epsSanitas"                                            
-                        [attr.disabled] = "epsPrepagada == false ? 'disabled' : null"
-                        (change)= "epsPrepagada = !epsPrepagada; cdRef.detectChanges()"
+                        [attr.disabled] = "!epsPrepagada ? 'disabled' : null"
+                        (change)= "changeSanitas()"
                     > Afiliado a la EPS Sanitas
                 </span>
             </div>
@@ -44,8 +44,8 @@
                         type="checkbox"
                         name="epsPrepagada" 
                         [(ngModel)]="epsPrepagada"                                            
-                        [attr.disabled] = "epsSanitas == false ? 'disabled' : null"
-                        (change)= "epsSanitas = !epsSanitas; cdRef.detectChanges()"
+                        [attr.disabled] = "!epsSanitas ? 'disabled' : null"
+                        (change)= "changePrepagada()"
                     > Afiliado prepagada
                 </span>
             </div>
@@ -96,8 +96,8 @@
                             <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">Tasa aplicada:<br>6.04% Efectivo anual</div>
                             <div *ngIf="epsSanitas && cuotas == 36"class="titleTooltip">0.49% Nominal mes vencido</div>
 
-                            <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>24% Efectivo anual</div>
-                            <div *ngIf="epsPrepagada" class="titleTooltip">1.81% Nominal mes vencido</div>                                            
+                            <div *ngIf="epsPrepagada" class="titleTooltip">Tasa aplicada:<br>22% Efectivo anual</div>
+                            <div *ngIf="epsPrepagada" class="titleTooltip">1.67% Nominal mes vencido</div>                                            
                     </span>
                 </div>
             </div>

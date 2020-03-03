@@ -80,10 +80,11 @@ export class CalculadoraComponent implements OnInit {
   }
 
   public changeMontoSlider() {
-    this.changeButton(this.calculoCuota.numeroCuotas);
+    this.validateDto(this.montoSolicitado);
+    this.changeButton();
   }
 
-  public changeButton(val: any) {
+  public changeButton() {
     this.showErrorRequest = false;
     this.calculoService.calcularCuotas(this.cuotas, this.montoSolicitado, this.descuento,
                                         this.epsPrepagada, this.aliado.idAliado)
@@ -92,6 +93,7 @@ export class CalculadoraComponent implements OnInit {
         this.calculoCuota.montoSolicitado = this.montoSolicitado;
         this.calculoCuota.numeroCuotas = this.cuotas;
         this.enableStarRequest.emit(true);
+        console.log(this.calculoCuota);
       },
       () => {
         this.enableStarRequest.emit(false);
@@ -101,7 +103,9 @@ export class CalculadoraComponent implements OnInit {
   }
 
   public currencyInputChanged(value: any): number {
-    return Number(value.replace(/[$,]/g, ''));
+    const valor = Number(value.replace(/[$,]/g, ''));
+    this.validateDto(valor);
+    return valor;
   }
 
   public oldNumbers(event: any) {
@@ -117,13 +121,33 @@ export class CalculadoraComponent implements OnInit {
 
   descuentoChange(val: any) {
     this.descuento = Number(val.srcElement.value);
-    this.maxMonth = this.epsSanitas && this.clickDto && this.descuentoSlide !== 0 ? true : false;
+    this.maxMonth = this.clickDto && this.descuentoSlide !== 0 ? true : false;
 
-    this.changeButton(Number(this.calculoCuota.numeroCuotas));
+    this.changeButton();
+  }
+
+  validateDto(value: number) {
+    if ( value < 3000000) {
+      this.descuentoSlide = 0;
+      this.descuento = 0;
+      this.maxMonth = false;
+    }
   }
 
   public get getCalculoCuota() {
     return this.calculoCuota;
+  }
+
+  public changeSanitas() {
+    this.epsPrepagada = !this.epsPrepagada;
+    this.cdRef.detectChanges();
+    this.changeButton();
+  }
+
+  public changePrepagada() {
+    this.epsSanitas = !this.epsSanitas;
+    this.cdRef.detectChanges();
+    this.changeButton();
   }
 
 }

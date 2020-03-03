@@ -22,6 +22,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PanelExpansionComponent } from './components/panel-expansion/panel-expansion.component';
 import { ProcessRequestComponent } from './components/process-request/process-request.component';
 import { BirthdayPipe } from './pipes/birthday.pipe';
+import { PrintComponent } from './components/print/print.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BirthdayPipe } from './pipes/birthday.pipe';
     PanelExpansionComponent,
     ProcessRequestComponent,
     BirthdayPipe,
+    PrintComponent,
   ],
   entryComponents: [SolicitudModalComponent],
   imports: [
