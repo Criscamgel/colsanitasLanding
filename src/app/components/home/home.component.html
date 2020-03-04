@@ -1,24 +1,25 @@
+<app-print *ngIf="btnRequest" [inputData]="calculadora.getCalculoCuota"></app-print>
 <div class="pPal animated fadeIn fast" (window:resize)="onResize($event)" #ppal>
     <app-process-request *ngIf="startRequest" [inputCalculoCuota]="calculadora.getCalculoCuota" [startRequest]="startRequest" (outputCancelRequest)="cancelRequest()">
     </app-process-request>
-    <div class="encabezado doNotPrint">
+    <div class="encabezado">
         <img src="../assets/logoSanitas.png" alt="" class="logoSanitas">
         <img src="../assets/logoSantander.png" alt="" class="logoSantander">
     </div>
 
-    <div class="partUno doNotPrint">
+    <div class="partUno">
         <p class="bigTitle">Financia el tratamiento de tu paciente</p>
         <p class="textParrafo">Solicita un crédito de consumo de manera fácil e inmediata. Asesora a tu paciente y disfruta de los beneficios que Santander te ofrece.</p>
     </div>
     <!-- Big Screens encabezado -->
 
-    <div class="printOk" [ngClass]="{partUnoBig: !mobile, partDos: mobile}">
+    <div [ngClass]="{partUnoBig: !mobile, partDos: mobile}">
         <div class="encabezadoBig" [hidden]="mobile">
             <img src="../assets/logoSanitas.png" alt="" id="logoSanitasBig" class="logoSanitasBig">
             <img src="../assets/logoSantander.png" alt="" id="logoSantanderBig" class="logoSantanderBig">
             <a href="#" class="logout">Cerrar sesión</a>
             <a [routerLink]="['/ayuda']">
-                <button class="button doNotPrint">
+                <button class="button">
                         <div class="itemButton">
                             <i class="fa fa-question-circle"></i>
                             <p class="bigTitle">AYUDA</p>
@@ -27,7 +28,7 @@
             </a>
 
         </div>
-        <div class="doNotPrint" [ngClass]="{cntUnoBig: !mobile, cntdosSmall: mobile}">
+        <div [ngClass]="{cntUnoBig: !mobile, cntdosSmall: mobile}">
             <div class="textCntBig" *ngIf="!mobile">
                 <div class="texInicial">
                     <p class="bigTitle">Financia el tratamiento<br> de tu paciente</p><br>
@@ -35,20 +36,20 @@
                 </div>
             </div>
 
-            <div class="textCntDosBig doNotPrint" *ngIf="!mobile">
+            <div class="textCntDosBig" *ngIf="!mobile">
                 <div class="simulaCuota">
                     <p class="bigTitle">Simula la cuota</p>
                     <p class="title">¡Evita que tu paciente realice papeleos complejos!</p>
                     <p class="title">Gestiona productos de manera ágil</p>
                 </div>
-                <div class="cntClienteUno doNotPrint" *ngIf="!mobile">
+                <div class="cntClienteUno" *ngIf="!mobile">
                     <p class="title">Condiciones para el cliente:</p>
                     <p class="listaItem">
                         • Debe tener entre 18 y 75 años<br> • Ganar más de un salario mínimo<br> • El monto mínimo es $800.000<br> • El monto máximo es $20.000.000<br> • Colombiano o residente con visa e historia laboral<br> • Plazo de financiación máximo
                         12 meses adicionales a la duración del tratamiento
                     </p>
                 </div>
-                <div class="cntClienteDos doNotPrint" *ngIf="!mobile">
+                <div class="cntClienteDos" *ngIf="!mobile">
                     <p class="title">Clientes asalariados:</p>
                     <p class="listaItem">Continuidad laboral mínima de 12 meses.</p>
                     <p class="title">Clientes independientes:</p>
@@ -66,13 +67,13 @@
                             <p class="bigTitle">IMPRIMIR</p>
                     </button>
 
-                    <div class="contGrafica doNotPrint">
+                    <div class="contGrafica">
                         <div class="dto" (click)="calculadora.dtoChange()"></div>
                         <img src="../assets/grafica.png" alt="" class="grafica">
                     </div>
                 </app-calculadora>
                 <a [routerLink]="['/ayuda']" [hidden]="!mobile">
-                    <button class="button doNotPrint">
+                    <button class="button">
                             <div class="itemButton">
                                 <i class="fa fa-question-circle"></i>
                                 <p class="bigTitle">AYUDA</p>
@@ -84,7 +85,7 @@
         </div>
     </div>
 
-    <div class="partDosBig doNotPrint">
+    <div class="partDosBig">
         <div class="contDosBig">
             <div class="item">
                 <embed class="reloj" src="../assets/reloj.svg">
@@ -119,27 +120,7 @@
             </div>
         </div>
     </div>
-    <div class="pie doNotPrint">
-        <p class="smallParrafo">Copyright © 2019, Banco Santander</p>
+    <div class="pie">
+        <p class="smallParrafo">Copyright © 2020, Banco Santander</p>
     </div>
-
-    <!-- <app-modal [hidden]="!startRequest">
-        <img logo src="./assets/logo-santander.png" class="logo-modal">
-        <h1 header class="title-request">Iniciar Solicitud</h1>
-        <app-solicitud-modal></app-solicitud-modal>
-        <button class=" btn-request " start (click)="startProcessRequest()">SOLICITAR</button>
-        <button class="btn-back " back (click)="cancelRequest() ">VOLVER</button>
-    </app-modal>
-
-    <app-modal [hidden]="!showvalidate">
-        <h2 header class="title-message">Estamos Validando <br> tu información</h2>
-        <img src="./assets/loading.png" class="img-loading">
-    </app-modal>
-
-    <app-modal [hidden]="!showFinalMessage">
-        <h2 header class="title-message">¡Tu solicitud fue aprobada!</h2>
-        <p class="info">Ahora termina el proceso firmando documentos</p>
-        <img src="./assets/businessman.svg" class="img-bussines">
-        <button class="btn-request " back (click)="hideFinalMessage()">IMPRIMIR DOCUMENTOS</button>
-    </app-modal> -->
 </div>

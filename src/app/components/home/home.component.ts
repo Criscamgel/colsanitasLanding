@@ -30,14 +30,17 @@ export class HomeComponent implements AfterViewInit {
   }
 
   onPrint() {
-    window.print();
+    if (this.btnRequest) {
+      window.print();
+    } else {
+      this.showErrorRequest = true;
+    }
   }
 
   openSolicitud() {
     if (this.btnRequest) {
       window.scroll(0, 0);
       this.startRequest = true;
-      console.log(this.calculadora.calculoCuota);
     } else {
       this.showErrorRequest = true;
     }

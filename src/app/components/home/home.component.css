@@ -1,0 +1,16 @@
+app-print {
+    display: none;
+}
+
+@media print {
+    .pPal {
+        display: none;
+    }
+    app-print {
+        display: block;
+    }
+}
+
+.button {
+    margin: 2%;
+}

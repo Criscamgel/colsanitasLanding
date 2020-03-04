@@ -1,32 +1,56 @@
 <div class="container">
     <div class="header">
         <div class="logo1">
-            hola mundo
+            <img src="./assets/logoSanitas.png">
         </div>
         <div class="logo2">
-            hola mundo
+            <img src="./assets/logo-santander.png">
         </div>
-        <div class="title">
-            hola mundo
+        <div class="title-print">
+            Monto total financiamiento: $ {{data.montoSolicitado | number:'1.0'}}
         </div>
     </div>
     <div class="plan-pagos">
-        <div class="title-plan-pagos">
-            hola mundo
+        <div class="header-plan-pagos">
+            Plan de pagos:
         </div>
         <div class="body-plan-pagos">
             <div class="cuota">
-                hola mundo
+                {{data.numeroCuotas}} Pagos
             </div>
             <div class="valor">
-                hola mundo
+                $ {{data.valorCuotaConSeguro | number:'1.0'}} / mes
             </div>
         </div>
     </div>
     <div class="descripcion">
-        hola mundo
+
     </div>
     <div class="detalles">
-        hola mundo
+        <div class="detalles-header">
+            Detalles del prestamo
+        </div>
+        <hr class="detalles-line">
+        <div class="detalles-body">
+            <div class="detalles-info">
+                <p>Valor cuota sin seguro:<span>........................................</span></p>
+                <p>Costo total del seguro:<span>.........................................</span></p>
+                <p>Cuota mensual del seguro:<span>..............................</span></p>
+                <p>Monto total a finaciar:<span>..........................................</span></p>
+                <p>Tasa aplicada<span>..............................................................</span></p>
+            </div>
+            <div class="detalles-valor">
+                <p>$ {{data.valorCuotaSinSeguro | number:'1.0'}}</p>
+                <p>$ {{data.valorTotalSeguro | number:'1.0'}}</p>
+                <p>$ {{data.costoMensualSeguro | number:'1.0'}}</p>
+                <p>$ {{data.montoTotalFinanciamiento | number:'1.0'}}</p>
+                <p *ngIf="data.numeroCuotas != 36">0% efectivo anual</p>
+                <p *ngIf="data.numeroCuotas != 36">0% nominal mes vencido</p>
+
+                <p *ngIf="data.numeroCuotas == 36">6.04% efectivo anual</p>
+                <p *ngIf="data.numeroCuotas == 36">0.49% nominal mes vencido</p>
+            </div>
+        </div>
+
     </div>
 </div>

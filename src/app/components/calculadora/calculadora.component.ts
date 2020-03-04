@@ -86,6 +86,7 @@ export class CalculadoraComponent implements OnInit {
 
   public changeButton() {
     this.showErrorRequest = false;
+    this.enableStarRequest.emit(false);
     this.calculoService.calcularCuotas(this.cuotas, this.montoSolicitado, this.descuento,
                                         this.epsPrepagada, this.aliado.idAliado)
     .subscribe(calculo => {
