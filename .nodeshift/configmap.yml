@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${SRV_SANITAS}
+data:
+  GESTOR_SEGURIDAD_URL: "https://${GESTOR_SEGURIDAD}-${SEC_NAMESPACE}${APPS_DOMAIN}/auth"
+  #GESTOR_SEGURIDAD_REALM: "altair"
+  #GESTOR_SEGURIDAD_CLIENT_ID: "tfc"
+

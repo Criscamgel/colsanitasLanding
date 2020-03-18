@@ -37,7 +37,7 @@ export class AuthService {
             error => {
                 alert('fallo el cierre de session:' + JSON.stringify(error));
                 // this.spinnerService.hide();
-                console.error('Error al intentar cerrar sesion' + JSON.stringify(error));
+                console.log('Error al intentar cerrar sesion' + JSON.stringify(error));
                 window.location.href = environment.redirectUriLogout;
             }
         );

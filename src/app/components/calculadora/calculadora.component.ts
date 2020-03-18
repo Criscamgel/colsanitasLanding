@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Output,EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CalculoCuotaService } from 'src/services/calculo-cuota.service';
 import { ResponseCalculoCuotas } from 'src/models/ResponseCalculoCuotas';
 import { Constants } from 'src/utils/constants';
@@ -17,6 +17,8 @@ export class CalculadoraComponent implements OnInit {
   public minVlr = 800000;
   public maxVlr = 20000000;
   public step = 100000;
+  public valorSolicitado = this.minVlr;
+  public cuotas = 0;
   public descuento = 0;
   public epsSanitas = true;
   public epsPrepagada = false;
@@ -24,24 +26,16 @@ export class CalculadoraComponent implements OnInit {
   public clickDto = false;
   public cuotasRadio: Cuota[] = [];
   public maxMonth = false;
-  public montoSolicitado = this.minVlr;
-  public cuotas: number;
 
   public minDes = 0;
   public maxDes = 5;
   public descuentoSlide = 0;
 
-  public calculoCuota: ResponseCalculoCuotas;
-  @Output() enableStarRequest = new EventEmitter<boolean>();
-  @Input() showErrorRequest: boolean;
+  public calculoCuota: ResponseCalculoCuotas = new ResponseCalculoCuotas();
 
   constructor(private calculoService: CalculoCuotaService,
               private usuarioService: UsuarioService,
-              private cuotaService: CuotasService,
-              public cdRef: ChangeDetectorRef) {
-      this.calculoCuota  = new ResponseCalculoCuotas();
-      this.calculoCuota.montoSolicitado = this.minVlr;
-  }
+              private cuotaService: CuotasService) { }
 
   ngOnInit() {
     localStorage.clear();
@@ -66,7 +60,7 @@ export class CalculadoraComponent implements OnInit {
       aliado => {
         this.aliado = aliado;
       }, (err) => {
-        console.error('Error al consultar el aliado del usuario', err);
+        console.log('Error al consultar el aliado del usuario', err);
       }
     );
   }
@@ -76,37 +70,29 @@ export class CalculadoraComponent implements OnInit {
     this.cuotaService.getCuotas()
         .then(cuotasRadio => {
           this.cuotasRadio = cuotasRadio;
-        }).catch(console.error);
+          console.log(this.cuotasRadio);
+        }).catch(console.log);
   }
 
   public changeMontoSlider() {
-    this.validateDto(this.montoSolicitado);
-    this.changeButton();
+    this.changeButton(this.cuotas);
   }
 
-  public changeButton() {
-    this.showErrorRequest = false;
-    this.enableStarRequest.emit(false);
-    this.calculoService.calcularCuotas(this.cuotas, this.montoSolicitado, this.descuento,
+  public changeButton(val) {
+    this.calculoService.calcularCuotas(this.cuotas, this.valorSolicitado, this.descuento,
                                         this.epsPrepagada, this.aliado.idAliado)
     .subscribe(calculo => {
         this.calculoCuota = calculo;
-        this.calculoCuota.montoSolicitado = this.montoSolicitado;
-        this.calculoCuota.numeroCuotas = this.cuotas;
-        this.enableStarRequest.emit(true);
-        console.log(this.calculoCuota);
+        console.log('Servicio consumido exitosamente, estos son los calculos:  ' + JSON.stringify(calculo));
       },
       () => {
-        this.enableStarRequest.emit(false);
-        console.error('Error consumiendo el servicio de calcular cuotas!!');
+        console.log('Error consumiendo el servicio de calcular cuotas!!');
       }
     );
   }
 
   public currencyInputChanged(value: any): number {
-    const valor = Number(value.replace(/[$,]/g, ''));
-    this.validateDto(valor);
-    return valor;
+    return Number(value.replace(/[$,]/g, ''));
   }
 
   public oldNumbers(event: any) {
@@ -117,38 +103,26 @@ export class CalculadoraComponent implements OnInit {
   }
 
   dtoChange() {
+    console.log('click para mostrar descuento');
+
     this.clickDto = !this.clickDto;
+    console.log(this.clickDto);
   }
 
-  descuentoChange(val: any) {
+  descuentoChange(val) {
     this.descuento = Number(val.srcElement.value);
-    this.maxMonth = this.clickDto && this.descuentoSlide !== 0 ? true : false;
+    this.maxMonth = this.epsSanitas && this.clickDto && this.descuentoSlide !== 0 ? true : false;
+    console.log('disable', this.maxMonth);
 
-    this.changeButton();
+    this.changeButton(Number(this.cuotas));
   }
 
-  validateDto(value: number) {
-    if ( value < 3000000) {
-      this.descuentoSlide = 0;
-      this.descuento = 0;
-      this.maxMonth = false;
-    }
+  linka() {
+    window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
   }
 
-  public get getCalculoCuota() {
-    return this.calculoCuota;
-  }
-
-  public changeSanitas() {
-    this.epsPrepagada = !this.epsPrepagada;
-    this.cdRef.detectChanges();
-    this.changeButton();
-  }
-
-  public changePrepagada() {
-    this.epsSanitas = !this.epsSanitas;
-    this.cdRef.detectChanges();
-    this.changeButton();
+  onPrint() {
+    window.print();
   }
 
 }

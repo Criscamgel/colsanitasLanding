@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  backBdUrl: 'http://localhost:9091', // spring boot para base de datos.
-  keycloakUrl: 'http://localhost:8080/auth',  //keyclock sso
-  keycloakRealm: 'rei_colsanitas',
-  keycloakClientId: 'cli_colsanitas',
+  backBdUrl: 'http://calculadora-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co',
+  keycloakUrl: 'https://sso-dev-ccf-security.cloudapps.cosanpre.corp/auth',
+  //keycloakUrl: 'https://gestor-seguridad-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co/auth',  //keyclock sso
+  //keycloakRealm: 'rei_colsanitas',
+  //keycloakClientId: 'cli_colsanitas',
+  keycloakRealm: 'rei_sanitas',
+  keycloakClientId: 'cli_sanitas',
   //datos de prueba con openshift
   // backBdUrl: 'http://calculadora-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co',
   // keycloakUrl: 'https://sso-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co/auth',

@@ -20,8 +20,8 @@ export class CalculoCuotaService {
          epsPrepagada,
          aliadoId
       };
-      console.log(request);
       const url = `${environment.backBdUrl}/calculoCuotas`;
+      console.log(request);
       return this.http.post<ResponseCalculoCuotas>(url, request);
     }
 }
