@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AyudaComponent implements OnInit {
 
+  anioActual = new Date().getFullYear();
+
   constructor() { }
 
   ngOnInit() {

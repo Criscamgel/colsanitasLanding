@@ -15,6 +15,7 @@ export class HomeComponent{
   maxDes = 5;
   descuentoSlide = 0;
   vlrCuota = 0;
+  anioActual = new Date().getFullYear();
 
   /* descuentoSeis = 0.061; */
   /* descuentoDoce = 0.11; */
