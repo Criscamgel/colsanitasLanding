@@ -5,7 +5,7 @@ import { Component} from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent{
+export class HomeComponent {
 
   cuotas = 0;
   valorSolicitado = 800000;
@@ -17,11 +17,11 @@ export class HomeComponent{
   vlrCuota = 0;
   anioActual = new Date().getFullYear();
 
-  /* descuentoSeis = 0.061; */
-  /* descuentoDoce = 0.11; */
-  /* descuentoDieciocho = 0.156; */
-  /* descuentoVeinticuatro = 0.20; */
-  /* descuentoTreintaseis = 0.21; */
+  /* descuentoSeis = 0.061;
+  descuentoDoce = 0.11;
+  descuentoDieciocho = 0.156;
+  descuentoVeinticuatro = 0.20;
+  descuentoTreintaseis = 0.21; */
 
   descuentoSeis = 0;
   descuentoDoce = 0;
@@ -40,33 +40,32 @@ export class HomeComponent{
   seguroCta;
   seguroTotal;
 
-  cambioTasaPre(){
-    /* if(this.epsPrepagada && !this.epsSanitas){
+  cambioTasaPre() {
+    if (this.epsPrepagada && !this.epsSanitas) {
       this.tasa = 0.22;
     }
-    if(!this.epsPrepagada && this.epsSanitas){
-      this.tasa = 0.24;
-    } */
+    if (!this.epsPrepagada && this.epsSanitas) {
+      this.tasa = 0.22;
+    }
   }
 
-  descuento(val){
+  descuento(val) {
     var dto = Math.round(this.valorSolicitado * (Number(val.srcElement.value) / 100));
     this.vlrDto = this.valorSolicitado - dto;
     this.changeButton(Number(this.cuotas));
-      
   }
 
 
   currencyInputChanged(value) {
-    var num = value.replace(/[$,]/g, "");  
+    var num = value.replace(/[$,]/g, "");
     return Number(num);
   }
   
-  oldNumbers(event: any) {   
-    const pattern =  new RegExp('^[0-9]+$');    
+  oldNumbers(event: any) {
+    const pattern =  new RegExp('^[0-9]+$');
     let inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
-      event.preventDefault();      
+      event.preventDefault();
     }
   }
 
@@ -96,9 +95,15 @@ export class HomeComponent{
     }
 
     if(this.epsSanitas && cuota == 36){
-      this.tasa = 0.0604;
+      this.tasa = 0.068034;
       nmv = Math.pow((1 + this.tasa),(1/12))-1;
-      this.nmv = nmv;   
+      this.nmv = nmv;
+    }
+
+    if(this.epsSanitas && cuota == 24){
+      this.tasa = 0.012066;
+      nmv = Math.pow((1 + this.tasa),(1/12))-1;
+      this.nmv = nmv;
     }    
 
     if(this.epsPrepagada){
@@ -123,7 +128,7 @@ export class HomeComponent{
           if(this.vlrDto === 0){
           vlrDescuento = Math.round(this.valorSolicitado * this.descuentoSeis);
           }else{
-          vlrDescuento = Math.round(this.vlrDto * this.descuentoSeis);  
+          vlrDescuento = Math.round(this.vlrDto * this.descuentoSeis);
           }
           var seguroTotal = Math.round(seguro * cuota);
           /* Seguro Total */        
@@ -141,7 +146,7 @@ export class HomeComponent{
           vlrCuota = vlrPartuno / vlrPartdos;
           vlrCuota = Math.round(vlrCuota);
           /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;       
+          this.vlrCuotaSs = vlrCuota;
                  
           var vlrPartunoSeg = seguroTotal * nmv;      
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
@@ -256,7 +261,7 @@ export class HomeComponent{
           var vlrPartdos = Math.pow((1 + nmv), - cuota)
           vlrPartdos = 1 - vlrPartdos;
           vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
+          /* vlrCuota = Math.round(vlrCuota); */
           /* Valor Cuota sin seguro */
           this.vlrCuotaSs = vlrCuota;       
                  
@@ -264,10 +269,11 @@ export class HomeComponent{
           var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
           vlrPartdosSeg = 1 - vlrPartdosSeg;
           var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          seguroCta = Math.round(seguroCta);
+          /* seguroCta = Math.round(seguroCta); */
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
+          this.vlrCuota = Math.round(this.vlrCuotaSs + seguroCta);
+          
              
         break;
 
@@ -295,18 +301,18 @@ export class HomeComponent{
           var vlrPartdos = Math.pow((1 + nmv), - cuota)
           vlrPartdos = 1 - vlrPartdos;
           vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
+          /* vlrCuota = Math.round(vlrCuota); */
           /* Valor Cuota sin seguro */
           this.vlrCuotaSs = vlrCuota;       
                  
           var vlrPartunoSeg = seguroTotal * nmv;      
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota);
           vlrPartdosSeg = 1 - vlrPartdosSeg;
           var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          seguroCta = Math.round(seguroCta);
+          /* seguroCta = Math.round(seguroCta); */
           /* Seguro de la cuota */
           this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
+          this.vlrCuota = Math.round(this.vlrCuotaSs + seguroCta);
 
         break;
     
@@ -316,7 +322,7 @@ export class HomeComponent{
   }
 
   dtoChange(){
-      this.clickDto = !this.clickDto
+      this.clickDto = !this.clickDto;
   }
   
 
@@ -324,8 +330,8 @@ export class HomeComponent{
     window.print();
   }
 
-  valorChange(){
-    if(Number(this.valorSolicitado) < 3000000){
+  valorChange() {
+    if(Number(this.valorSolicitado) < 3000000) {
       this.descuentoSlide = 0;
     }
   }
