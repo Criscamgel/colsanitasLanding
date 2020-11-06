@@ -16,6 +16,7 @@ export class HomeComponent {
   descuentoSlide = 0;
   vlrCuota = 0;
   anioActual = new Date().getFullYear();
+  datePay;
 
   /* descuentoSeis = 0.061;
   descuentoDoce = 0.11;
@@ -32,6 +33,7 @@ export class HomeComponent {
   nmv = 0;
   epsSanitas = true;
   epsPrepagada = false;
+  periodoGracia = false;
 
   clickDto = false;
   vlrDto = 0;
@@ -39,6 +41,11 @@ export class HomeComponent {
   vlrCuotaSs;
   seguroCta;
   seguroTotal;
+  fecha = new Date();
+
+  constanteSeguro = 1200 / 1000000;
+  constanteCuatroPorMil = 4 / 1000;
+  periodoGraciaNumero = 2;
 
   cambioTasaPre() {
     if (this.epsPrepagada && !this.epsSanitas) {
@@ -50,9 +57,9 @@ export class HomeComponent {
   }
 
   descuento(val) {
-    var dto = Math.round(this.valorSolicitado * (Number(val.srcElement.value) / 100));
+    const dto = Math.round(this.valorSolicitado * (Number(val.srcElement.value) / 100));
     this.vlrDto = this.valorSolicitado - dto;
-    this.changeButton(Number(this.cuotas));
+    this.changeButton(Number(this.cuotas), this.vlrDto);
   }
 
 
@@ -69,270 +76,150 @@ export class HomeComponent {
     }
   }
 
-  linka(){
+  linka() {
     window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
       
   }
 
-  changeButton(val){
+  changeButton(val, monto) {
 
     let cuota;
-    let seguro;
     let nmv;
 
-    if(val.value === undefined){
+    if (val.value === undefined) {
       cuota = val;
-    }else{
+    } else {
       cuota = Number(val.value);
-    }    
-    
-
-
-    if(this.epsSanitas && cuota !== 36){
-    this.tasa = 0.0000000001
-    nmv = Math.pow((1 + this.tasa),(1/12))-1;
-    this.nmv = nmv;    
     }
 
-    if(this.epsSanitas && cuota == 36){
-      this.tasa = 0.068;
-      nmv = Math.pow((1 + this.tasa),(1/12))-1;
-      this.nmv = nmv;
-    }
-
-    if(this.epsSanitas && cuota == 24){
-      this.tasa = 0.012066;
-      nmv = Math.pow((1 + this.tasa),(1/12))-1;
-      this.nmv = nmv;
-    }    
-
-    if(this.epsPrepagada){
-    this.tasa = 0.22
-    nmv = Math.pow((1 + this.tasa),(1/12))-1;
+    if (this.epsPrepagada && this.periodoGracia) {
+    this.tasa = 0.24;
+    nmv = this.calculoNMV(this.tasa);
     this.nmv = nmv;
-    }    
-
-    if(this.vlrDto === 0){
-    seguro =  (1200 / 1000000) * this.valorSolicitado;
-    }else{
-    seguro =  (1200 / 1000000) * this.vlrDto;  
     }
-    
-    switch (cuota) {
-      case 6:
 
-          var vlrCuota;
-          var vlrDescuento;
-          var vlrActual;
+    if (this.epsSanitas && cuota !== 36) {
+    this.tasa = 0.0000000001;
+    nmv = this.calculoNMV(this.tasa);
+    this.nmv = nmv;
+    }
 
-          if(this.vlrDto === 0){
-          vlrDescuento = Math.round(this.valorSolicitado * this.descuentoSeis);
-          }else{
-          vlrDescuento = Math.round(this.vlrDto * this.descuentoSeis);
-          }
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */        
-          this.seguroTotal = seguroTotal;
-                          
-          if(this.vlrDto === 0){
-            vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
-          }else{
-            vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }
+    if (this.epsSanitas && cuota == 36) {
+      this.tasa = 0.068;
+      nmv = this.calculoNMV(this.tasa);
+      this.nmv = nmv;
+    }
 
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;
-                 
-          var vlrPartunoSeg = seguroTotal * nmv;      
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-          
-                              
-        break;
-      case 12:
-        
-        var vlrCuota;
-          var vlrDescuento;
-          var vlrActual;
+    if (this.epsSanitas && cuota == 24) {
+      this.tasa = 0.012066;
+      nmv = this.calculoNMV(this.tasa);
+      this.nmv = nmv;
+    }
 
-          if(this.vlrDto === 0){
-          vlrDescuento = Math.round(this.valorSolicitado * this.descuentoDoce);
-          }else{
-          vlrDescuento = Math.round(this.vlrDto * this.descuentoDoce);  
-          }
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */        
-          this.seguroTotal = seguroTotal;
-                          
-          if(this.vlrDto === 0){
-            vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
-          }else{
-            vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;       
-                 
-          var vlrPartunoSeg = seguroTotal * nmv;      
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-             
-        break;
+    if (this.epsPrepagada && !this.periodoGracia) {
+    this.tasa = 0.22;
+    nmv = this.calculoNMV(this.tasa);
+    this.nmv = nmv;
+    }
 
-      case 18:
-        
-        var vlrCuota;
-          var vlrDescuento;
-          var vlrActual;
+    /* if (this.vlrDto === 0) {
+    this.constanteSeguro =  (1200 / 1000000) * this.valorSolicitado;
+    } else {
+      this.constanteSeguro =  (1200 / 1000000) * this.vlrDto;
+    }*/
+    if (!this.periodoGracia) {
 
-          if(this.vlrDto === 0){
-          vlrDescuento = Math.round(this.valorSolicitado * this.descuentoDieciocho);
-          }else{
-          vlrDescuento = Math.round(this.vlrDto * this.descuentoDieciocho);  
-          }
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */        
-          this.seguroTotal = seguroTotal;
-                          
-          if(this.vlrDto === 0){
-            vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
-          }else{
-            vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;       
-                 
-          var vlrPartunoSeg = seguroTotal * nmv;      
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-             
-        break;
+      const nominalMesVencido = this.calculoNMV(this.tasa);
+      const valorCuotaSinSeguro = this.functionPago(nominalMesVencido, cuota, monto);
+      this.vlrCuotaSs = valorCuotaSinSeguro;
+      const valorTotalSeguro =  this.calcularTotalSeguro(monto, cuota);
+      this.seguroTotal = valorTotalSeguro;
+      const costoMensualSeguro = this.functionPago(nominalMesVencido, cuota, valorTotalSeguro);
+      this.seguroCta = costoMensualSeguro;
+      const valorCuotaConSeguro = valorCuotaSinSeguro + costoMensualSeguro;
+      // calculo Cuatro por mil
+      const cuatroPorMil = this.calculoCuatroPormil(monto, valorTotalSeguro);
+      const montoTotalFinanciamiento = valorTotalSeguro + monto;
+      // calculo Costo de Interes
+      let costoDeInteres = valorTotalSeguro + cuatroPorMil + monto;
+      costoDeInteres = this.calculoCostoDeInteres(nominalMesVencido, cuota, valorCuotaSinSeguro);
+      costoDeInteres = costoDeInteres - costoDeInteres;
 
-      case 24:
-        
-        var vlrCuota;
-          var vlrDescuento;
-          var vlrActual;
+      this.vlrCuota = valorCuotaConSeguro;
+    } else {
+      const nominalMesVencido = this.calculoNMV(this.tasa);
+      const valorTotalSeguro =  this.calcularTotalSeguro(monto, cuota);
+      const valorFuturoSeguro = this.calculoValorFuturo(valorTotalSeguro, nominalMesVencido, this.periodoGraciaNumero);
+      const montoTotalFinanciamiento = valorTotalSeguro + monto;
+      // calculo Valor Futuro
+      const valorFuturo = this.calculoValorFuturo(montoTotalFinanciamiento, nominalMesVencido, this.periodoGraciaNumero);
+      // Calculo Mensual cuota
+      const costoMensualSeguro = this.functionPago(nominalMesVencido, cuota - this.periodoGraciaNumero, valorFuturoSeguro);
+      // calculo Mensual seguro
+      const valorCuotaConSeguro = this.functionPago(nominalMesVencido, cuota - this.periodoGraciaNumero, valorFuturo);
+      const valorCuotaSinSeguro = valorCuotaConSeguro - costoMensualSeguro;
+      // calculo Cuatro por mil
+      const cuatroPorMil = this.calculoCuatroPormil(monto, valorTotalSeguro);
+      // calculo Costo de Interes
+      let costoDeInteres = valorTotalSeguro + cuatroPorMil + monto;
+      costoDeInteres = this.calculoCostoDeInteres(nominalMesVencido, cuota - this.periodoGraciaNumero, valorCuotaSinSeguro);
+      costoDeInteres -= costoDeInteres;
 
-          if(this.vlrDto === 0){
-          vlrDescuento = Math.round(this.valorSolicitado * this.descuentoVeinticuatro);
-          }else{
-          vlrDescuento = Math.round(this.vlrDto * this.descuentoVeinticuatro);  
-          }
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */        
-          this.seguroTotal = seguroTotal;
-                          
-          if(this.vlrDto === 0){
-            vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
-          }else{
-            vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          /* vlrCuota = Math.round(vlrCuota); */
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;       
-                 
-          var vlrPartunoSeg = seguroTotal * nmv;      
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          /* seguroCta = Math.round(seguroCta); */
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(this.vlrCuotaSs + seguroCta);
-          
-             
-        break;
-
-      case 36:
-
-          var vlrCuota;
-          var vlrDescuento;
-          var vlrActual;
-
-          if(this.vlrDto === 0){
-          vlrDescuento = Math.round(this.valorSolicitado * this.descuentoTreintaseis);
-          }else{
-          vlrDescuento = Math.round(this.vlrDto * this.descuentoTreintaseis);  
-          }
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */        
-          this.seguroTotal = seguroTotal;
-                          
-          if(this.vlrDto === 0){
-            vlrActual = Math.round(this.valorSolicitado - vlrDescuento);
-          }else{
-            vlrActual = Math.round(this.vlrDto - vlrDescuento);
-          }
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          /* vlrCuota = Math.round(vlrCuota); */
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;       
-                 
-          var vlrPartunoSeg = seguroTotal * nmv;      
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota);
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-          /* seguroCta = Math.round(seguroCta); */
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(this.vlrCuotaSs + seguroCta);
-
-        break;
-    
-      default:
-        break;
+      this.vlrCuota = valorCuotaConSeguro;
     }
   }
 
-  dtoChange(){
+  /* Funciones Calculos */
+  public functionPago(nmv: number, cuotas: number, valor: number) {
+    const parteUno = valor * nmv;
+    const parteDos = 1 - Math.pow((1 + nmv), (- (cuotas)));
+    return Math.round(parteUno / parteDos);
+  }
+
+  public calcularTotalSeguro( valor: number, cuotas: number) {
+    return Math.round(this.constanteSeguro * valor * cuotas);
+  }
+
+  public calculoNMV(tasa: number) {
+    return Number(Math.pow((1 + tasa), (1 / 12)) - 1);
+  }
+
+  public calculoValorFuturo(monto: number, nmv: number, cuotas: number) {
+    return monto * Math.pow(1 + nmv, cuotas);
+  }
+
+  public calculoCuatroPormil(monto: number, totalSeguro: number) {
+    return Math.round((monto + totalSeguro) * this.constanteCuatroPorMil);
+  }
+
+  public calculoCostoDeInteres(nmv: number, cuota: number, valorCuotaSinSeguro: number) {
+    const costoDeInteres = 1 - Math.pow((1 + nmv), - (cuota));
+    return (costoDeInteres * valorCuotaSinSeguro) / nmv;
+  }
+
+  dtoChange() {
       this.clickDto = !this.clickDto;
   }
   
+  changeBoolean(value) {
+    return value !== value;
+  }
 
-  onPrint(){
+  onPrint() {
     window.print();
   }
 
   valorChange() {
-    if(Number(this.valorSolicitado) < 3000000) {
+    if (Number(this.valorSolicitado) < 3000000) {
       this.descuentoSlide = 0;
+    }
+  }
+
+  getCalcGracia() {
+    if (this.fecha.getDate() > 2 && this.fecha.getDate() < 17) {
+      this.datePay = 17;
+    } else {
+      this.datePay = 2;
     }
   }
 
